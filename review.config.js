@@ -146,7 +146,5 @@ window.REVIEW_CONFIG = {
       "title": "Trách nhiệm người thanh toán — NAWARUCO"
     }
   ],
-  "reviewerEmails": [
-    "b23db7@gmail.com"
-  ]
+  "reviewerEmails": []
 };

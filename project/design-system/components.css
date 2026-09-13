@@ -604,10 +604,18 @@ table.tariff tr:hover td{background:var(--bg-sunken);}
 .article-layout{display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:var(--gap-box); align-items:start;}
 @media (max-width:1024px){ .article-layout{grid-template-columns:minmax(0,1fr);} }
 .article-header{margin-bottom:var(--sp-5); padding-bottom:var(--sp-5); border-bottom:1px solid var(--border-default);}
-.article-header h1{font-size:var(--fs-2xl); margin-bottom:var(--sp-3); line-height:1.25;}
+.article-header h1{font-size:1.75rem; margin-bottom:var(--sp-3); line-height:1.3;} /* 28px theo yêu cầu khách 2026-09-13 — không khớp bậc token nào (--fs-xl 26px/--fs-2xl 33px) nên để giá trị riêng cho đúng ý khách, không đổi token chung */
 .article-meta{display:flex; flex-wrap:wrap; align-items:center; gap:var(--sp-2) var(--sp-4); font-size:var(--fs-sm); color:var(--text-secondary);}
 .article-meta time{font-family:var(--font-numeric); font-variant-numeric:tabular-nums;}
 .article-meta .sep{color:var(--text-secondary);} /* như trên: dấu phân cách vẫn là chữ hiện, phải đạt 4.5:1 */
+
+/* Tiêu đề bài viết (h1): khách chốt cỡ chữ cụ thể 28px desktop / 22px mobile
+   (2026-09-13) — không trùng bậc nào trong thang --fs-* hiện có nên dùng thẳng
+   rem tại đây, không thêm token mới vào tokens.css vì đây là yêu cầu riêng cho
+   đúng 1 chỗ, không phải một bậc dùng lại nhiều nơi. */
+@media (max-width:760px){
+  .article-header h1{font-size:1.375rem; line-height:1.3;}
+}
 
 /* ============ PROSE — style cho the_content của WordPress ============ */
 /* Biên tập viên gõ trong trình soạn thảo, không gắn class. Mọi style nội dung
@@ -649,13 +657,31 @@ table.tariff tr:hover td{background:var(--bg-sunken);}
 .post-list{display:flex; flex-direction:column; gap:var(--gap-box);}
 .post-item{display:grid; grid-template-columns:180px minmax(0,1fr); gap:var(--sp-5); align-items:start; margin-bottom:var(--gap-box);}
 .post-item:last-child{margin-bottom:0;}
-@media (max-width:640px){ .post-item{grid-template-columns:1fr;} }
+/* Trước đây ≤640px đổi hẳn sang 1 cột (ảnh full-width nằm trên, chữ nằm dưới)
+   vì cột ảnh cố định 180px + gap 24px chỉ còn quá ít chỗ cho chữ ở khổ máy hẹp.
+   Khách muốn GIỮ dạng danh sách ảnh-trái/chữ-phải ngay cả trên mobile (giống
+   kiểu list "Việc thường làm" bên cột phụ) — nên thay vì bỏ hẳn cột, thu nhỏ
+   cột ảnh xuống 96px + giảm gap còn --sp-3 (12px) để chữ vẫn đủ chỗ đọc được
+   ở khổ 360-390px (còn lại ~220-250px cho tiêu đề + mô tả, đã test bằng
+   Playwright/ảnh chụp thấy ổn, không bị vỡ chữ). */
+@media (max-width:640px){
+  .post-item{grid-template-columns:96px minmax(0,1fr); gap:var(--sp-3);}
+}
 .post-item .thumb{aspect-ratio:16 / 9; border-radius:var(--radius-md); background:linear-gradient(135deg, var(--c-primary-600), var(--c-accent-600));}
 .post-item .date{font-size:var(--fs-xs); color:var(--text-secondary); font-family:var(--font-numeric); font-variant-numeric:tabular-nums;}
 .post-item h3{font-size:var(--fs-md); margin:6px 0;}
 .post-item h3 a{color:var(--text-primary); text-decoration:none;}
 .post-item h3 a:hover{color:var(--brand);}
 .post-item p{font-size:var(--fs-base); color:var(--text-secondary);}
+@media (max-width:640px){
+  /* Mobile bỏ hẳn đoạn mô tả, chỉ còn ảnh + tiêu đề (yêu cầu khách 2026-09-13) —
+     danh sách gọn hơn, mỗi mục thấp lại, xem được nhiều tin hơn trong 1 màn
+     hình. align-items đổi center vì giờ chỉ còn 1 dòng chữ ngắn, canh giữa
+     theo chiều dọc so với ảnh cho cân đối (căn top như cũ sẽ lệch lên trên). */
+  .post-item{align-items:center;}
+  .post-item h3{font-size:var(--fs-base); margin:0;}
+  .post-item p{display:none;}
+}
 
 /* ============ WIDGET CỘT PHẢI ============ */
 /* overflow:hidden bắt buộc: .widget-title bleed ra sát mép bằng margin âm rồi

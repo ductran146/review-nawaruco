@@ -108,6 +108,9 @@ async function refreshComments() { records = await loadComments(); render(); }
 async function applyIdentity(identity, justSignedIn) {
  myEmail = identity.email; myRole = identity.role; identityPreview = !!identity.preview;
  viewRole = myRole === 'owner' ? 'owner' : 'reviewer';
+ // Owner mặc định luôn thấy panel "Các trang" ngay khi vào — không cần
+ // bấm mở. Reviewer vẫn giữ hành vi cũ (panel đóng, tự bấm mở khi cần).
+ if (viewRole === 'owner') pagesPanelOpen(true);
  $('overviewLink').hidden = viewRole !== 'owner';
  $('emailForm').hidden = true; $('otpForm').hidden = true;
  $('identity').hidden = false; $('signedEmail').textContent = myEmail + (identityPreview ? ' (xem thử)' : '');
@@ -280,9 +283,12 @@ function renderPagesPanel() {
  const allPages = reviewPages();
  const pages = isOwner ? allPages : allPages.filter(p => pageRecords(records, p).length > 0);
  $('pagesPanelTitle').textContent = isOwner ? 'Các trang' : 'Trang đã bình luận';
+ // Chỉ owner mới cần thấy dòng thống kê (số trang/số bình luận) — khách
+ // hàng (reviewer) chỉ cần danh sách trang, không cần số liệu tổng quan.
+ $('pagesPanelSummary').hidden = !isOwner;
  $('pagesPanelSummary').textContent = isOwner
   ? pages.length + ' trang HTML · ' + records.filter(c => c.status === 'open').length + ' bình luận đang mở'
-  : pages.length + ' trang có bình luận của bạn';
+  : '';
  const list = $('pagesPanelList'); list.replaceChildren();
  for (const p of pages) {
   const row = document.createElement('button'); row.type = 'button';

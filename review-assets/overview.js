@@ -13,14 +13,34 @@
   const tile = document.createElement('div'); tile.append(node('strong', String(value)), node('span', label)); $('totals').append(tile);
  }
 
- const pageStats = $('pageStats'); pageStats.replaceChildren();
- for (const p of pages) {
-  const list = pageRecords(records, p), n = list.filter(c => c.status === 'open').length, r = list.length - n;
-  const row = document.createElement('a'); row.className = 'page-row'; row.href = '../index.html?page=' + encodeURIComponent(p.path);
-  const name = node('span'); name.append(iconEl('fileText'), node('span',undefined,'page-name-text')); name.querySelector('.page-name-text').append(node('strong', p.title), node('small', p.path));
-  row.append(name, node('span', n + ' đang mở · ' + r + ' đã giải quyết', 'page-count'));
-  pageStats.append(row);
+ // "Phản hồi theo trang" — số trang trong 1 dự án luôn có giới hạn (do
+ // chính review.config.js khai báo lúc import), khác với số bình luận
+ // (có thể tăng vô hạn theo thời gian) — nên chỉ danh sách trang này cần
+ // phân trang, còn "Phản hồi mới nhất" giữ nguyên kiểu cắt 8 mục mới nhất.
+ const PAGE_STATS_PER_PAGE = 10;
+ let pageStatsPageNum = 1;
+ function renderPageStats() {
+  const pageStats = $('pageStats'); pageStats.replaceChildren();
+  const totalPages = Math.max(1, Math.ceil(pages.length / PAGE_STATS_PER_PAGE));
+  if (pageStatsPageNum > totalPages) pageStatsPageNum = totalPages;
+  const start = (pageStatsPageNum - 1) * PAGE_STATS_PER_PAGE;
+  for (const p of pages.slice(start, start + PAGE_STATS_PER_PAGE)) {
+   const list = pageRecords(records, p), n = list.filter(c => c.status === 'open').length, r = list.length - n;
+   const row = document.createElement('a'); row.className = 'page-row'; row.href = '../index.html?page=' + encodeURIComponent(p.path);
+   const name = node('span'); name.append(iconEl('fileText'), node('span',undefined,'page-name-text')); name.querySelector('.page-name-text').append(node('strong', p.title), node('small', p.path));
+   row.append(name, node('span', n + ' đang mở · ' + r + ' đã giải quyết', 'page-count'));
+   pageStats.append(row);
+  }
+  const pager = $('pageStatsPager'); pager.replaceChildren();
+  if (totalPages <= 1) { pager.hidden = true; return; }
+  pager.hidden = false;
+  const prevBtn = node('button', '‹ Trước'); prevBtn.type = 'button'; prevBtn.disabled = pageStatsPageNum <= 1;
+  prevBtn.onclick = () => { pageStatsPageNum--; renderPageStats(); };
+  const nextBtn = node('button', 'Sau ›'); nextBtn.type = 'button'; nextBtn.disabled = pageStatsPageNum >= totalPages;
+  nextBtn.onclick = () => { pageStatsPageNum++; renderPageStats(); };
+  pager.append(prevBtn, node('span', 'Trang ' + pageStatsPageNum + ' / ' + totalPages, 'pager-info'), nextBtn);
  }
+ renderPageStats();
 
  const latest = $('latestComments'); latest.replaceChildren();
  const recent = [...scoped].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 8);
@@ -28,7 +48,9 @@
   const p = pages.find(p => '/' + p.path === c.page);
   const row = document.createElement('a'); row.className = 'feedback-row';
   row.href = '../index.html?page=' + encodeURIComponent(p ? p.path : '') + '&comment=' + encodeURIComponent(c.id);
-  row.append(node('small', (p ? p.title : c.page) + ' · ' + c.author + ' · ' + (c.status === 'open' ? 'Đang mở' : 'Đã giải quyết')), node('p', c.content), node('small', new Date(c.createdAt).toLocaleString('vi-VN')));
+  const head = node('div', undefined, 'feedback-head');
+  head.append(node('span', c.author, 'feedback-email'), node('span', c.status === 'open' ? 'Đang mở' : 'Đã giải quyết', 'status-chip ' + (c.status === 'open' ? 'status-open' : 'status-resolved')));
+  row.append(head, node('small', new Date(c.createdAt).toLocaleString('vi-VN'), 'feedback-time'), node('p', c.content, 'feedback-content'));
   latest.append(row);
  }
  if (!recent.length) latest.append(node('p', 'Chưa có phản hồi. Bình luận từ các trang sẽ xuất hiện ở đây.', 'empty'));
