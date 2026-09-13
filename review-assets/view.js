@@ -290,12 +290,17 @@ function renderPagesPanel() {
   ? pages.length + ' trang HTML · ' + records.filter(c => c.status === 'open').length + ' bình luận đang mở'
   : '';
  const list = $('pagesPanelList'); list.replaceChildren();
- for (const p of pages) {
+ // Owner: ưu tiên trang có nhiều bình luận CHƯA giải quyết lên đầu, để
+ // biết ngay cần xử lý trang nào trước — reviewer vẫn giữ thứ tự gốc
+ // (theo thứ tự import), vì họ không quan tâm trạng thái xử lý của owner.
+ const openCount = p => pageRecords(records, p).filter(c => c.status === 'open').length;
+ const orderedPages = isOwner ? [...pages].sort((a, b) => openCount(b) - openCount(a)) : pages;
+ for (const p of orderedPages) {
   const row = document.createElement('button'); row.type = 'button';
   row.className = 'page-row' + ('/' + p.path === page ? ' current' : '');
   const name = node('span'); name.append(iconEl('fileText'), node('strong', p.path));
   row.append(name);
-  const count = isOwner ? pageRecords(records, p).filter(c => c.status === 'open').length : pageRecords(records, p).length;
+  const count = isOwner ? openCount(p) : pageRecords(records, p).length;
   row.append(node('span', String(count), 'page-badge'));
   row.onclick = () => { goToPage(p.path); renderPagesPanel(); };
   list.append(row);
