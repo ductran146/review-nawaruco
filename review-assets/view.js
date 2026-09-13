@@ -366,7 +366,7 @@ function renderDraftPin() {
  pin.style.cssText='all:initial;position:fixed;pointer-events:none;z-index:2147483647;width:28px;height:28px;border:2px solid white;border-radius:50%;background:#3155df;color:white;text-align:center;font:600 20px/28px system-ui;box-shadow:0 0 0 5px #3155df33,0 2px 10px #0004;';
  doc.body.append(pin); positionPins();
 }
-function cancel() { resetReply(); closeFloating(); picking = false; pending = null; clearPicker(); composerAttach.reset(); try { frame.contentDocument.querySelectorAll('[data-review-draft]').forEach(el=>el.remove()); } catch {} $('composer').hidden = !canComment(); $('selection').hidden = true; $('cancel').hidden=true; $('pinLabel').textContent = 'Chọn vị trí trên website'; try { frame.contentDocument.documentElement.style.cursor = ''; } catch {} $('hint').textContent = ''; }
+function cancel() { resetReply(); closeFloating(); picking = false; pending = null; clearPicker(); composerAttach.reset(); try { frame.contentDocument.querySelectorAll('[data-review-draft]').forEach(el=>el.remove()); } catch {} $('composer').hidden = !canComment(); $('selection').hidden = true; $('cancel').hidden=true; $('pinLabel').textContent = 'Chọn vị trí trên website'; try { frame.contentDocument.documentElement.style.cursor = ''; } catch {} $('hint').textContent = ''; $('content').value = ''; resizeContent(); }
 $('cancel').onclick = () => { cancel(); sidebar(true); };
 $('pin').onclick = () => { if (!canComment()) return; cancel(); selectedId=null; sidebar(true); try { frame.contentDocument.documentElement.style.cursor = 'crosshair'; picking = true; $('cancel').hidden=false; startPicker(); $('pinLabel').textContent = 'Đang chọn vị trí…'; $('hint').textContent = 'Bấm vào phần tử muốn góp ý. Nhấn Esc để hủy chọn vị trí.'; } catch (error) { picking=false; clearPicker(); $('pinLabel').textContent='Chọn vị trí trên website'; reportPreviewError(error); } };
 window.addEventListener('keydown', e => { if (e.key === 'Escape') { cancel(); sidebar(true); } });
@@ -448,7 +448,7 @@ function positionFloating(){
 }
 function openFloating(anchor,record=null){
  closeFloating();const panel=node('section',undefined,'note-popup');panel.setAttribute('role','dialog');panel.setAttribute('aria-label',record?'Chi tiết bình luận':'Bình luận tại vị trí đã chọn');
- const head=node('div',undefined,'note-head'),title=node('strong',record?'Bình luận':'Bình luận tại đây'),close=document.createElement('button');close.className='icon-only';close.append(iconEl('close'));close.type='button';close.setAttribute('aria-label','Đóng ô bình luận');
+ const head=node('div',undefined,'note-head'),title=node('strong',record?'Bình luận':'Bình luận tại đây'),close=document.createElement('button');close.className='icon-only';close.append(iconEl('closeX'));close.type='button';close.setAttribute('aria-label','Đóng ô bình luận');
  close.onclick=()=>{if(record)closeFloating();else{cancel();sidebar(true);}};
  if(record){
   const actions=node('div',undefined,'note-head-actions');
