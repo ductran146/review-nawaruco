@@ -167,7 +167,27 @@ main > .section:last-of-type{padding-bottom:var(--gap-box);}
      khách 2026-09-10. */
   .page-banner p,.page-banner .breadcrumb{display:none;}
 }
-@media (max-width:640px){ .page-banner h1{font-size:var(--fs-xl);} }
+/* fs-xl (26px) vẫn làm nhiều tiêu đề trang ngắt dòng sai chỗ trên mobile —
+   không phải do 1 trang cụ thể mà do 26px + tiêu đề dài (vd "Công bố thông
+   tin & dữ liệu") không đủ chỗ trên màn hình hẹp. Hạ xuống 1.375rem (22px) —
+   dùng lại đúng số đã chốt cho .article-header h1 mobile (2026-09-13) để
+   tiêu đề trang nào cũng đọc cùng cỡ chữ trên mobile, không thêm số mới.
+   Vẫn còn 1 số tiêu đề rất dài (vd trang kiểm tra nước bất thường) buộc phải
+   xuống 2-3 dòng dù cỡ nào — chấp nhận được, chỉ cần không ngắt sai giữa 1
+   cụm từ (đã xử lý riêng bằng \u00a0 ở từng data-title, xem dev-notes). */
+@media (max-width:640px){ .page-banner h1{font-size:1.375rem;} }
+
+/* .sec-head h2 (tiêu đề mục trong nội dung trang, vd "Các hình thức thanh
+   toán") dùng chung --fs-xl (26px) với h1 cũ, không có mốc riêng cho mobile.
+   Sau khi hạ h1 xuống 22px ở trên, h2 26px sẽ LỚN HƠN h1 — sai thứ bậc; đồng
+   thời một số tiêu đề ngắn (4-5 chữ, câu tưởng còn dư chỗ) vẫn bị xuống dòng
+   ở màn ≤375px vì chỉ thiếu vài px cho hết 1 dòng, và text-wrap:pretty (kế
+   thừa từ h1,h2,h3,h4) chọn ngắt cân 2 dòng thay vì để 1 chữ lẻ loi ở cuối,
+   khiến nhìn như còn thừa chỗ nhưng vẫn xuống dòng — không phải bug, chỉ là
+   ngắt trước 1-2 chữ so với chỗ người xem tưởng. Hạ về --fs-lg (20px, token
+   có sẵn) để vừa nhỏ hơn h1 đúng thứ bậc, vừa đủ hết wrap ở các tiêu đề ngắn
+   thường gặp (2026-09-13). */
+@media (max-width:640px){ .sec-head h2{font-size:var(--fs-lg);} }
 
 /* ---------- Dải breadcrumb mảnh (trang bài viết, không cần banner) ---------- */
 .crumb-bar{background:var(--bg-tint); border-bottom:1px solid var(--border-default); padding:var(--sp-4) 0;}
