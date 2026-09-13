@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Cổ đông — NAWARUCO</title>
+<meta name="description" content="Công bố thông tin, tài liệu đại hội đồng cổ đông và báo cáo tài chính.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css?v=20260911-6">
+<link rel="stylesheet" href="../design-system/components.css?v=20260911-8">
+<link rel="stylesheet" href="site.css?v=bottomnav-1">
+<!--
+  NAWARUCO — bản dựng giao diện, 2026-09-07. Đặc tả: design-system/page-specs.md
+  Header, footer và sprite icon giống nhau trên mọi trang (lên WordPress thành
+  header.php / footer.php / template-parts/icons.php). Ảnh để khung chờ có ghi
+  kích thước; số liệu chưa có nguồn để [cần ...] — không điền số minh hoạ.
+-->
+</head>
+<body id="top">
+  <div id="nwrc-icons" data-include="partials/icons.html"></div>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div id="nwrc-header" data-include="partials/header.html" data-nav="co-dong"></div>
+
+<main id="main">
+
+<div data-include="page-banner" data-image="images/page-banners/co-dong-v2.jpg" data-title="Cổ đông" data-desc="Công bố thông tin, tài liệu đại hội đồng cổ đông và báo cáo tài chính." data-crumbs="Trang chủ|index.html;Cổ đông|"></div>
+  <section class="section">
+    <div class="container">
+      <div class="panel">
+      <div class="alert alert-info">
+        <svg class="icon icon-md" aria-hidden="true"><use href="#ico-alert"></use></svg>
+        <div><strong>Khung mục chờ xác nhận</strong><p>[cần xác nhận: NAWARUCO có phải công ty cổ phần có nghĩa vụ công bố thông tin định kỳ theo quy định chứng khoán hay không. Nếu không, gỡ toàn bộ mục Cổ đông khỏi menu chính.]</p></div>
+      </div>
+      <div class="grid-3 after-block">
+        <a class="card card-quick" href="co-dong-cong-bo-thong-tin.html">
+          <span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-doc"></use></svg></span>
+          <h2>Công bố thông tin &amp; dữ liệu</h2>
+          <p>Nghị quyết, quyết định và các thông tin công bố định kỳ, bất thường.</p>
+          <span class="go">Xem tài liệu →</span>
+        </a>
+        <a class="card card-quick" href="co-dong-dai-hoi-dong-co-dong.html">
+          <span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-clipboard"></use></svg></span>
+          <h2>Đại hội đồng cổ đông</h2>
+          <p>Thư mời họp, tài liệu, biên bản và nghị quyết đại hội thường niên, bất thường.</p>
+          <span class="go">Xem tài liệu →</span>
+        </a>
+        <a class="card card-quick" href="co-dong-bao-cao-tai-chinh.html">
+          <span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-bill"></use></svg></span>
+          <h2>Báo cáo tài chính</h2>
+          <p>Báo cáo tài chính năm, báo cáo kiểm toán và báo cáo theo quý.</p>
+          <span class="go">Xem tài liệu →</span>
+        </a>
+      </div>
+          </div>
+
+    </div>
+  </section>
+
+</main>
+
+<div id="nwrc-footer" data-include="partials/footer.html"></div>
+<div id="nwrc-bottom-nav" data-include="partials/bottom-nav.html" data-nav="co-dong"></div>
+
+<script src="assets/js/include-partials.js"></script>
+</body>
+</html>

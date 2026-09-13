@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Không tìm thấy trang — NAWARUCO</title>
+<meta name="description" content="Đường dẫn không tồn tại trên website NAWARUCO.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css?v=20260911-6">
+<link rel="stylesheet" href="../design-system/components.css?v=20260911-8">
+<link rel="stylesheet" href="site.css">
+<!--
+  NAWARUCO — bản dựng giao diện, 2026-09-07. Đặc tả: design-system/page-specs.md
+  Header, footer và sprite icon giống nhau trên mọi trang (lên WordPress thành
+  header.php / footer.php / template-parts/icons.php). Ảnh để khung chờ có ghi
+  kích thước; số liệu chưa có nguồn để [cần ...] — không điền số minh hoạ.
+-->
+</head>
+<body id="top">
+  <div id="nwrc-icons" data-include="partials/icons.html"></div>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div id="nwrc-header" data-include="partials/header.html"></div>
+
+<main id="main">
+
+  <section class="section">
+    <div class="container">
+      <div class="empty-state">
+        <img class="empty-state__img" src="images/nodata.svg" width="160" height="160" alt="" loading="lazy">
+        <h1>Không tìm thấy trang này</h1>
+        <p>Đường dẫn có thể đã đổi hoặc quý khách gõ thiếu một ký tự. Dưới đây là những việc hay được tìm nhất.</p>
+        <div class="form-actions form-actions--center">
+          <a class="btn btn-primary" href="index.html">Về trang chủ</a>
+          <a class="btn btn-secondary" href="tin-tuc.html#thong-bao">Xem thông báo cấp nước</a>
+        </div>
+      </div>
+
+      <div class="grid-3 after-block">
+        <a class="card card-quick" href="tra-cuu-hoa-don.html"><span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-bill"></use></svg></span>
+          <h2>Tra cứu tiền nước</h2><p>Xem số tiền kỳ này và lịch sử sử dụng nước.</p></a>
+        <a class="card card-quick" href="phan-anh-su-co.html"><span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-alert"></use></svg></span>
+          <h2>Phản ánh sự cố</h2><p>Mất nước, nước đục, vỡ ống, áp lực yếu.</p></a>
+        <a class="card card-quick" href="lien-he.html"><span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-phone"></use></svg></span>
+          <h2>Liên hệ</h2><p>Hotline trực sự cố 24/7 và địa chỉ trụ sở.</p></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="nwrc-footer" data-include="partials/footer.html"></div>
+<div id="nwrc-bottom-nav" data-include="partials/bottom-nav.html"></div>
+
+<script src="assets/js/include-partials.js"></script>
+</body>
+</html>

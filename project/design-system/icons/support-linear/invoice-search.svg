@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+     width="72" height="72" fill="none" stroke="currentColor"
+     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Hoá đơn -->
+  <path d="M20 27l-3-2-3 2-3-2-3 2-3-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"/>
+  <!-- Nội dung hoá đơn -->
+  <path d="M9 9h10M9 14h6M9 19h4"/>
+  <!-- Kính lúp -->
+  <circle cx="22" cy="20" r="6"/>
+  <path d="m26.5 24.5 3.5 3.5"/>
+</svg>

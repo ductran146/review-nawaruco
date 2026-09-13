@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Chất lượng nước — NAWARUCO</title>
+<meta name="description" content="Chỉ tiêu chất lượng nước theo quy chuẩn, tần suất kiểm nghiệm và kết quả kỳ gần nhất.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css?v=20260911-6">
+<link rel="stylesheet" href="../design-system/components.css?v=20260911-8">
+<link rel="stylesheet" href="site.css?v=bottomnav-1">
+<!--
+  NAWARUCO — bản dựng giao diện, 2026-09-07. Đặc tả: design-system/page-specs.md
+  Header, footer và sprite icon giống nhau trên mọi trang (lên WordPress thành
+  header.php / footer.php / template-parts/icons.php). Ảnh để khung chờ có ghi
+  kích thước; số liệu chưa có nguồn để [cần ...] — không điền số minh hoạ.
+-->
+</head>
+<body id="top">
+  <div id="nwrc-icons" data-include="partials/icons.html"></div>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div id="nwrc-header" data-include="partials/header.html" data-nav="ho-tro-khach-hang" data-nav-leaf="chat-luong-nuoc.html"></div>
+
+<main id="main">
+
+  <div data-include="page-banner" data-image="images/page-banners/kiem-nghiem-v2.jpg" data-title="Chất lượng nước" data-desc="Chỉ tiêu theo quy chuẩn, tần suất kiểm nghiệm và kết quả kỳ gần nhất." data-crumbs="Trang chủ|index.html;Hỗ trợ khách hàng|ho-tro-khach-hang.html;Chất lượng nước|"></div>
+
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+      <div class="panel">
+        <div>
+          <h2 class="after-block">Chỉ tiêu và tần suất kiểm nghiệm</h2>
+          <div class="prose">
+            <p>Nước do công ty cung cấp được kiểm nghiệm theo quy chuẩn kỹ thuật quốc gia về chất lượng nước sạch dùng cho sinh hoạt. [cần ghi đúng số hiệu quy chuẩn đang áp dụng]</p>
+            <ul>
+              <li>Nội kiểm: [cần tần suất] tại từng trạm cấp nước.</li>
+              <li>Ngoại kiểm: [cần tần suất] do [cần tên đơn vị kiểm định] thực hiện.</li>
+              <li>Kết quả được công bố tại mục này sau mỗi kỳ kiểm nghiệm.</li>
+            </ul>
+          </div>
+
+          <h2 class="after-block">Kết quả kiểm nghiệm gần nhất</h2>
+          <p class="form-note">Kỳ [cần kỳ] · Mẫu lấy tại [cần vị trí lấy mẫu] · Ngày lấy mẫu [cần ngày]</p>
+          <div class="table-wrap after-note" role="region" tabindex="0" aria-label="Bảng kết quả kiểm nghiệm chất lượng nước, cuộn ngang để xem thêm cột">
+            <table class="tariff">
+              <caption class="sr-only">Kết quả kiểm nghiệm chất lượng nước kỳ gần nhất</caption>
+              <thead><tr><th scope="col">Chỉ tiêu</th><th scope="col">Đơn vị</th><th scope="col">Kết quả</th><th scope="col">Giới hạn cho phép</th><th scope="col">Đánh giá</th></tr></thead>
+              <tbody>
+                <tr><td>Màu sắc</td><td>TCU</td><td class="amount">[số liệu]</td><td class="amount">15</td><td><span class="badge badge-success">Đạt</span></td></tr>
+                <tr><td>Mùi vị</td><td>—</td><td class="amount">[số liệu]</td><td>Không có mùi vị lạ</td><td><span class="badge badge-success">Đạt</span></td></tr>
+                <tr><td>Độ đục</td><td>NTU</td><td class="amount">[số liệu]</td><td class="amount">2</td><td><span class="badge badge-success">Đạt</span></td></tr>
+                <tr><td>pH</td><td>—</td><td class="amount">[số liệu]</td><td class="amount">6,0 – 8,5</td><td><span class="badge badge-success">Đạt</span></td></tr>
+                <tr><td>Clo dư tự do</td><td>mg/l</td><td class="amount">[số liệu]</td><td class="amount">0,2 – 1,0</td><td><span class="badge badge-success">Đạt</span></td></tr>
+                <tr><td>Coliform tổng số</td><td>CFU/100ml</td><td class="amount">[số liệu]</td><td class="amount">0</td><td><span class="badge badge-success">Đạt</span></td></tr>
+                <tr><td>E. coli</td><td>CFU/100ml</td><td class="amount">[số liệu]</td><td class="amount">0</td><td><span class="badge badge-success">Đạt</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        </div>
+        <aside>
+          <div class="panel panel--tint">
+            <h3>Nước nhà quý khách có mùi hoặc màu lạ?</h3>
+            <ul class="check-list">
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Xả bỏ 2–3 phút rồi xem nước có trong lại không.</span></li>
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Kiểm tra xem có thông báo súc xả tuyến ống trong <a href="tin-tuc.html#thong-bao">mục thông báo</a>.</span></li>
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Nếu vẫn bất thường, <a href="phan-anh-su-co.html">gửi phản ánh</a> hoặc gọi 1900 6xxx để lấy mẫu kiểm tra.</span></li>
+            </ul>
+          </div>
+          <div class="panel after-block">
+            <h3>Văn bản liên quan</h3>
+            <ul class="file-list">
+              <li class="file-item"><span class="ext">pdf</span><div class="meta"><a href="#">Phiếu kết quả kiểm nghiệm kỳ gần nhất</a><span>[cần file] · [cần ngày]</span></div></li>
+              <li class="file-item"><span class="ext">pdf</span><div class="meta"><a href="#">Quy chuẩn chất lượng nước sinh hoạt đang áp dụng</a><span>[cần file]</span></div></li>
+            </ul>
+          </div>
+                  <div data-include="widget-promo" data-href="dich-vu-sua-chua.html" data-img="images/dich-vu-sua-chua-bao-tri.jpg" data-img-w="1680" data-img-h="640" data-alt="Kỹ thuật viên dùng cờ lê sửa chữa đồng hồ nước ngoài trời." data-cta="Sửa chữa & bảo trì" data-after-block="true"></div>
+</aside>
+      </div>
+        </div>
+  </section>
+
+</main>
+
+<div id="nwrc-footer" data-include="partials/footer.html"></div>
+<div id="nwrc-bottom-nav" data-include="partials/bottom-nav.html" data-nav="ho-tro-khach-hang"></div>
+
+<script src="assets/js/include-partials.js"></script>
+</body>
+</html>

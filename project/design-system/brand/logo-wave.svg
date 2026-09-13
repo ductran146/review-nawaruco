@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NAWARUCO — vệt sóng lấy từ logo chính thức. Hai màu là màu gốc của logo:
+     xanh nước #00649F, xanh lá #00AB38. Không đổi hai mã này khi dùng lại. -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 138.9 10">
+<g>
+	<path fill="#00649F" d="M0,7.1c0,0,19-4.3,39.9-3.7c11.8,0.4,23.9,3.9,34.6,5.2c13.3,1.7,24.1,1.4,26.1,1.3c6.5-0.3,8.5-1,8.5-1
+		s-19.2,0.4-34-3.8S40.4-1.8,22.5,1.4S0,7.1,0,7.1L0,7.1z"/>
+	<path fill="#00AB38" d="M67.2,0.9c0,0,11.8,1,19.8,3.3c26.8,7.7,51.9-2.5,51.9-2.5S116.1,6.8,100.9,4C81,0.3,67.2,0.9,67.2,0.9
+		L67.2,0.9z"/>
+</g>
+</svg>

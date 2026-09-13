@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Tin tức &amp; thông báo — NAWARUCO</title>
+<meta name="description" content="Thông báo lịch cấp nước, kết quả kiểm nghiệm chất lượng nước và hoạt động của công ty.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css?v=20260911-6">
+<link rel="stylesheet" href="../design-system/components.css?v=20260911-8">
+<link rel="stylesheet" href="site.css">
+<!--
+  NAWARUCO — bản dựng giao diện, 2026-09-09. Đặc tả: design-system/page-specs.md
+  Header, footer và sprite icon giống nhau trên mọi trang (lên WordPress thành
+  header.php / footer.php / template-parts/icons.php).
+  Trang danh sách tin tức: dựng lại sau khi trang gốc bị xoá nhầm — 80 tin demo
+  (20/danh mục) là nội dung mới viết, không phục hồi nguyên văn bản cũ. Ảnh lấy
+  từ mockup/images/ sẵn có, không phải ảnh sự kiện thật.
+-->
+</head>
+<body id="top">
+  <div id="nwrc-icons" data-include="partials/icons.html"></div>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div id="nwrc-header" data-include="partials/header.html" data-nav="tin-tuc"></div>
+
+<main id="main">
+
+  <div data-include="page-banner" data-image="images/page-banners/tin-tuc-v2.jpg" data-title="Tin tức &amp; thông báo" data-desc="Thông báo lịch cấp nước, kết quả kiểm nghiệm chất lượng nước và hoạt động của công ty." data-crumbs="Trang chủ|index.html;Tin tức|"></div>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Ảnh lấy từ thư viện ảnh sẵn có của site để demo bố cục — không phải ảnh
+           thật của từng sự kiện. -->
+      <div class="two-col two-col--thirds after-block">
+
+        <!-- Cột chính: 1 bài nổi bật (tự động lấy tin mới nhất của danh mục đang lọc) + tin dạng list -->
+        <div>
+
+          <div class="panel">
+            <a class="post-feature" id="feature" href="tin-tuc-chi-tiet.html" hidden>
+              <div class="img-ph img-ph--photo media-16-9"><img id="feature-img" src="" width="800" height="450" alt=""></div>
+              <div class="body">
+                <h2 id="feature-title"></h2>
+                <p id="feature-snippet"></p>
+              </div>
+            </a>
+
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-a-my-ha.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên thao tác van cấp nước ngoài trời."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Thông báo tạm ngừng cấp nước xã Mỹ Hà</a></h3>
+              <p>Tạm ngừng cấp nước tại xã Mỹ Hà để phục vụ công tác đấu nối tuyến ống mới.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-g-suc-xa.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên súc xả tuyến ống cấp nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Súc xả tuyến ống cấp nước khu vực Giao Thiện</a></h3>
+              <p>Nước có thể đục nhẹ trong thời gian súc xả tuyến ống tại khu vực Giao Thiện.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-d-dieu-chinh.jpg" width="800" height="450" loading="lazy" alt="Nhân viên ghi chỉ số đồng hồ nước tại nhà dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Điều chỉnh lịch ghi chỉ số đồng hồ nước tại Nam Vân</a></h3>
+              <p>Lịch ghi chỉ số đồng hồ nước tại Nam Vân được điều chỉnh sang tuần kế tiếp.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-c-xet-nghiem.jpg" width="800" height="450" loading="lazy" alt="Nhân viên xét nghiệm mẫu nước trong phòng thí nghiệm."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Kết quả kiểm nghiệm chất lượng nước khu vực Nam Phong</a></h3>
+              <p>Công bố kết quả kiểm nghiệm các chỉ tiêu chất lượng nước tại khu vực Nam Phong.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-sua-chua-duong-ong.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên sửa chữa đường ống cấp nước ngoài trời."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Thông báo tạm ngừng cấp nước xã Xuân Trường</a></h3>
+              <p>Tạm ngừng cấp nước tại xã Xuân Trường để phục vụ công tác đấu nối tuyến ống mới.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-cap-nuoc-luu-dong.jpg" width="800" height="450" loading="lazy" alt="Xe bồn cấp nước lưu động cho người dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Súc xả tuyến ống cấp nước khu vực Hải Hậu</a></h3>
+              <p>Nước có thể đục nhẹ trong thời gian súc xả tuyến ống tại khu vực Hải Hậu.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-kiem-tra-dong-ho-nuoc.jpg" width="800" height="450" loading="lazy" alt="Nhân viên kiểm tra và ghi chỉ số đồng hồ nước tại nhà dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Điều chỉnh lịch ghi chỉ số đồng hồ nước tại Nghĩa Hưng</a></h3>
+              <p>Lịch ghi chỉ số đồng hồ nước tại Nghĩa Hưng được điều chỉnh sang tuần kế tiếp.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-kiem-nghiem-chat-luong.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên kiểm nghiệm chất lượng nước tại phòng thí nghiệm."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Kết quả kiểm nghiệm chất lượng nước khu vực Trực Ninh</a></h3>
+              <p>Công bố kết quả kiểm nghiệm các chỉ tiêu chất lượng nước tại khu vực Trực Ninh.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-a-my-ha.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên thao tác van cấp nước ngoài trời."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Thông báo tạm ngừng cấp nước xã Ý Yên</a></h3>
+              <p>Tạm ngừng cấp nước tại xã Ý Yên để phục vụ công tác đấu nối tuyến ống mới.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-g-suc-xa.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên súc xả tuyến ống cấp nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Súc xả tuyến ống cấp nước khu vực Vụ Bản</a></h3>
+              <p>Nước có thể đục nhẹ trong thời gian súc xả tuyến ống tại khu vực Vụ Bản.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-d-dieu-chinh.jpg" width="800" height="450" loading="lazy" alt="Nhân viên ghi chỉ số đồng hồ nước tại nhà dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Điều chỉnh lịch ghi chỉ số đồng hồ nước tại Mỹ Lộc</a></h3>
+              <p>Lịch ghi chỉ số đồng hồ nước tại Mỹ Lộc được điều chỉnh sang tuần kế tiếp.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-c-xet-nghiem.jpg" width="800" height="450" loading="lazy" alt="Nhân viên xét nghiệm mẫu nước trong phòng thí nghiệm."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Kết quả kiểm nghiệm chất lượng nước khu vực Mỹ Tân</a></h3>
+              <p>Công bố kết quả kiểm nghiệm các chỉ tiêu chất lượng nước tại khu vực Mỹ Tân.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-sua-chua-duong-ong.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên sửa chữa đường ống cấp nước ngoài trời."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Thông báo tạm ngừng cấp nước xã Mỹ Thắng</a></h3>
+              <p>Tạm ngừng cấp nước tại xã Mỹ Thắng để phục vụ công tác đấu nối tuyến ống mới.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-cap-nuoc-luu-dong.jpg" width="800" height="450" loading="lazy" alt="Xe bồn cấp nước lưu động cho người dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Súc xả tuyến ống cấp nước khu vực Nam Hồng</a></h3>
+              <p>Nước có thể đục nhẹ trong thời gian súc xả tuyến ống tại khu vực Nam Hồng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-kiem-tra-dong-ho-nuoc.jpg" width="800" height="450" loading="lazy" alt="Nhân viên kiểm tra và ghi chỉ số đồng hồ nước tại nhà dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Điều chỉnh lịch ghi chỉ số đồng hồ nước tại Nam Điền</a></h3>
+              <p>Lịch ghi chỉ số đồng hồ nước tại Nam Điền được điều chỉnh sang tuần kế tiếp.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-kiem-nghiem-chat-luong.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên kiểm nghiệm chất lượng nước tại phòng thí nghiệm."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Kết quả kiểm nghiệm chất lượng nước khu vực Giao Yến</a></h3>
+              <p>Công bố kết quả kiểm nghiệm các chỉ tiêu chất lượng nước tại khu vực Giao Yến.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-a-my-ha.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên thao tác van cấp nước ngoài trời."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Thông báo tạm ngừng cấp nước xã Giao Long</a></h3>
+              <p>Tạm ngừng cấp nước tại xã Giao Long để phục vụ công tác đấu nối tuyến ống mới.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-g-suc-xa.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên súc xả tuyến ống cấp nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Súc xả tuyến ống cấp nước khu vực Xuân Ninh</a></h3>
+              <p>Nước có thể đục nhẹ trong thời gian súc xả tuyến ống tại khu vực Xuân Ninh.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-d-dieu-chinh.jpg" width="800" height="450" loading="lazy" alt="Nhân viên ghi chỉ số đồng hồ nước tại nhà dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Điều chỉnh lịch ghi chỉ số đồng hồ nước tại Xuân Hòa</a></h3>
+              <p>Lịch ghi chỉ số đồng hồ nước tại Xuân Hòa được điều chỉnh sang tuần kế tiếp.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="thong-bao">
+            <div class="img-ph img-ph--photo"><img src="images/news-c-xet-nghiem.jpg" width="800" height="450" loading="lazy" alt="Nhân viên xét nghiệm mẫu nước trong phòng thí nghiệm."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Kết quả kiểm nghiệm chất lượng nước khu vực Trực Đại</a></h3>
+              <p>Công bố kết quả kiểm nghiệm các chỉ tiêu chất lượng nước tại khu vực Trực Đại.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-lap-dat-duong-ong.jpg" width="800" height="450" loading="lazy" alt="Công nhân lắp đặt tuyến ống cấp nước mới ngoài công trường."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hoàn thành tuyến ống cấp nước mới cho xã Mỹ Hà</a></h3>
+              <p>Tuyến ống mới được đưa vào vận hành, nâng tỷ lệ hộ dân dùng nước sạch tại xã Mỹ Hà.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-h-cong-suat.jpg" width="800" height="450" loading="lazy" alt="Trạm bơm tăng công suất cấp nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Nâng công suất trạm cấp nước phục vụ khu vực Giao Thiện</a></h3>
+              <p>Trạm cấp nước khu vực Giao Thiện được nâng công suất để đáp ứng nhu cầu dùng nước tăng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-k-bao-duong.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên bảo dưỡng thiết bị trạm cấp nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Bảo dưỡng định kỳ hệ thống thiết bị trạm cấp nước Nam Vân</a></h3>
+              <p>Công tác bảo dưỡng định kỳ giúp duy trì ổn định nguồn cấp nước tại Nam Vân.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-j-khanh-thanh.jpg" width="800" height="450" loading="lazy" alt="Lễ khánh thành công trình cấp nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Khánh thành công trình cấp nước sạch xã Nam Phong</a></h3>
+              <p>Công trình cấp nước sạch xã Nam Phong chính thức đưa vào sử dụng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-b-giao-thien.jpg" width="800" height="450" loading="lazy" alt="Công nhân lắp đặt tuyến ống cấp nước mới."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hoàn thành tuyến ống cấp nước mới cho xã Xuân Trường</a></h3>
+              <p>Tuyến ống mới được đưa vào vận hành, nâng tỷ lệ hộ dân dùng nước sạch tại xã Xuân Trường.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-phong-dieu-khien.jpg" width="800" height="450" loading="lazy" alt="Phòng điều khiển trung tâm trạm xử lý nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Nâng công suất trạm cấp nước phục vụ khu vực Hải Hậu</a></h3>
+              <p>Trạm cấp nước khu vực Hải Hậu được nâng công suất để đáp ứng nhu cầu dùng nước tăng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-tap-huan-van-hanh.jpg" width="800" height="450" loading="lazy" alt="Buổi tập huấn vận hành thiết bị cho nhân viên kỹ thuật."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Bảo dưỡng định kỳ hệ thống thiết bị trạm cấp nước Nghĩa Hưng</a></h3>
+              <p>Công tác bảo dưỡng định kỳ giúp duy trì ổn định nguồn cấp nước tại Nghĩa Hưng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-tram-xu-ly-nuoc.jpg" width="800" height="450" loading="lazy" alt="Khu xử lý nước với các bể lắng và thiết bị công nghệ."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Khánh thành công trình cấp nước sạch xã Trực Ninh</a></h3>
+              <p>Công trình cấp nước sạch xã Trực Ninh chính thức đưa vào sử dụng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-lap-dat-duong-ong.jpg" width="800" height="450" loading="lazy" alt="Công nhân lắp đặt tuyến ống cấp nước mới ngoài công trường."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hoàn thành tuyến ống cấp nước mới cho xã Ý Yên</a></h3>
+              <p>Tuyến ống mới được đưa vào vận hành, nâng tỷ lệ hộ dân dùng nước sạch tại xã Ý Yên.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-h-cong-suat.jpg" width="800" height="450" loading="lazy" alt="Trạm bơm tăng công suất cấp nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Nâng công suất trạm cấp nước phục vụ khu vực Vụ Bản</a></h3>
+              <p>Trạm cấp nước khu vực Vụ Bản được nâng công suất để đáp ứng nhu cầu dùng nước tăng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-k-bao-duong.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên bảo dưỡng thiết bị trạm cấp nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Bảo dưỡng định kỳ hệ thống thiết bị trạm cấp nước Mỹ Lộc</a></h3>
+              <p>Công tác bảo dưỡng định kỳ giúp duy trì ổn định nguồn cấp nước tại Mỹ Lộc.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-j-khanh-thanh.jpg" width="800" height="450" loading="lazy" alt="Lễ khánh thành công trình cấp nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Khánh thành công trình cấp nước sạch xã Mỹ Tân</a></h3>
+              <p>Công trình cấp nước sạch xã Mỹ Tân chính thức đưa vào sử dụng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-b-giao-thien.jpg" width="800" height="450" loading="lazy" alt="Công nhân lắp đặt tuyến ống cấp nước mới."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hoàn thành tuyến ống cấp nước mới cho xã Mỹ Thắng</a></h3>
+              <p>Tuyến ống mới được đưa vào vận hành, nâng tỷ lệ hộ dân dùng nước sạch tại xã Mỹ Thắng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-phong-dieu-khien.jpg" width="800" height="450" loading="lazy" alt="Phòng điều khiển trung tâm trạm xử lý nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Nâng công suất trạm cấp nước phục vụ khu vực Nam Hồng</a></h3>
+              <p>Trạm cấp nước khu vực Nam Hồng được nâng công suất để đáp ứng nhu cầu dùng nước tăng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-tap-huan-van-hanh.jpg" width="800" height="450" loading="lazy" alt="Buổi tập huấn vận hành thiết bị cho nhân viên kỹ thuật."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Bảo dưỡng định kỳ hệ thống thiết bị trạm cấp nước Nam Điền</a></h3>
+              <p>Công tác bảo dưỡng định kỳ giúp duy trì ổn định nguồn cấp nước tại Nam Điền.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-tram-xu-ly-nuoc.jpg" width="800" height="450" loading="lazy" alt="Khu xử lý nước với các bể lắng và thiết bị công nghệ."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Khánh thành công trình cấp nước sạch xã Giao Yến</a></h3>
+              <p>Công trình cấp nước sạch xã Giao Yến chính thức đưa vào sử dụng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-lap-dat-duong-ong.jpg" width="800" height="450" loading="lazy" alt="Công nhân lắp đặt tuyến ống cấp nước mới ngoài công trường."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hoàn thành tuyến ống cấp nước mới cho xã Giao Long</a></h3>
+              <p>Tuyến ống mới được đưa vào vận hành, nâng tỷ lệ hộ dân dùng nước sạch tại xã Giao Long.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-h-cong-suat.jpg" width="800" height="450" loading="lazy" alt="Trạm bơm tăng công suất cấp nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Nâng công suất trạm cấp nước phục vụ khu vực Xuân Ninh</a></h3>
+              <p>Trạm cấp nước khu vực Xuân Ninh được nâng công suất để đáp ứng nhu cầu dùng nước tăng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-k-bao-duong.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên bảo dưỡng thiết bị trạm cấp nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Bảo dưỡng định kỳ hệ thống thiết bị trạm cấp nước Xuân Hòa</a></h3>
+              <p>Công tác bảo dưỡng định kỳ giúp duy trì ổn định nguồn cấp nước tại Xuân Hòa.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-nawaruco">
+            <div class="img-ph img-ph--photo"><img src="images/news-j-khanh-thanh.jpg" width="800" height="450" loading="lazy" alt="Lễ khánh thành công trình cấp nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Khánh thành công trình cấp nước sạch xã Trực Đại</a></h3>
+              <p>Công trình cấp nước sạch xã Trực Đại chính thức đưa vào sử dụng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-hoc-sinh-rua-tay.jpg" width="800" height="450" loading="lazy" alt="Học sinh rửa tay bằng nước sạch tại trường."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Trao tặng thiết bị lọc nước cho trường học xã Mỹ Hà</a></h3>
+              <p>Chương trình hỗ trợ nước sạch học đường được triển khai tại xã Mỹ Hà.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-trong-cay-bao-ve-nguon-nuoc.jpg" width="800" height="450" loading="lazy" alt="Hoạt động trồng cây bảo vệ nguồn nước đầu nguồn."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Ra quân trồng cây bảo vệ nguồn nước đầu nguồn tại Giao Thiện</a></h3>
+              <p>Hoạt động trồng cây góp phần bảo vệ nguồn nước đầu nguồn khu vực Giao Thiện.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-truyen-thong-cong-dong.jpg" width="800" height="450" loading="lazy" alt="Buổi truyền thông cộng đồng về sử dụng nước tiết kiệm."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Truyền thông cộng đồng về sử dụng nước tiết kiệm tại Nam Vân</a></h3>
+              <p>Buổi truyền thông giúp người dân Nam Vân hiểu thêm cách dùng nước tiết kiệm.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-hoc-sinh-rua-tay.jpg" width="800" height="450" loading="lazy" alt="Học sinh rửa tay bằng nước sạch tại trường."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hướng dẫn học sinh rửa tay đúng cách tại trường Nam Phong</a></h3>
+              <p>Hoạt động hướng dẫn học sinh trường Nam Phong rửa tay bằng nước sạch đúng cách.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-e-ho-tro.jpg" width="800" height="450" loading="lazy" alt="Nhân viên tổng đài hỗ trợ khách hàng qua điện thoại."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Trao tặng thiết bị lọc nước cho trường học xã Xuân Trường</a></h3>
+              <p>Chương trình hỗ trợ nước sạch học đường được triển khai tại xã Xuân Trường.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-bao-ve-ho-chua.jpg" width="800" height="450" loading="lazy" alt="Hàng rào bảo vệ quanh hồ chứa nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Ra quân trồng cây bảo vệ nguồn nước đầu nguồn tại Hải Hậu</a></h3>
+              <p>Hoạt động trồng cây góp phần bảo vệ nguồn nước đầu nguồn khu vực Hải Hậu.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-f-huong-dan.jpg" width="800" height="450" loading="lazy" alt="Gia đình ba thế hệ ngồi uống nước bên hiên nhà."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Truyền thông cộng đồng về sử dụng nước tiết kiệm tại Nghĩa Hưng</a></h3>
+              <p>Buổi truyền thông giúp người dân Nghĩa Hưng hiểu thêm cách dùng nước tiết kiệm.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-nguoi-dan-su-dung-nuoc.jpg" width="800" height="450" loading="lazy" alt="Người dân sử dụng nước sạch trong sinh hoạt hàng ngày."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hướng dẫn học sinh rửa tay đúng cách tại trường Trực Ninh</a></h3>
+              <p>Hoạt động hướng dẫn học sinh trường Trực Ninh rửa tay bằng nước sạch đúng cách.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-hoc-sinh-rua-tay.jpg" width="800" height="450" loading="lazy" alt="Học sinh rửa tay bằng nước sạch tại trường."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Trao tặng thiết bị lọc nước cho trường học xã Ý Yên</a></h3>
+              <p>Chương trình hỗ trợ nước sạch học đường được triển khai tại xã Ý Yên.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-trong-cay-bao-ve-nguon-nuoc.jpg" width="800" height="450" loading="lazy" alt="Hoạt động trồng cây bảo vệ nguồn nước đầu nguồn."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Ra quân trồng cây bảo vệ nguồn nước đầu nguồn tại Vụ Bản</a></h3>
+              <p>Hoạt động trồng cây góp phần bảo vệ nguồn nước đầu nguồn khu vực Vụ Bản.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-truyen-thong-cong-dong.jpg" width="800" height="450" loading="lazy" alt="Buổi truyền thông cộng đồng về sử dụng nước tiết kiệm."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Truyền thông cộng đồng về sử dụng nước tiết kiệm tại Mỹ Lộc</a></h3>
+              <p>Buổi truyền thông giúp người dân Mỹ Lộc hiểu thêm cách dùng nước tiết kiệm.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-hoc-sinh-rua-tay.jpg" width="800" height="450" loading="lazy" alt="Học sinh rửa tay bằng nước sạch tại trường."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hướng dẫn học sinh rửa tay đúng cách tại trường Mỹ Tân</a></h3>
+              <p>Hoạt động hướng dẫn học sinh trường Mỹ Tân rửa tay bằng nước sạch đúng cách.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-e-ho-tro.jpg" width="800" height="450" loading="lazy" alt="Nhân viên tổng đài hỗ trợ khách hàng qua điện thoại."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Trao tặng thiết bị lọc nước cho trường học xã Mỹ Thắng</a></h3>
+              <p>Chương trình hỗ trợ nước sạch học đường được triển khai tại xã Mỹ Thắng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-bao-ve-ho-chua.jpg" width="800" height="450" loading="lazy" alt="Hàng rào bảo vệ quanh hồ chứa nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Ra quân trồng cây bảo vệ nguồn nước đầu nguồn tại Nam Hồng</a></h3>
+              <p>Hoạt động trồng cây góp phần bảo vệ nguồn nước đầu nguồn khu vực Nam Hồng.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-f-huong-dan.jpg" width="800" height="450" loading="lazy" alt="Gia đình ba thế hệ ngồi uống nước bên hiên nhà."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Truyền thông cộng đồng về sử dụng nước tiết kiệm tại Nam Điền</a></h3>
+              <p>Buổi truyền thông giúp người dân Nam Điền hiểu thêm cách dùng nước tiết kiệm.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-nguoi-dan-su-dung-nuoc.jpg" width="800" height="450" loading="lazy" alt="Người dân sử dụng nước sạch trong sinh hoạt hàng ngày."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hướng dẫn học sinh rửa tay đúng cách tại trường Giao Yến</a></h3>
+              <p>Hoạt động hướng dẫn học sinh trường Giao Yến rửa tay bằng nước sạch đúng cách.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-hoc-sinh-rua-tay.jpg" width="800" height="450" loading="lazy" alt="Học sinh rửa tay bằng nước sạch tại trường."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Trao tặng thiết bị lọc nước cho trường học xã Giao Long</a></h3>
+              <p>Chương trình hỗ trợ nước sạch học đường được triển khai tại xã Giao Long.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-trong-cay-bao-ve-nguon-nuoc.jpg" width="800" height="450" loading="lazy" alt="Hoạt động trồng cây bảo vệ nguồn nước đầu nguồn."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Ra quân trồng cây bảo vệ nguồn nước đầu nguồn tại Xuân Ninh</a></h3>
+              <p>Hoạt động trồng cây góp phần bảo vệ nguồn nước đầu nguồn khu vực Xuân Ninh.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-truyen-thong-cong-dong.jpg" width="800" height="450" loading="lazy" alt="Buổi truyền thông cộng đồng về sử dụng nước tiết kiệm."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Truyền thông cộng đồng về sử dụng nước tiết kiệm tại Xuân Hòa</a></h3>
+              <p>Buổi truyền thông giúp người dân Xuân Hòa hiểu thêm cách dùng nước tiết kiệm.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="hoat-dong-xa-hoi">
+            <div class="img-ph img-ph--photo"><img src="images/news-hoc-sinh-rua-tay.jpg" width="800" height="450" loading="lazy" alt="Học sinh rửa tay bằng nước sạch tại trường."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hướng dẫn học sinh rửa tay đúng cách tại trường Trực Đại</a></h3>
+              <p>Hoạt động hướng dẫn học sinh trường Trực Đại rửa tay bằng nước sạch đúng cách.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-kiem-tra-dong-ho-nuoc.jpg" width="800" height="450" loading="lazy" alt="Nhân viên kiểm tra và ghi chỉ số đồng hồ nước tại nhà dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hướng dẫn tự kiểm tra rò rỉ sau đồng hồ nước</a></h3>
+              <p>Cách khoá van và đọc đồng hồ để phát hiện rò rỉ trong nhà trước khi gọi tổng đài.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-rua-rau-bang-nuoc-sach.jpg" width="800" height="450" loading="lazy" alt="Người dân rửa rau bằng nước sạch."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Mẹo dùng nước tiết kiệm trong sinh hoạt hàng ngày</a></h3>
+              <p>Vài thói quen đơn giản giúp hộ gia đình giảm lượng nước tiêu thụ.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-tram-xu-ly-nuoc.jpg" width="800" height="450" loading="lazy" alt="Khu xử lý nước với các bể lắng và thiết bị công nghệ."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Vì sao nước máy đôi khi có mùi clo nhẹ?</a></h3>
+              <p>Giải thích ngắn gọn về clo dư trong nước máy và khi nào cần lo ngại.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-kiem-tra-dong-ho-nuoc.jpg" width="800" height="450" loading="lazy" alt="Nhân viên kiểm tra và ghi chỉ số đồng hồ nước tại nhà dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Cách đọc chỉ số đồng hồ nước cơ khí</a></h3>
+              <p>Hướng dẫn đọc đúng dãy số đen và số đỏ trên mặt đồng hồ nước.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-i-hoa-don.jpg" width="800" height="450" loading="lazy" alt="Hoá đơn tiền nước và máy tính tay."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hướng dẫn tự kiểm tra rò rỉ sau đồng hồ nước</a></h3>
+              <p>Cách khoá van và đọc đồng hồ để phát hiện rò rỉ trong nhà trước khi gọi tổng đài.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-giot-nuoc-tren-rau.jpg" width="800" height="450" loading="lazy" alt="Giọt nước đọng trên lá rau xanh."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Mẹo dùng nước tiết kiệm trong sinh hoạt hàng ngày</a></h3>
+              <p>Vài thói quen đơn giản giúp hộ gia đình giảm lượng nước tiêu thụ.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-phong-dieu-khien.jpg" width="800" height="450" loading="lazy" alt="Phòng điều khiển trung tâm trạm xử lý nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Vì sao nước máy đôi khi có mùi clo nhẹ?</a></h3>
+              <p>Giải thích ngắn gọn về clo dư trong nước máy và khi nào cần lo ngại.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-d-dieu-chinh.jpg" width="800" height="450" loading="lazy" alt="Nhân viên ghi chỉ số đồng hồ nước tại nhà dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Cách đọc chỉ số đồng hồ nước cơ khí</a></h3>
+              <p>Hướng dẫn đọc đúng dãy số đen và số đỏ trên mặt đồng hồ nước.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-kiem-tra-dong-ho-nuoc.jpg" width="800" height="450" loading="lazy" alt="Nhân viên kiểm tra và ghi chỉ số đồng hồ nước tại nhà dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hướng dẫn tự kiểm tra rò rỉ sau đồng hồ nước</a></h3>
+              <p>Cách khoá van và đọc đồng hồ để phát hiện rò rỉ trong nhà trước khi gọi tổng đài.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-rua-rau-bang-nuoc-sach.jpg" width="800" height="450" loading="lazy" alt="Người dân rửa rau bằng nước sạch."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Mẹo dùng nước tiết kiệm trong sinh hoạt hàng ngày</a></h3>
+              <p>Vài thói quen đơn giản giúp hộ gia đình giảm lượng nước tiêu thụ.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-tram-xu-ly-nuoc.jpg" width="800" height="450" loading="lazy" alt="Khu xử lý nước với các bể lắng và thiết bị công nghệ."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Vì sao nước máy đôi khi có mùi clo nhẹ?</a></h3>
+              <p>Giải thích ngắn gọn về clo dư trong nước máy và khi nào cần lo ngại.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-kiem-tra-dong-ho-nuoc.jpg" width="800" height="450" loading="lazy" alt="Nhân viên kiểm tra và ghi chỉ số đồng hồ nước tại nhà dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Cách đọc chỉ số đồng hồ nước cơ khí</a></h3>
+              <p>Hướng dẫn đọc đúng dãy số đen và số đỏ trên mặt đồng hồ nước.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-i-hoa-don.jpg" width="800" height="450" loading="lazy" alt="Hoá đơn tiền nước và máy tính tay."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hướng dẫn tự kiểm tra rò rỉ sau đồng hồ nước</a></h3>
+              <p>Cách khoá van và đọc đồng hồ để phát hiện rò rỉ trong nhà trước khi gọi tổng đài.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-giot-nuoc-tren-rau.jpg" width="800" height="450" loading="lazy" alt="Giọt nước đọng trên lá rau xanh."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Mẹo dùng nước tiết kiệm trong sinh hoạt hàng ngày</a></h3>
+              <p>Vài thói quen đơn giản giúp hộ gia đình giảm lượng nước tiêu thụ.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-phong-dieu-khien.jpg" width="800" height="450" loading="lazy" alt="Phòng điều khiển trung tâm trạm xử lý nước."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Vì sao nước máy đôi khi có mùi clo nhẹ?</a></h3>
+              <p>Giải thích ngắn gọn về clo dư trong nước máy và khi nào cần lo ngại.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-d-dieu-chinh.jpg" width="800" height="450" loading="lazy" alt="Nhân viên ghi chỉ số đồng hồ nước tại nhà dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Cách đọc chỉ số đồng hồ nước cơ khí</a></h3>
+              <p>Hướng dẫn đọc đúng dãy số đen và số đỏ trên mặt đồng hồ nước.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-kiem-tra-dong-ho-nuoc.jpg" width="800" height="450" loading="lazy" alt="Nhân viên kiểm tra và ghi chỉ số đồng hồ nước tại nhà dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Hướng dẫn tự kiểm tra rò rỉ sau đồng hồ nước</a></h3>
+              <p>Cách khoá van và đọc đồng hồ để phát hiện rò rỉ trong nhà trước khi gọi tổng đài.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-rua-rau-bang-nuoc-sach.jpg" width="800" height="450" loading="lazy" alt="Người dân rửa rau bằng nước sạch."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Mẹo dùng nước tiết kiệm trong sinh hoạt hàng ngày</a></h3>
+              <p>Vài thói quen đơn giản giúp hộ gia đình giảm lượng nước tiêu thụ.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-tram-xu-ly-nuoc.jpg" width="800" height="450" loading="lazy" alt="Khu xử lý nước với các bể lắng và thiết bị công nghệ."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Vì sao nước máy đôi khi có mùi clo nhẹ?</a></h3>
+              <p>Giải thích ngắn gọn về clo dư trong nước máy và khi nào cần lo ngại.</p>
+            </div>
+          </article>
+          <article class="post-item" data-cat="tin-khac">
+            <div class="img-ph img-ph--photo"><img src="images/news-kiem-tra-dong-ho-nuoc.jpg" width="800" height="450" loading="lazy" alt="Nhân viên kiểm tra và ghi chỉ số đồng hồ nước tại nhà dân."></div>
+            <div>
+              <h3><a href="tin-tuc-chi-tiet.html">Cách đọc chỉ số đồng hồ nước cơ khí</a></h3>
+              <p>Hướng dẫn đọc đúng dãy số đen và số đỏ trên mặt đồng hồ nước.</p>
+            </div>
+          </article>
+          </div>
+
+          <nav class="pagination after-block" aria-label="Phân trang danh sách tin" id="pager" hidden></nav>
+        </div>
+
+        <!-- Cột phụ -->
+        <aside>
+          <div class="widget">
+            <h3 class="widget-title">Chuyên mục</h3>
+            <ul class="widget-list" id="cat-list">
+              <li><a href="tin-tuc.html#" data-catlink="">Tất cả</a></li>
+              <li><a href="tin-tuc.html#thong-bao" data-catlink="thong-bao">Thông báo</a></li>
+              <li><a href="tin-tuc.html#tin-nawaruco" data-catlink="tin-nawaruco">Tin NAWARUCO</a></li>
+              <li><a href="tin-tuc.html#hoat-dong-xa-hoi" data-catlink="hoat-dong-xa-hoi">Hoạt động xã hội</a></li>
+              <li><a href="tin-tuc.html#tin-khac" data-catlink="tin-khac">Tin khác</a></li>
+            </ul>
+          </div>
+          <div class="widget">
+            <h3 class="widget-title">Tin đọc nhiều</h3>
+            <ul class="widget-news">
+          <li><div class="img-ph img-ph--photo"><img src="images/news-lap-dat-duong-ong.jpg" width="120" height="80" loading="lazy" alt="Công nhân lắp đặt tuyến ống cấp nước mới ngoài công trường."></div><a href="tin-tuc-chi-tiet.html">Hoàn thành tuyến ống cấp nước mới cho xã Mỹ Hà<span class="date">08/09/2026</span></a></li>
+          <li><div class="img-ph img-ph--photo"><img src="images/news-a-my-ha.jpg" width="120" height="80" loading="lazy" alt="Kỹ thuật viên thao tác van cấp nước ngoài trời."></div><a href="tin-tuc-chi-tiet.html">Thông báo tạm ngừng cấp nước xã Mỹ Hà<span class="date">08/09/2026</span></a></li>
+          <li><div class="img-ph img-ph--photo"><img src="images/news-hoc-sinh-rua-tay.jpg" width="120" height="80" loading="lazy" alt="Học sinh rửa tay bằng nước sạch tại trường."></div><a href="tin-tuc-chi-tiet.html">Trao tặng thiết bị lọc nước cho trường học xã Mỹ Hà<span class="date">08/09/2026</span></a></li>
+            </ul>
+          </div>
+          <div class="widget widget--tint">
+            <h3 class="widget-title">Việc thường làm</h3>
+            <ul class="widget-list">
+              <li><a class="link-external" href="tra-cuu-hoa-don.html">Tra cứu tiền nước <span class="out">(mở cổng CSKH)</span></a></li>
+              <li><a href="bao-chi-so.html">Báo chỉ số đồng hồ nước</a></li>
+              <li><a href="phan-anh-su-co.html">Phản ánh sự cố cấp nước</a></li>
+            </ul>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="nwrc-footer" data-include="partials/footer.html"></div>
+<div id="nwrc-bottom-nav" data-include="partials/bottom-nav.html" data-nav="tin-tuc"></div>
+
+<script>
+/* Lọc theo chuyên mục (qua #hash) + phân trang + bài nổi bật, cho danh sách
+   tin tức. Lên WordPress: assets/js/tin-tuc.js, dữ liệu lấy qua WP_Query thay
+   vì lọc .post-item có sẵn trong DOM.
+   PAGE_SIZE: số tin/trang từ trang 2 trở đi. FIRST_PAGE_LIST: số tin dạng list
+   ở trang 1 (1 tin đầu của danh mục đang lọc đã lấy làm bài nổi bật, không
+   tính vào đây).
+   SỬA NGÀY 2026-09-09: khối script này từng bị xoá nhầm khi gộp script
+   nav-toggle/sticky-header vào assets/js/include-partials.js (nằm chung 1 thẻ
+   <script> với đoạn đó) — dựng lại đây, tách hẳn thành script riêng để không
+   lặp lại lỗi. Bug thực tế: đổi chuyên mục bằng link trong menu chính hoặc
+   trong sidebar chỉ đổi #hash trên cùng 1 trang (không tải lại trang), nên
+   phải lắng nghe 'hashchange', không chỉ đọc location.hash một lần lúc tải
+   trang. */
+(function () {
+  var PAGE_SIZE = 10;
+  var FIRST_PAGE_LIST = 9;
+
+  var catLinks = Array.prototype.slice.call(document.querySelectorAll('#cat-list [data-catlink]'));
+  var allItems = Array.prototype.slice.call(document.querySelectorAll('.post-item'));
+  var pager = document.getElementById('pager');
+  var feature = document.getElementById('feature');
+  var featureImg = document.getElementById('feature-img');
+  var featureTitle = document.getElementById('feature-title');
+  var featureSnippet = document.getElementById('feature-snippet');
+
+  var currentPage = 1;
+
+  function currentCat() {
+    return (location.hash || '').replace(/^#/, '');
+  }
+
+  function updateCatLinks(cat) {
+    catLinks.forEach(function (a) {
+      if (a.dataset.catlink === cat) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  function renderPage(matched, page) {
+    // Trang 1: FIRST_PAGE_LIST tin. Từ trang 2: PAGE_SIZE tin/trang.
+    var start, end;
+    if (page <= 1) {
+      start = 0;
+      end = FIRST_PAGE_LIST;
+    } else {
+      start = FIRST_PAGE_LIST + (page - 2) * PAGE_SIZE;
+      end = start + PAGE_SIZE;
+    }
+    matched.forEach(function (item, i) {
+      item.hidden = !(i >= start && i < end);
+    });
+  }
+
+  function totalPages(matchedCount) {
+    if (matchedCount <= FIRST_PAGE_LIST) return 1;
+    return 1 + Math.ceil((matchedCount - FIRST_PAGE_LIST) / PAGE_SIZE);
+  }
+
+  function renderPager(matchedCount, page) {
+    var pages = totalPages(matchedCount);
+    pager.innerHTML = '';
+    pager.hidden = pages <= 1;
+    for (var i = 1; i <= pages; i++) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'page-btn';
+      btn.textContent = String(i);
+      if (i === page) btn.setAttribute('aria-current', 'page');
+      (function (targetPage) {
+        btn.addEventListener('click', function () {
+          currentPage = targetPage;
+          applyFilter(false);
+          var panel = document.querySelector('.panel');
+          if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      })(i);
+      pager.appendChild(btn);
+    }
+  }
+
+  function applyFilter(resetPage) {
+    var cat = currentCat();
+    updateCatLinks(cat);
+
+    var matched = cat
+      ? allItems.filter(function (item) { return item.dataset.cat === cat; })
+      : allItems.slice();
+
+    allItems.forEach(function (item) { item.hidden = true; });
+
+    if (resetPage) currentPage = 1;
+
+    if (!matched.length) {
+      feature.hidden = true;
+      pager.hidden = true;
+      return;
+    }
+
+    // Bài đầu tiên của chuyên mục đang lọc -> bài nổi bật, loại khỏi danh sách list.
+    var featured = matched[0];
+    var rest = matched.slice(1);
+
+    var img = featured.querySelector('img');
+    var titleLink = featured.querySelector('h3 a');
+    var snippet = featured.querySelector('p');
+
+    if (img) {
+      featureImg.src = img.src;
+      featureImg.alt = img.alt || '';
+    }
+    if (titleLink) {
+      featureTitle.textContent = titleLink.textContent;
+      feature.href = titleLink.getAttribute('href');
+    }
+    if (snippet) featureSnippet.textContent = snippet.textContent;
+    feature.hidden = false;
+
+    var pages = totalPages(rest.length);
+    if (currentPage > pages) currentPage = pages;
+    if (currentPage < 1) currentPage = 1;
+
+    renderPage(rest, currentPage);
+    renderPager(rest.length, currentPage);
+  }
+
+  window.addEventListener('hashchange', function () { applyFilter(true); });
+  applyFilter(true);
+})();
+</script>
+<script src="assets/js/include-partials.js"></script>
+</body>
+</html>

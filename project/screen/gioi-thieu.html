@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Giới thiệu công ty — NAWARUCO</title>
+<meta name="description" content="Lịch sử hình thành, ngành nghề kinh doanh, sứ mệnh và phạm vi phục vụ của Công ty Nước sạch Nông thôn Nam Định.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css?v=20260911-6">
+<link rel="stylesheet" href="../design-system/components.css?v=20260911-8">
+<link rel="stylesheet" href="site.css?v=bottomnav-1">
+<style>
+  /* Riêng trang này: #nganh-nghe cách #lich-su 40px (không dùng --gap-box 20px
+     mặc định của .after-block, vì 40px không có trong thang --sp-*). */
+  #nganh-nghe{margin-top:calc(var(--gap-box) * 2);}
+</style>
+<!--
+  NAWARUCO — bản dựng giao diện, 2026-09-07. Đặc tả: design-system/page-specs.md
+  Header, footer và sprite icon giống nhau trên mọi trang (lên WordPress thành
+  header.php / footer.php / template-parts/icons.php). Ảnh để khung chờ có ghi
+  kích thước; số liệu chưa có nguồn để [cần ...] — không điền số minh hoạ.
+-->
+</head>
+<body id="top">
+  <div id="nwrc-icons" data-include="partials/icons.html"></div>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div id="nwrc-header" data-include="partials/header.html" data-nav="gioi-thieu"></div>
+
+<main id="main">
+
+  <div data-include="page-banner" data-image="images/page-banners/ha-tang-v2.jpg" data-title="Giới thiệu công ty" data-desc="Lịch sử hình thành, ngành nghề kinh doanh, giá trị theo đuổi và phạm vi phục vụ." data-crumbs="Trang chủ|index.html;Giới thiệu|"></div>
+
+  <div class="container anchor-nav-wrap">
+    <nav class="anchor-nav" id="anchor-nav" aria-label="Mục trong trang">
+      <a href="#lich-su" aria-current="true">Hình thành và phát triển</a>
+      <a href="#nganh-nghe">Ngành nghề kinh doanh</a>
+      <a href="#gia-tri">Sứ mệnh – Giá trị</a>
+      <a href="#to-chuc">Sơ đồ tổ chức</a>
+      <a href="#khu-vuc">Khu vực &amp; trạm cấp nước</a>
+    </nav>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="panel panel-sections">
+
+        <div class="two-col two-col--wide-right">
+          <div>
+            <section class="anchor-target" id="lich-su" aria-labelledby="lich-su-h">
+              <div class="sec-head"><div><h2 id="lich-su-h">Hình thành và phát triển</h2></div></div>
+              <ul class="timeline">
+                <li><span class="dot" aria-hidden="true"></span><span class="year">[năm]</span>
+                  <div><h3>Thành lập công ty</h3><p>[cần nội dung: quyết định thành lập, cơ quan ra quyết định, nhiệm vụ ban đầu]</p></div></li>
+                <li><span class="dot" aria-hidden="true"></span><span class="year">[năm]</span>
+                  <div><h3>Đưa trạm cấp nước đầu tiên vào vận hành</h3><p>[cần nội dung: địa bàn, công suất, số hộ được cấp nước]</p></div></li>
+                <li><span class="dot" aria-hidden="true"></span><span class="year">[năm]</span>
+                  <div><h3>Mở rộng mạng cấp nước</h3><p>[cần nội dung: số km đường ống, số xã được phủ]</p></div></li>
+                <li><span class="dot" aria-hidden="true"></span><span class="year">2026</span>
+                  <div><h3>Hiện nay</h3><p>[cần nội dung: quy mô hiện tại, định hướng những năm tới]</p></div></li>
+              </ul>
+            </section>
+
+            <section class="anchor-target" id="nganh-nghe" aria-labelledby="nganh-nghe-h">
+              <div class="sec-head"><div><h2 id="nganh-nghe-h">Ngành nghề kinh doanh</h2>
+                <p>Các hoạt động chính theo giấy chứng nhận đăng ký doanh nghiệp.</p></div></div>
+              <ul class="check-list readable">
+                <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Khai thác, xử lý và cung cấp nước sạch cho khu vực nông thôn.</span></li>
+                <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Xây dựng, quản lý và vận hành công trình cấp nước tập trung.</span></li>
+                <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Lắp đặt, sửa chữa, nâng dời đồng hồ nước và đường ống dịch vụ.</span></li>
+                <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Kiểm nghiệm chất lượng nước theo quy chuẩn hiện hành.</span></li>
+                <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>[cần bổ sung các ngành nghề khác nếu có]</span></li>
+              </ul>
+            </section>
+          </div>
+
+          <aside class="about-visual">
+            <!-- Ảnh minh họa AI dùng cho bản demo; thay bằng ảnh tư liệu chính thức khi nghiệm thu. -->
+            <div class="about-visual__main img-ph img-ph--photo media-4-5"><img src="images/about/gioi-thieu-co-so-xu-ly.jpg" width="1000" height="1250" loading="lazy" alt="Nhân viên kỹ thuật kiểm tra hệ thống điều khiển tại cơ sở xử lý nước."></div>
+            <div class="about-visual__accent img-ph img-ph--photo media-4-3"><img src="images/about/gioi-thieu-doi-ngu.jpg" width="1200" height="900" loading="lazy" alt="Đội ngũ nhân viên phối hợp rà soát phương án vận hành mạng lưới cấp nước."></div>
+          </aside>
+        </div>
+
+        <section class="anchor-target" id="gia-tri" aria-labelledby="gia-tri-h">
+          <div class="sec-head"><div><h2 id="gia-tri-h">Sứ mệnh – Giá trị</h2>
+            <p>[Nội dung minh họa cho nội dung sau này của web]</p></div></div>
+          <div class="grid-3 grid-3--2col">
+            <div class="card card-quick">
+              <span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-shield"></use></svg></span>
+              <h3>Nước đạt quy chuẩn</h3>
+              <p>Kiểm nghiệm định kỳ, công bố kết quả công khai trên website.</p>
+            </div>
+            <div class="card card-quick">
+              <span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-calendar"></use></svg></span>
+              <h3>Cấp nước ổn định</h3>
+              <p>Mọi lịch tạm ngừng đều thông báo trước; sự cố tiếp nhận 24/7.</p>
+            </div>
+            <div class="card card-quick">
+              <span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-support"></use></svg></span>
+              <h3>Gần dân, dễ liên hệ</h3>
+              <p>Một số điện thoại duy nhất cho mọi phản ánh về nước.</p>
+            </div>
+            <div class="card card-quick">
+              <span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-drop-duo"></use></svg></span>
+              <h3>Bảo vệ nguồn nước</h3>
+              <p>Giảm thất thoát, bảo vệ vùng khai thác nước ngầm và nước mặt.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="anchor-target" id="to-chuc" aria-labelledby="to-chuc-h">
+          <div class="sec-head"><div><h2 id="to-chuc-h">Sơ đồ tổ chức</h2></div></div>
+          <div class="img-ph media-16-9"><img src="images/about/so-do-to-chuc-demo.png" width="1600" height="900" loading="lazy" alt="Sơ đồ tổ chức minh họa gồm Hội đồng thành viên, Ban Giám đốc và bốn phòng chức năng."></div>
+        </section>
+
+        <section class="anchor-target" id="khu-vuc" aria-labelledby="khu-vuc-h">
+          <div class="sec-head"><div><h2 id="khu-vuc-h">Khu vực &amp; trạm cấp nước</h2>
+            <p>Các trạm cấp nước và địa bàn phục vụ của công ty.</p></div></div>
+          <!-- Bảng demo: tên trạm, phường phục vụ và số liệu đều là dữ liệu dựng cho
+               mockup (không phải số liệu thật) — thay bằng dữ liệu chính thức của
+               NAWARUCO trước khi lên bản chính. Cột "Phường" theo mô hình chính
+               quyền 2 cấp (không còn cấp huyện). -->
+          <div class="table-wrap" role="region" tabindex="0" aria-label="Bảng trạm cấp nước và khu vực phục vụ, cuộn ngang để xem thêm cột">
+            <table class="tariff">
+              <caption class="sr-only">Danh sách trạm cấp nước và khu vực phục vụ</caption>
+              <thead><tr><th scope="col">Trạm cấp nước</th><th scope="col">Phường phục vụ</th><th scope="col" class="amount">Công suất (m³/ngày)</th><th scope="col" class="amount">Số hộ</th></tr></thead>
+              <tbody>
+                <tr><td>Trạm cấp nước Mỹ Hà</td><td>Phường Mỹ Hà</td><td class="amount">4.200</td><td class="amount">3.850</td></tr>
+                <tr><td>Trạm cấp nước Giao Thiện</td><td>Phường Giao Thiện</td><td class="amount">3.600</td><td class="amount">3.120</td></tr>
+                <tr><td>Trạm cấp nước Xuân Trường</td><td>Phường Xuân Trường</td><td class="amount">5.800</td><td class="amount">5.040</td></tr>
+                <tr><td>Trạm cấp nước Hải Hậu</td><td>Phường Hải Hậu</td><td class="amount">6.500</td><td class="amount">5.900</td></tr>
+                <tr><td>Trạm cấp nước Nghĩa Hưng</td><td>Phường Nghĩa Hưng</td><td class="amount">4.900</td><td class="amount">4.300</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+  /* Đổi mục đang chọn trên menu neo theo nội dung đang xem.
+     Lên WordPress: assets/js/anchor-nav.js
+     Mốc so sánh là mép dưới của chính thanh menu neo — nó đang dán ở đỉnh, nên
+     mọi thứ nằm dưới mép đó là phần người dùng thực sự đọc được. Cách này không
+     phải đoán rootMargin và tự đúng khi header hay thanh menu đổi chiều cao.
+     Cuộn thanh menu bằng scrollLeft, không dùng scrollIntoView — hàm đó cuộn
+     luôn cả trang và làm người đọc mất chỗ. */
+  (function () {
+    var nav = document.getElementById('anchor-nav');
+    if (!nav) return;
+    var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+    var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    var timer = null;
+
+    /* Keo mot lien ket dang bam/dang chon hien day du trong .anchor-nav (dai
+       cuon ngang tren mobile) -- chi chinh scrollLeft cua rieng nav, khong
+       dung scrollIntoView vi ham do keo theo ca cuon doc cua trang, lam
+       nguoi doc mat cho dang xem. Dung chung cho ca luc bam (phan hoi ngay,
+       khong cho toi sync() chay sau 80ms) lan luc sync() tu doi theo cuon
+       trang, de hai duong khong keo lech nhau. */
+    function ensureLinkVisible(a) {
+      var r = nav.getBoundingClientRect();
+      var lr = a.getBoundingClientRect();
+      if (lr.left < r.left) {
+        nav.scrollLeft -= (r.left - lr.left) + 8;
+      } else if (lr.right > r.right) {
+        nav.scrollLeft += (lr.right - r.right) + 8;
+      }
+    }
+
+    /* Cuon trang muot khi bam 1 muc, thay vi nhay khung -- tu viet bang
+       requestAnimationFrame thay vi section.scrollIntoView({behavior:'smooth'}):
+       thoi luong cuon muot cua trinh duyet KHONG co dinh (tuy he dieu hanh/
+       khoang cach/thiet bi), nen khong the biet chinh xac luc nao cuon xong de
+       mo khoa sync() dung luc (xem manualUntil ben duoi) -- tu ve hoat canh thi
+       biet chac thoi luong ngay tu dau, het dung luc do la xong, khong doan mo.
+       Thoi luong ti le theo khoang cach can cuon (300-650ms) de cuon xa cam
+       giac tu nhien hon cuon gan, nhung co tran de khong cho qua lau. Tra ve
+       thoi luong da dung (0 neu prefers-reduced-motion) de cho biet luc nao
+       nen mo lai sync(). */
+    var scrollRAF = null;
+    function smoothScrollTo(targetY, duration) {
+      if (scrollRAF) cancelAnimationFrame(scrollRAF);
+      var startY = window.scrollY || window.pageYOffset;
+      var maxY = document.documentElement.scrollHeight - window.innerHeight;
+      targetY = Math.max(0, Math.min(targetY, maxY));
+      var diff = targetY - startY;
+      if (Math.abs(diff) < 1) { scrollRAF = null; return; }
+      var start = null;
+      function ease(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+      function step(ts) {
+        if (start === null) start = ts;
+        var p = Math.min((ts - start) / duration, 1);
+        window.scrollTo(0, startY + diff * ease(p));
+        scrollRAF = p < 1 ? requestAnimationFrame(step) : null;
+      }
+      scrollRAF = requestAnimationFrame(step);
+    }
+
+    /* Doc scroll-margin-top thuc te tren chinh phan tu (getComputedStyle) thay
+       vi tinh lai cong thuc calc() trong CSS -- luon dung ngay ca khi sau nay
+       doi bien --header-h/--anchor-h/--gap-box, khong phai sua 2 noi. */
+    function scrollToSection(sec) {
+      var rect = sec.getBoundingClientRect();
+      var marginTop = parseFloat(getComputedStyle(sec).scrollMarginTop) || 0;
+      var targetY = window.scrollY + rect.top - marginTop;
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) { window.scrollTo(0, targetY); return 0; }
+      var distance = Math.abs(targetY - window.scrollY);
+      var duration = Math.min(650, Math.max(300, distance * 0.5));
+      smoothScrollTo(targetY, duration);
+      return duration;
+    }
+
+    /* Bam 1 muc xong, trang tu cuon muot toi dung section (scrollToSection o
+       tren) roi moi dung lai o dung mep tinh theo scroll-margin-top cua
+       .anchor-target -- nhung trong LUC dang cuon muot (300-650ms, xem
+       scrollToSection), section dich CHUA cham toi "line" ma sync() dung de
+       do "current" (line = mep duoi thanh menu +8), nen neu sync() chay giua
+       chung se tinh nham "current" la muc CU/muc doc qua roi ghi de mat lien
+       ket vua bam. manualUntil khoa sync() cho toi khi het dung thoi luong
+       cuon (tra ve tu scrollToSection) cong them 400ms du de nguoi dung doc
+       xong dong dau; qua moc do sync() lai tu chay binh thuong theo cuon
+       trang thuc te. Khong dung so co dinh vi thoi luong cuon thay doi theo
+       khoang cach tung muc. */
+    var manualUntil = 0;
+
+    function sync() {
+      timer = null;
+      if (Date.now() < manualUntil) return;
+      var line = nav.getBoundingClientRect().bottom + 8;
+      var current = 0;
+      sections.forEach(function (sec, i) {
+        if (sec && sec.getBoundingClientRect().top <= line) current = i;
+      });
+      /* Cuộn hết đáy trang thì chọn mục cuối — section cuối có thể quá ngắn để
+         chạm được mốc trên. Phải kèm hai điều kiện, nếu không lúc trang mới tải
+         (ảnh chưa có kích thước, trang còn ngắn hơn khung nhìn) điều kiện "đã ở
+         đáy" đúng ngay từ đầu và menu nhảy sang mục cuối khi người dùng còn ở
+         đầu trang. */
+      var docH = document.documentElement.scrollHeight;
+      var atBottom = window.innerHeight + window.scrollY >= docH - 4;
+      if (atBottom && window.scrollY > 0 && docH > window.innerHeight + 200) {
+        current = links.length - 1;
+      }
+      links.forEach(function (a, i) {
+        if (i === current) {
+          a.setAttribute('aria-current', 'true');
+          ensureLinkVisible(a);
+        } else {
+          a.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    /* Bam truc tiep vao 1 muc: doi aria-current + hien day du ngay, khong
+       cho toi scroll event + 80ms debounce cua sync() -- va khoa 400ms de
+       sync() khong tinh nham roi ghi de lai (xem ghi chu o manualUntil
+       phia tren). */
+    links.forEach(function (a, i) {
+      a.addEventListener('click', function (e) {
+        var sec = sections[i];
+        var duration = 0;
+        if (sec) { e.preventDefault(); duration = scrollToSection(sec); }
+        manualUntil = Date.now() + duration + 400;
+        links.forEach(function (x) {
+          if (x === a) { x.setAttribute('aria-current', 'true'); } else { x.removeAttribute('aria-current'); }
+        });
+        ensureLinkVisible(a);
+      });
+    });
+
+    /* Hãm bằng setTimeout 80ms, không dùng requestAnimationFrame: rAF chỉ chạy
+       khi trang được vẽ, nên ở tab nền hoặc khi trình duyệt không vẽ, cờ chờ
+       treo lại và menu ngừng cập nhật hẳn. 80ms là 12 lần/giây — mắt không thấy
+       khác, mà không phụ thuộc vào nhịp vẽ. */
+    function schedule() { if (!timer) timer = setTimeout(sync, 80); }
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    /* Font tải xong làm trang cao lại -> vị trí các section đổi, phải tính lại */
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
+    sync();
+  })();
+  </script>
+
+</main>
+
+<div id="nwrc-footer" data-include="partials/footer.html"></div>
+<div id="nwrc-bottom-nav" data-include="partials/bottom-nav.html" data-nav="gioi-thieu"></div>
+
+<script src="assets/js/include-partials.js"></script>
+</body>
+</html>

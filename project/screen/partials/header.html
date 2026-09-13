@@ -1,0 +1,103 @@
+<div class="topbar">
+    <span class="brandline">Công ty Nước sạch Nông thôn Nam Định</span>
+    <div class="topbar-tools">
+      <div class="topbar-social">
+        <!-- Solar không có icon thương hiệu: giữ hình chính thức của nền tảng -->
+        <a href="#" aria-label="Trang Facebook của NAWARUCO">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 22v-9h3l1-4h-4V7c0-1 .3-1.7 1.8-1.7H17V1.8C16.6 1.7 15.4 1.6 14 1.6c-2.9 0-4.9 1.8-4.9 5V9H6v4h3.1v9z"/></svg>
+        </a>
+        <a href="#" aria-label="Kênh YouTube của NAWARUCO">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.7-1.8C18.3 5 12 5 12 5s-6.3 0-7.9.5a2.5 2.5 0 00-1.7 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.7 1.8C5.7 19 12 19 12 19s6.3 0 7.9-.5a2.5 2.5 0 001.7-1.8C22 15.2 22 12 22 12zM10 15V9l5.2 3z"/></svg>
+        </a>
+      </div>
+      <form class="topbar-search" role="search" action="#">
+        <label class="sr-only" for="s">Tìm kiếm trên website</label>
+        <input type="search" id="s" name="s" placeholder="Tìm kiếm">
+        <button type="submit" aria-label="Tìm kiếm">
+          <svg class="icon icon-sm" aria-hidden="true"><use href="#ico-search"></use></svg>
+        </button>
+      </form>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="mainbar">
+    <a class="logo-wrap" href="index.html">
+      <img class="logo-horizontal" src="images/logo-horizontal.png" width="754" height="204" alt="NAWARUCO – Nước sạch cho mọi nhà nông thôn">
+    </a>
+
+    <div class="header-actions">
+      <button type="button" class="header-search-toggle" aria-expanded="false" aria-controls="mobile-search">
+        <svg class="icon icon-md" aria-hidden="true"><use href="#ico-search"></use></svg>
+        <span class="sr-only">Tìm kiếm</span>
+      </button>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
+        <span class="bars" aria-hidden="true"></span><span class="sr-only">Menu</span>
+      </button>
+    </div>
+
+    <form class="search-form" id="mobile-search" role="search" action="#" hidden>
+      <label class="sr-only" for="s-mobile">Tìm kiếm trên website</label>
+      <input type="search" id="s-mobile" name="s" class="input" placeholder="Tìm kiếm">
+      <button type="submit" class="btn btn-primary btn-sm" aria-label="Tìm kiếm">
+        <svg class="icon icon-sm" aria-hidden="true"><use href="#ico-search"></use></svg>
+      </button>
+    </form>
+
+    <div class="nav-backdrop" hidden></div>
+
+    <nav aria-label="Điều hướng chính">
+      <div class="mainnav__head">
+        <span class="mainnav__title">Danh mục</span>
+        <button type="button" class="mainnav__close" aria-controls="mainnav" aria-label="Đóng menu">
+          <svg class="icon icon-md" aria-hidden="true"><use href="#ico-close"></use></svg>
+        </button>
+      </div>
+      <ul class="mainnav mainnav--upper" id="mainnav">
+        <li class="nav-home"><a href="index.html" data-nav-key="home">
+          <svg class="icon icon-md" aria-hidden="true"><use href="#ico-home-linear" data-home-icon></use></svg>
+          <span class="nav-home__label">Trang chủ</span>
+        </a></li>
+        <li><a href="gioi-thieu.html" data-nav-key="gioi-thieu">Giới thiệu</a></li>
+        <li class="has-sub"><button type="button" aria-haspopup="true" aria-expanded="false" data-nav-key="dich-vu">Dịch vụ<svg class="icon has-sub__chevron" aria-hidden="true"><use href="#ico-down"></use></svg></button>
+          <ul class="subnav subnav--right">
+            <li><a href="dich-vu-lap-dat.html">Lắp đặt đồng hồ nước</a></li>
+            <li><a href="dich-vu-sua-chua.html">Sửa chữa &amp; bảo trì</a></li>
+          </ul>
+        </li>
+        <li class="has-sub"><button type="button" aria-haspopup="true" aria-expanded="false" data-nav-key="thanh-toan">Thanh toán<svg class="icon has-sub__chevron" aria-hidden="true"><use href="#ico-down"></use></svg></button>
+          <ul class="subnav">
+            <li><a href="tra-cuu-hoa-don.html">Tra cứu tiền nước</a></li>
+            <li><a href="thanh-toan.html">Hình thức thanh toán</a></li>
+            <li><a href="trach-nhiem-thanh-toan.html">Trách nhiệm người thanh toán</a></li>
+            <li><a href="gia-nuoc.html">Giá nước</a></li>
+          </ul>
+        </li>
+        <li class="has-sub"><button type="button" aria-haspopup="true" aria-expanded="false" data-nav-key="ho-tro-khach-hang">Hỗ trợ khách hàng<svg class="icon has-sub__chevron" aria-hidden="true"><use href="#ico-down"></use></svg></button>
+          <ul class="subnav subnav--right">
+            <li><a href="bao-chi-so.html">Báo chỉ số đồng hồ nước</a></li>
+            <li><a href="thay-doi-hop-dong.html">Thay đổi hợp đồng</a></li>
+            <li><a href="chat-luong-nuoc.html">Chất lượng nước</a></li>
+          </ul>
+        </li>
+        <li class="has-sub"><button type="button" aria-haspopup="true" aria-expanded="false" data-nav-key="co-dong">Cổ đông<svg class="icon has-sub__chevron" aria-hidden="true"><use href="#ico-down"></use></svg></button>
+          <ul class="subnav subnav--right">
+            <li><a href="co-dong-cong-bo-thong-tin.html">Công bố thông tin &amp; dữ liệu</a></li>
+            <li><a href="co-dong-dai-hoi-dong-co-dong.html">Đại hội đồng cổ đông</a></li>
+            <li><a href="co-dong-bao-cao-tai-chinh.html">Báo cáo tài chính</a></li>
+          </ul>
+        </li>
+        <li class="has-sub"><button type="button" aria-haspopup="true" aria-expanded="false" data-nav-key="tin-tuc">Tin tức<svg class="icon has-sub__chevron" aria-hidden="true"><use href="#ico-down"></use></svg></button>
+          <ul class="subnav">
+            <li><a href="tin-tuc.html#thong-bao">Thông báo</a></li>
+            <li><a href="tin-tuc.html#tin-nawaruco">Tin NAWARUCO</a></li>
+            <li><a href="tin-tuc.html#hoat-dong-xa-hoi">Hoạt động xã hội</a></li>
+            <li><a href="tin-tuc.html#tin-khac">Tin khác</a></li>
+          </ul>
+        </li>
+        <li><a href="lien-he.html" data-nav-key="lien-he">Liên hệ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Thanh toán &amp; biểu giá nước — NAWARUCO</title>
+<meta name="description" content="Các hình thức thanh toán tiền nước, trách nhiệm người thanh toán và biểu giá hiện hành.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css?v=20260911-6">
+<link rel="stylesheet" href="../design-system/components.css?v=20260911-8">
+<link rel="stylesheet" href="site.css?v=bottomnav-1">
+<!--
+  NAWARUCO — bản dựng giao diện, 2026-09-07. Đặc tả: design-system/page-specs.md
+  Header, footer và sprite icon giống nhau trên mọi trang (lên WordPress thành
+  header.php / footer.php / template-parts/icons.php). Ảnh để khung chờ có ghi
+  kích thước; số liệu chưa có nguồn để [cần ...] — không điền số minh hoạ.
+-->
+</head>
+<body id="top">
+  <div id="nwrc-icons" data-include="partials/icons.html"></div>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div id="nwrc-header" data-include="partials/header.html" data-nav="thanh-toan" data-nav-leaf="thanh-toan.html"></div>
+
+<main id="main">
+
+<div data-include="page-banner" data-image="images/page-banners/thanh-toan-v2.jpg" data-title="Thanh toán &amp; biểu giá nước" data-desc="Các kênh thanh toán tiền nước, trách nhiệm của người thanh toán và biểu giá hiện hành." data-crumbs="Trang chủ|index.html;Thanh toán|"></div>
+  <section class="section section--sunken">
+    <div class="container">
+      <div class="two-col">
+      <div class="panel">
+      <div class="sec-head"><div><h2>Các hình thức thanh toán</h2>
+        <p>Quý khách chọn kênh thanh toán thuận tiện nhất — ưu tiên chuyển khoản hoặc thanh toán qua app để không phải đến quầy giao dịch.</p></div></div>
+
+      <h3>1. Chuyển khoản ngân hàng</h3>
+      <div class="bank-logos after-note" aria-label="Ngân hàng hỗ trợ chuyển khoản">
+        <img src="images/bidv.png" width="416" height="148" alt="BIDV" loading="lazy">
+        <img src="images/vietcombank.png" width="498" height="196" alt="Vietcombank" loading="lazy">
+        <img src="images/acb.png" width="324" height="142" alt="ACB" loading="lazy">
+        <img src="images/msb.png" width="402" height="112" alt="MSB" loading="lazy">
+        <img src="images/sacombank.png" width="495" height="111" alt="Sacombank" loading="lazy">
+        <img src="images/vietinbank.png" width="440" height="128" alt="VietinBank" loading="lazy">
+        <img src="images/abbank.png" width="492" height="80" alt="ABBANK" loading="lazy">
+        <img src="images/agribank.png" width="536" height="95" alt="Agribank" loading="lazy">
+      </div>
+      <div class="accordion after-note">
+        <details class="acc-item">
+          <summary>Trích nợ tự động</summary>
+          <div class="acc-body"><p>Đăng ký dịch vụ trích nợ tự động qua app ngân hàng hoặc tại quầy giao dịch của ngân hàng. Đến kỳ thu tiền nước, ngân hàng tự động trừ vào tài khoản theo đúng số tiền trên hoá đơn — không cần thao tác lại mỗi tháng.</p></div>
+        </details>
+        <details class="acc-item">
+          <summary>Thanh toán qua app ngân hàng</summary>
+          <div class="acc-body">
+            <ol class="step-list">
+              <li><span class="no">1</span><div><h4>Đăng nhập app ngân hàng</h4><p>Dùng app ngân hàng quý khách đang sử dụng.</p></div></li>
+              <li><span class="no">2</span><div><h4>Chọn thanh toán hoá đơn</h4><p>Tìm mục thanh toán hoá đơn / dịch vụ tiện ích, chọn nhà cung cấp NAWARUCO. [cần xác nhận tên hiển thị NAWARUCO trên các app ngân hàng]</p></div></li>
+              <li><span class="no">3</span><div><h4>Nhập mã khách hàng</h4><p>Nhập đúng mã khách hàng in trên hoá đơn để hệ thống tra ra đúng số tiền cần thanh toán.</p></div></li>
+              <li><span class="no">4</span><div><h4>Xác thực OTP</h4><p>Nhập mã OTP để hoàn tất — hệ thống gửi biên nhận điện tử ngay sau khi giao dịch thành công.</p></div></li>
+            </ol>
+          </div>
+        </details>
+        <details class="acc-item">
+          <summary>Chuyển khoản trực tiếp</summary>
+          <div class="acc-body"><p>Chuyển khoản đến tài khoản của NAWARUCO — số tài khoản <span class="mono">[cần số tài khoản]</span>, ngân hàng [cần tên ngân hàng], chủ tài khoản [cần tên chủ tài khoản]. <strong>Nội dung chuyển khoản bắt buộc ghi rõ mã khách hàng và kỳ hoá đơn</strong> (ví dụ: <span class="mono">NW-018842 T09/2026</span>) để kế toán đối soát đúng người, đúng kỳ.</p></div>
+        </details>
+      </div>
+
+      <h3 class="after-block">2. Qua các kênh trung gian</h3>
+      <div class="card-grid card-grid--2col after-note">
+        <div class="card card-quick">
+          <span class="icon-tile"><img src="images/momo.png" width="100" height="100" alt="" loading="lazy"></span>
+          <h4>MoMo</h4>
+          <p>Ví điện tử MoMo — mục Thanh toán hoá đơn, tìm NAWARUCO.</p>
+        </div>
+        <div class="card card-quick">
+          <span class="icon-tile"><img src="images/payoo.png" width="217" height="100" alt="" loading="lazy"></span>
+          <h4>Payoo</h4>
+          <p>Qua app Payoo hoặc website. [cần đường dẫn]</p>
+        </div>
+        <div class="card card-quick">
+          <span class="icon-tile"><img src="images/vn-pay.png" width="554" height="100" alt="" loading="lazy"></span>
+          <h4>VNPay</h4>
+          <p>Qua app VNPay hoặc quét mã VNPay in trên hoá đơn.</p>
+        </div>
+        <div class="card card-quick">
+          <span class="icon-tile"><img src="images/viettel-money.jpg" width="300" height="102" alt="" loading="lazy"></span>
+          <h4>Viettel Money</h4>
+          <p>Dành cho thuê bao Viettel, thanh toán qua BankPlus. [cần xác nhận]</p>
+        </div>
+      </div>
+
+      <h3 class="after-block">3. Quét mã QR trên hoá đơn</h3>
+      <div class="alert alert-info after-note">
+        <div><strong>Lưu ý khi quét mã QR</strong>
+          <p>Mã QR có hiệu lực trong vòng 30 ngày kể từ ngày in hoá đơn. Không tự sửa số tiền hoặc nội dung khi quét — hệ thống đã điền sẵn đúng theo hoá đơn.</p>
+        </div>
+      </div>
+
+      <h3 class="after-block">4. Nộp trực tiếp tại các điểm thu</h3>
+      <div class="grid-3 after-note">
+        <div class="card card-quick">
+          <span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-doc"></use></svg></span>
+          <h4>Chuỗi cửa hàng tiện lợi liên kết</h4>
+          <p>[cần xác nhận danh sách đối tác — ví dụ Winmart, FamilyMart, Circle K... nếu NAWARUCO có hợp tác]</p>
+        </div>
+        <div class="card card-quick">
+          <span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-pin"></use></svg></span>
+          <h4>Trụ sở công ty</h4>
+          <p>[cần địa chỉ trụ sở chính], trong giờ làm việc.</p>
+        </div>
+        <div class="card card-quick">
+          <span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-pin"></use></svg></span>
+          <h4>Các trạm cấp nước theo khu vực</h4>
+          <p>[cần danh sách địa chỉ trạm cấp nước theo từng xã/huyện phục vụ]</p>
+        </div>
+      </div>
+
+      <h3 class="after-block">Lưu ý khi thanh toán</h3>
+      <ul class="check-list readable after-note">
+        <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Cung cấp đúng mã khách hàng hoặc mang theo thông báo hoá đơn nước để được xử lý chính xác.</span></li>
+        <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Sau khi thanh toán thành công, hoá đơn điện tử được gửi qua website hoặc app — quý khách nên lưu lại làm bằng chứng.</span></li>
+        <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Kiểm tra lại trạng thái thanh toán trước khi nộp lại lần nữa để tránh nộp trùng.</span></li>
+      </ul>
+
+      <p class="form-note after-block">Xem thêm <a href="trach-nhiem-thanh-toan.html">trách nhiệm người thanh toán</a> và <a href="gia-nuoc.html">biểu giá nước hiện hành</a>.</p>
+          </div>
+        <aside>
+          <div data-include="widget-promo" data-href="ho-tro-khach-hang.html" data-img="images/dich-vu-ho-tro-khach-hang.jpg" data-img-w="1680" data-img-h="640" data-alt="Nhân viên tổng đài đeo tai nghe, cầm máy tính bảng hỗ trợ khách hàng." data-cta="Xem tất cả hỗ trợ khách hàng"></div>
+          <div class="panel after-block">
+            <h2>Liên quan</h2>
+            <ul class="check-list">
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="gia-nuoc.html">Biểu giá nước</a></li>
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="trach-nhiem-thanh-toan.html">Trách nhiệm người thanh toán</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<div id="nwrc-footer" data-include="partials/footer.html"></div>
+<div id="nwrc-bottom-nav" data-include="partials/bottom-nav.html" data-nav="thanh-toan"></div>
+
+<script src="assets/js/include-partials.js"></script>
+</body>
+</html>

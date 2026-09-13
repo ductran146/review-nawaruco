@@ -1,0 +1,358 @@
+/* =====================================================================
+   NAWARUCO — BỐ CỤC KHUNG DÙNG CHUNG CHO MỌI TRANG
+   Header/footer chạy hết bề ngang, nội dung ăn theo container var(--container-max) (1280px);
+   nhịp dải nội dung; đầu trang con; bố cục hai cột.
+   Lên WordPress: assets/css/site.css, enqueue cho mọi trang.
+   Thứ tự nhúng: tokens.css → components.css → site.css → [css riêng của trang]
+   ===================================================================== */
+
+/* ---------- Khung header / footer ----------
+   Thanh chính dán ở đỉnh MỌI TRANG. Điều kiện để sticky có hiệu lực suốt trang
+   là phần tử dán không nằm trong một thẻ cha thấp hơn nó — nên topbar đứng
+   NGOÀI <header>, và <header> chỉ chứa thanh chính. Nếu nhét cả hai vào
+   <header> rồi dán thanh chính, nó chỉ dính trong chiều cao của <header> rồi
+   trượt mất (đã kiểm: ở scrollY=900 thanh chính nằm ở -857px).
+   Sau khi chuyển sang partials (fetch + innerHTML vào <div data-include>),
+   lỗi y hệt tái diễn ở một tầng khác: topbar + <header> giờ nằm chung trong
+   <div id="nwrc-header"> — khung mount đó chỉ cao bằng đúng nội dung của nó
+   (topbar+header, không phải cả trang), nên sticky lại chỉ dính trong phạm vi
+   khung mount rồi trôi mất khi cuộn qua khỏi đó (đã đo lại: ở scrollY=900
+   thanh chính ở top:-677px, tức trôi hẳn, không dán được). display:contents
+   khiến khung <div data-include> không sinh hộp bố cục của riêng nó — con bên
+   trong (topbar, header, footer) coi như là con trực tiếp của <body>, giống
+   hệt cấu trúc trước khi có partials. */
+[data-include]{display:contents;}
+.topbar,.site-header .mainbar{padding-inline:max(var(--sp-6), calc((100% - var(--container-max)) / 2));}
+/* components.css đặt overflow:hidden cho .site-header (bo góc dạng thẻ trong demo);
+   ở đây phải mở lại overflow:visible, không thì .subnav (menu con) bị cắt mất. */
+.site-header{position:sticky; top:0; z-index:30; border-radius:0; border:none; overflow:visible;
+  background:var(--bg-surface); border-bottom:1px solid var(--border-default);}
+.site-header .mainbar{border-bottom:none; min-height:100px;}
+/* <=1024px: logo + nút Menu đã thu nhỏ, min-height:100px của bản desktop để
+   thừa khoảng trắng quanh chúng -- bỏ ép chiều cao, để nội dung tự quyết. */
+@media (max-width:1024px){ .site-header .mainbar{min-height:0;} }
+/* <=640px: đệm ngang giảm còn --sp-4 (cùng mốc .container đã giảm) — đo thực
+   tế logo + icon tìm kiếm + nút Menu ở 32px mỗi bên chỉ vừa khít ở 375px,
+   không còn margin an toàn cho màn hình Android phổ biến 360px trở xuống. */
+@media (max-width:640px){ .site-header .mainbar{padding-inline:var(--sp-4);} }
+.site-footer{padding-inline:0; border-radius:0;}
+
+/* ---------- Nhịp các dải nội dung ---------- */
+.section{padding:var(--sp-9) 0;}
+.section--tint{background:var(--bg-tint); border-block:1px solid var(--border-default);}
+.section--sunken{background:var(--bg-sunken);}
+.section--surface{background:var(--bg-surface);}
+.section--tight{padding:var(--sp-7) 0;}
+
+/* ĐẦU TRANG → NỘI DUNG: LUÔN 20px
+   Khối nội dung đầu tiên ngay sau đầu trang (banner ảnh hoặc dải breadcrumb)
+   cách đúng --gap-box = 20px, giống mọi khoảng cách giữa các module khác.
+   Trước đây vị trí này có ba giá trị khác nhau vì nó ăn theo padding của
+   .section: 72px ở 20 trang, 44px ở 3 trang .section--tight, 20px ở trang
+   giới thiệu (nhờ margin của .anchor-nav-wrap). Selector hai class nên thắng
+   cả .section--tight mà không cần !important, và cũng thắng ba media query
+   của .section bên dưới vì chúng chỉ có một class. */
+.page-banner + .section,
+.crumb-bar + .section{padding-top:var(--gap-box);}
+
+/* Khi có dải tab neo (.anchor-nav-wrap) chen giữa đầu trang và khối nội dung
+   (trang giới thiệu), khối .section theo sau vẫn ăn padding-top mặc định của
+   .section/.section--tight (44–72px tuỳ mốc) vì hai selector trên chỉ khớp
+   .section đứng ngay sau banner/breadcrumb. Ép về đúng 20px như mọi khoảng
+   cách module khác. */
+.anchor-nav-wrap + .section{padding-top:var(--gap-box);}
+
+/* ...và khối đầu tiên không được cộng margin của chính nó vào 20px đó.
+   Padding của .section chặn margin collapse, nên .after-block (margin-top 20px)
+   nằm ngay đầu trang sẽ cho 40px. Hai trường hợp:
+   - .after-block là con đầu tiên;
+   - dải tab đứng trước nó bị ẩn vì đang lọc theo chuyên mục — margin 20px vốn
+     để cách dải tab, tab ẩn thì margin thành khoảng trống thừa. */
+.page-banner + .section > .container > .after-block:first-child,
+.crumb-bar + .section > .container > .after-block:first-child,
+.page-banner + .section > .container > .tabs[hidden] + .after-block,
+.crumb-bar + .section > .container > .tabs[hidden] + .after-block{margin-top:0;}
+
+/* Lỗi y hệt còn tái diễn ở một tầng lồng sâu hơn: .after-block đứng đầu tiên
+   bên trong .panel (hoặc bất kỳ khối cha nào khác), không chỉ khi đứng ngay
+   trong .container — padding của khối cha (vd .panel) đã chặn margin
+   collapse y như .section, nên vẫn cộng dư 20px. Quy tắc trên chỉ khớp đúng
+   một cấp .container > .after-block, bỏ sót mọi cấp lồng khác. Dùng luôn quy
+   tắc tổng quát: bất kỳ đâu .after-block là con đầu tiên (không có gì phía
+   trước để tạo khoảng cách) thì margin-top luôn là 0, không cần khoanh vùng
+   theo tổ hợp cha cụ thể. */
+.after-block:first-child{margin-top:0;}
+
+/* NỘI DUNG → FOOTER: LUÔN 20px
+   Đối xứng với quy tắc "đầu trang → nội dung" ở trên. Khối .section cuối
+   cùng trong <main> nằm ngay trước footer (không có margin nào chen giữa:
+   [data-include] là display:contents, main là anh chị em trực tiếp của
+   footer), nên khoảng trắng nhìn thấy trước footer chính là padding-bottom
+   của .section đó — mặc định 44-72px tùy mốc (--sp-7/--sp-8/--sp-9), không
+   phải --gap-box. Đã đo bằng render (không ước lượng) trên toàn bộ 27 trang
+   nội dung, cả 3 mốc 375/768/1440: đồng nhất 44/56/72px trước khi sửa ở đây.
+   Ép về đúng 20px như mọi khoảng cách module khác. Kết hợp phần tử + lớp +
+   pseudo-class nên thắng .section/.section--tight và cả ba mốc media query
+   bên dưới mà không cần !important. */
+main > .section:last-of-type{padding-bottom:var(--gap-box);}
+
+/* Tiêu đề dải căn giữa (trang chủ và các trang có nhiều dải) */
+.sec-title{text-align:center; margin-bottom:var(--sp-7);}
+.sec-title h2{font-size:var(--fs-2xl); color:var(--brand-strong); text-transform:uppercase; letter-spacing:.02em;}
+.sec-title .drops{display:flex; justify-content:center; gap:6px; margin-top:var(--sp-3); color:var(--brand);}
+.sec-title .drops--wave{margin-top:4px;}
+.sec-title .drops--wave svg{display:block;}
+
+/* Tiêu đề dải căn trái, có mô tả và liên kết phụ */
+.sec-head{display:flex; justify-content:space-between; align-items:flex-end; gap:var(--sp-5); margin-bottom:var(--sp-6); flex-wrap:wrap;}
+.sec-head h2{font-size:var(--fs-xl); color:var(--brand-strong);}
+.sec-head p{color:var(--text-secondary); font-size:var(--fs-base); margin-top:var(--sp-2); max-width:62ch;}
+
+/* ---------- Đầu trang con: tiêu đề chữ nằm trên ảnh banner ----------
+   Ảnh do khách nhập sau. Trong WordPress ảnh gắn bằng
+   style="background-image:url(<?php echo esc_url($img); ?>)" — đó là dữ liệu
+   của từng trang, không phải inline style để thắng cascade.
+   Lớp phủ tối bắt buộc: chữ trắng trên ảnh nước sáng sẽ không đủ tương phản. */
+.page-banner{position:relative; isolation:isolate; color:#fff;
+  background-color:var(--brand-strong); background-size:cover; background-position:center;}
+.page-banner::after{content:''; position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(90deg, rgba(11,60,93,.92) 0%, rgba(11,60,93,.72) 45%, rgba(11,60,93,.35) 100%);}
+.page-banner .container{min-height:300px; display:flex; flex-direction:column; justify-content:center; padding-block:var(--sp-8);}
+.page-banner h1{color:#fff; font-size:var(--fs-3xl); margin-bottom:var(--sp-4);}
+.page-banner p{color:rgba(255,255,255,.85); max-width:64ch;}
+.page-banner .breadcrumb{margin-top:var(--sp-4); color:rgba(255,255,255,.8);}
+.page-banner .breadcrumb a{color:rgba(255,255,255,.8);}
+.page-banner .breadcrumb a:hover{color:#fff;}
+.page-banner .breadcrumb .sep{color:rgba(255,255,255,.75);} /* .5 chỉ đạt 4.15:1 trên nền banner; .75 = 7.39:1 */
+.page-banner .breadcrumb .current{color:#fff;}
+/* Nhãn kích thước ảnh cần — bỏ thẻ này khi đã nhập ảnh thật */
+.page-banner .banner-note{position:absolute; right:var(--sp-5); bottom:var(--sp-4); z-index:1;
+  font-family:var(--font-numeric); font-variant-numeric:tabular-nums; font-size:var(--fs-xs);
+  color:rgba(255,255,255,.85); background:rgba(0,0,0,.28); border:1px dashed rgba(255,255,255,.45);
+  border-radius:var(--radius-sm); padding:6px 10px; max-width:none;}
+/* Ảnh chưa có: nền gradient thương hiệu để trang vẫn trình bày được */
+.page-banner--placeholder{background-image:linear-gradient(120deg, var(--c-primary-900), var(--c-primary-600) 55%, var(--c-accent-600));}
+
+/* Ảnh toàn cảnh phủ kín banner ở mọi chiều rộng; chữ ở container của website. */
+.page-banner--image{overflow:hidden;}
+.page-banner--image::before{content:'';position:absolute;inset:0;z-index:-2;
+  background-image:var(--banner-image);background-repeat:no-repeat;
+  background-position:var(--banner-position,center 55%);background-size:cover;}
+.page-banner--image::after{background:linear-gradient(90deg,rgba(5,24,38,.76) 0%,rgba(5,24,38,.68) 48%,rgba(5,24,38,.38) 100%);}
+.page-banner--image .container{min-height:clamp(300px,23vw,420px);}
+.page-banner--image h1{max-width:65%;font-size:clamp(1.625rem,2.8vw,2.75rem);line-height:1.2;}
+.page-banner--image p{max-width:58%;color:#fff;}
+.page-banner--image .breadcrumb{max-width:65%;flex-wrap:wrap;}
+/* ≤760px: bỏ hẳn nền banner (ảnh lẫn gradient thương hiệu ở bản sửa trước),
+   không giữ khối màu nào — chỉ còn tiêu đề trang trên nền trắng của trang,
+   y hệt một tiêu đề nội dung bình thường. Gọn hơn nữa so với bản gradient
+   (giảm data ảnh) trước đó: bỏ luôn khối màu chiếm chỗ màn hình nhỏ, thấy
+   được nhiều nội dung hơn. Yêu cầu khách 2026-09-10. */
+@media(max-width:760px){
+  .page-banner--image::before,.page-banner--image::after{display:none;}
+  .page-banner--image h1,.page-banner--image p,.page-banner--image .breadcrumb{max-width:100%;}
+}
+
+@media (max-width:760px){
+  .page-banner{background:none;}
+  .page-banner::after{display:none;}
+  /* Không còn ảnh/màu nền nên chữ trắng vô hình trên nền trắng của trang —
+     đổi lại màu chữ thường. Bỏ min-height và margin-bottom của h1 (vốn để
+     chừa chỗ cho mô tả/breadcrumb, giờ hai thứ đó đã ẩn) để khối chỉ cao
+     đúng bằng một dòng tiêu đề. */
+  .page-banner .container{min-height:0; padding-block:var(--gap-box);}
+  .page-banner h1{font-size:var(--fs-2xl); color:var(--text-primary); margin-bottom:0;}
+  .page-banner .banner-note{position:static; margin:var(--sp-4) var(--sp-4) 0; width:fit-content;}
+  /* Chỉ giữ tiêu đề trang trên mobile — ẩn mô tả và breadcrumb. Yêu cầu
+     khách 2026-09-10. */
+  .page-banner p,.page-banner .breadcrumb{display:none;}
+}
+@media (max-width:640px){ .page-banner h1{font-size:var(--fs-xl);} }
+
+/* ---------- Dải breadcrumb mảnh (trang bài viết, không cần banner) ---------- */
+.crumb-bar{background:var(--bg-tint); border-bottom:1px solid var(--border-default); padding:var(--sp-4) 0;}
+
+/* ---------- Hai cột: nội dung + cột phụ ---------- */
+.two-col{display:grid; grid-template-columns:minmax(0,1fr) 360px; gap:var(--gap-box); align-items:start;}
+.two-col--wide-right{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+/* Trang tin: cột nội dung 2/3, cột phụ 1/3 */
+.two-col--thirds{grid-template-columns:minmax(0,2fr) minmax(0,1fr); gap:var(--gap-box);}
+@media (max-width:1024px){
+  .two-col,.two-col--wide-right,.two-col--thirds{grid-template-columns:minmax(0,1fr);}
+}
+
+/* ---------- Hộp nội dung nền trắng ---------- */
+.panel{min-width:0; background:var(--bg-surface); border:1px solid var(--border-default); border-radius:var(--radius-lg); padding:var(--sp-5);}
+.panel>h2,.panel>h3{font-size:var(--fs-lg); margin-bottom:var(--sp-4);}
+.panel--tint{background:var(--bg-tint);}
+
+/* ≤760px: mọi .panel bỏ khung — không viền, không nền tương phản, không bo
+   góc, không padding riêng — để nội dung nằm thẳng trên nền trắng của
+   trang, ăn theo đúng lề .container như mọi khối khác, thấy được nhiều nội
+   dung hơn trên một màn hình. Áp dụng cho toàn bộ trang có .panel: nội
+   dung đọc, form, sidebar, danh sách tin... — không riêng gì trang tin tức
+   như bản sửa trước. Trừ .panel--tint (hộp ghi chú tô màu lồng bên trong,
+   ví dụ "Văn bản quyết định" ở trang giá nước): đó là màu nhấn có chủ đích
+   để phân biệt loại nội dung, không phải khung trang trí, nên vẫn giữ
+   viền/nền/padding của nó. Yêu cầu khách 2026-09-10. */
+@media (max-width:760px){
+  .panel:not(.panel--tint){background:none; border:none; border-radius:0; box-shadow:none; padding:0;}
+}
+
+/* ≤760px: toàn bộ nền trang về trắng thuần (--bg-surface), không chỉ riêng
+   .panel. --bg-page (#F0F5F8) và --bg-sunken/--bg-tint gần như cùng tông
+   với nhau (chênh rất nhẹ so với trắng thuần #FFFFFF) — nên bỏ nền .panel
+   ở trên vẫn lộ ra nền hơi xám của .section--sunken (trang thanh-toan.html)
+   thay vì trắng thật như khách yêu cầu. .crumb-bar (dải breadcrumb mỏng
+   thay page-banner ở trang chi tiết tin tức) theo cùng logic bỏ nền như
+   page-banner. .section--tint hiện chưa trang nào dùng nhưng vẫn xử lý
+   cùng đợt cho nhất quán. Không đụng nền ở cấp thành phần nhỏ (nút, badge,
+   bảng, .panel--tint...) — những chỗ đó dùng màu để phân biệt trạng thái/
+   loại nội dung, không phải nền trang. Yêu cầu khách 2026-09-10. */
+@media (max-width:760px){
+  body{background:var(--bg-surface);}
+  .section--sunken,.section--tint{background:none;}
+  .crumb-bar{background:none;}
+}
+
+/* Khung nội dung 1 khối nền trắng (gộp nhiều mục con thành 1 frame),
+   dùng cho các trang menu con: giới thiệu, dịch vụ, thanh toán, hỗ trợ
+   khách hàng, cổ đông... — cùng kiểu .panel như trang tin tức. */
+/* Khoảng cách 40px giữa các khối lớn (không phải --gap-box 20px chuẩn, theo
+   yêu cầu riêng cho trang này) — dùng margin-top một chiều thay vì padding
+   trên+dưới cộng dồn (44+44=88px) để đúng 40px giữa hai khối liền kề. */
+.panel-sections>.anchor-target{margin-top:calc(var(--gap-box) * 2);}
+.panel-sections>.anchor-target:first-child{margin-top:0;}
+
+/* ---------- Bề rộng đọc thoải mái cho trang văn bản dài ---------- */
+.readable{max-width:78ch;}
+/* h2/h3 con trực tiếp của .readable không nằm trong .panel>h2,.panel>h3
+   (readable là một lớp bọc thêm bên trong .panel) nên trước đây không có
+   rule cỡ chữ nào khớp — rơi về mặc định trình duyệt, dán sát đoạn dưới
+   vì h1..h4 đã bị reset margin:0. Phát hiện 2026-09-09, ảnh hưởng 7 trang
+   dịch vụ/hỗ trợ dùng .readable trực tiếp cho h2 mở đầu mục. */
+.readable>h2,.readable>h3{font-size:var(--fs-lg); margin-bottom:var(--sp-4);}
+
+/* ---------- Lưới thẻ chung — gap giữa các box là --gap-box (20px) ---------- */
+.grid-3{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:var(--gap-box);}
+.grid-2{display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:var(--gap-box);}
+/* Biến thể hẹp hơn cho .grid-3 khi đặt trong khung nội dung hẹp (panel cột
+   chính của trang chi tiết tin tức, có sidebar bên cạnh) — minmax nhỏ hơn để
+   vẫn xếp đủ 3 thẻ/hàng thay vì rớt xuống 2. */
+.grid-3--compact{grid-template-columns:repeat(auto-fit, minmax(200px,1fr));}
+/* Biến thể 2 cột cố định (mục Sứ mệnh – Giá trị, trang giới thiệu): 4 thẻ xếp
+   đúng 2 hàng × 2 cột thay vì auto-fit tự co theo bề rộng còn trống. */
+.grid-3--2col{grid-template-columns:repeat(2, minmax(0,1fr));}
+@media (max-width:640px){
+  .grid-3--2col{grid-template-columns:1fr;}
+}
+
+/* Khối Tin liên quan đặt trong .panel của trang chi tiết tin tức — tách khỏi
+   nội dung bài viết bằng viền trên, giống cách .article-header dùng border.
+   Thẻ tin ở đây bỏ border/shadow/badge/ngày/mô tả của .card-news mặc định —
+   chỉ giữ ảnh + tiêu đề, vì đã nằm gọn trong .panel (đã có viền + nền trắng
+   riêng), không cần từng thẻ tự vẽ khung nữa. */
+.related-news{margin-top:var(--sp-6); padding-top:var(--sp-6); border-top:1px solid var(--border-default);}
+.related-news .card-news{border:none; box-shadow:none; background:none; border-radius:0;}
+.related-news .card-news .body{padding:var(--sp-3) 0 0;}
+
+@media (max-width:1024px){ .section{padding:var(--sp-8) 0;} }
+@media (max-width:760px){
+  .sec-title{margin-bottom:var(--sp-6);}
+  .sec-title h2{font-size:var(--fs-xl);}
+  .page-head h1{font-size:var(--fs-xl);}
+}
+@media (max-width:640px){ .section{padding:var(--sp-7) 0;} }
+
+/* ---------- Ô icon nhỏ (thẻ giá trị, thẻ truy cập nhanh) ---------- */
+/* Giữ tên .icon-tile để không phải sửa markup ở mọi trang, nhưng nay không còn
+   khung nền: chỉ icon đứng một mình, phóng to bù cho phần khung đã bỏ. */
+/* align-self:flex-start để icon ôm sát mép trái thẻ. Bỏ khung nền làm ô icon
+   mất chiều rộng cố định 44px, thành ra giãn hết thẻ và icon bị đẩy vào giữa. */
+.icon-tile{flex:none; align-self:flex-start; color:var(--brand); display:flex; align-items:center;}
+.icon-tile .icon,.icon-tile svg{width:36px; height:36px;}
+.icon-tile--lg .icon,.icon-tile--lg svg{width:44px; height:44px;}
+/* Logo đối tác (thanh-toan.html, mục kênh trung gian) thay cho icon minh hoạ —
+   khác nhau tỷ lệ khung hình (MoMo vuông, Payoo/VNPay/Viettel Money dạng chữ
+   ngang dài) nên chỉ khống chế chiều cao, để chiều rộng tự co theo ảnh gốc
+   thay vì ép vuông 36px như icon SVG. */
+.icon-tile img{height:48px; width:auto; display:block;}
+
+/* Kênh thanh toán trung gian (thanh-toan.html, mục 2): cố định 2 logo đối
+   tác mỗi dòng thay vì để auto-fit co giãn theo số cột bất kỳ. */
+.card-grid--2col{grid-template-columns:repeat(2, minmax(0, 1fr));}
+@media (max-width:640px){
+  .card-grid--2col{grid-template-columns:1fr;}
+}
+
+/* Dải logo ngân hàng hỗ trợ chuyển khoản (thanh-toan.html, mục 1) — chỉ
+   mang tính minh hoạ nhận diện, không phải card bấm được nên để đơn giản:
+   hàng logo canh giữa theo chiều dọc, chiều cao đồng nhất, chiều rộng tự co
+   theo tỷ lệ khung hình gốc của từng logo. */
+.bank-logos{display:flex; flex-wrap:wrap; align-items:center; gap:var(--sp-5) var(--sp-6);}
+.bank-logos img{height:40px; width:auto; display:block;}
+
+/* ---------- Thẻ dịch vụ dạng lớn (trang Dịch vụ) ---------- */
+.svc-card{padding:var(--sp-5);}
+.svc-card>.img-ph{aspect-ratio:21 / 8; margin-bottom:var(--sp-5);}
+.svc-card h2,.svc-card h3{font-size:var(--fs-lg); color:var(--brand-strong); margin-bottom:var(--sp-3);} /* h2 khi .svc-card đứng ngay dưới h1 (dich-vu.html), h3 khi dưới h2 (index.html) */
+.svc-card>p{font-size:var(--fs-base); color:var(--text-secondary); margin-bottom:var(--sp-4);}
+.svc-card .check-list{margin-bottom:var(--sp-5);}
+/* Trang tổng quan dịch vụ: nội dung nằm trực tiếp trên nền trang, không lồng
+   panel và card. Ảnh vẫn tạo điểm phân nhóm, còn khoảng trắng thay cho khung. */
+.svc-overview{align-items:start;}
+.svc-overview .svc-card{padding:0; background:transparent; border:0; box-shadow:none;}
+
+/* ---------- Tỉ lệ khung ảnh dùng lại ---------- */
+.media-16-9{aspect-ratio:16 / 9;}
+.media-3-2{aspect-ratio:3 / 2;}
+.media-4-3{aspect-ratio:4 / 3;}
+.media-15-8{aspect-ratio:15 / 8;}
+.media-1-1{aspect-ratio:1 / 1;}
+.media-4-5{aspect-ratio:4 / 5;}
+
+/* ---------- Khoảng cách giữa các khối trong một dải ---------- */
+/* Đặt tên theo vai trò, không phải theo con số — đổi token là đổi cả site. */
+.after-block{margin-top:var(--gap-box);}
+.after-note{margin-top:var(--sp-4);}
+
+/* ---------- Hàng nút căn giữa (trang 404, trang chuyển tiếp) ---------- */
+.form-actions--center{justify-content:center;}
+
+/* ---------- Chỗ đặt menu neo, ngay dưới banner ---------- */
+/* Menu neo dán dưới header, cách đúng --gap-box (20px).
+   top tính từ --header-h do JS đo — không viết số cứng vì header cao khác nhau
+   giữa desktop và mobile. Có giá trị dự phòng cho trường hợp JS bị chặn. */
+.anchor-nav-wrap{position:sticky; top:calc(var(--header-h, 76px) + var(--gap-box)); z-index:20; margin-top:var(--gap-box);}
+
+/* ---------- Trang Liên hệ ----------
+   Row 1: ảnh trụ sở và thông tin công ty nằm ngang nhau.
+   Row 2: form gửi yêu cầu, chiếm hết bề ngang thẻ. */
+.contact-card,.contact-form{padding:var(--sp-6);}
+.contact-card__grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:var(--gap-box); align-items:center;}
+.contact-card .info-list li{font-size:var(--fs-base);}
+.contact-card .channel-list{grid-template-columns:repeat(3, minmax(0,1fr)); gap:var(--gap-box);}
+.contact-card .channel{padding:var(--sp-3);}
+
+/* Form: cột 1 = họ tên + email, cột 2 = ô nội dung cao bằng cột 1.
+   Nút Gửi đi lệch phải, ghi chú nằm bên trái cùng hàng. */
+.contact-form__grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:var(--gap-box); align-items:stretch;}
+.contact-form__grid .field{max-width:none;}
+.contact-form__col{display:flex; flex-direction:column; gap:var(--gap-box);}
+.field-textarea{height:100%;}
+.field-textarea .textarea{height:100%; min-height:150px; resize:vertical;}
+/* Chỉ còn nút Gửi đi trong hàng này (đã bỏ ghi chú cho bản dựng), nên căn phải
+   bằng flex-end — space-between với một phần tử sẽ đẩy nút về bên trái. */
+.contact-form__foot{grid-column:1 / -1; display:flex; align-items:center; justify-content:flex-end; gap:var(--gap-box); flex-wrap:wrap;}
+
+@media (max-width:1024px){
+  .contact-card__grid{grid-template-columns:minmax(0,1fr); gap:var(--gap-box); align-items:start;}
+  .contact-card .channel-list{grid-template-columns:repeat(auto-fit, minmax(200px,1fr));}
+}
+@media (max-width:760px){
+  .contact-form__grid{grid-template-columns:minmax(0,1fr);}
+  .field-textarea .textarea{min-height:130px;}
+  .contact-form__foot{justify-content:stretch;}
+  .contact-form__foot .btn{width:100%; justify-content:center;}
+}
+@media (max-width:640px){ .contact-card,.contact-form{padding:var(--sp-4);} }

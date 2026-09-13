@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Dịch vụ — NAWARUCO</title>
+<meta name="description" content="Lắp đặt đồng hồ nước mới, sửa chữa và bảo trì đường ống — thủ tục, hồ sơ và cách đăng ký.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css?v=20260911-6">
+<link rel="stylesheet" href="../design-system/components.css?v=20260911-8">
+<link rel="stylesheet" href="site.css?v=services-3">
+<!--
+  NAWARUCO — bản dựng giao diện, 2026-09-07. Đặc tả: design-system/page-specs.md
+  Header, footer và sprite icon giống nhau trên mọi trang (lên WordPress thành
+  header.php / footer.php / template-parts/icons.php). Ảnh để khung chờ có ghi
+  kích thước; số liệu chưa có nguồn để [cần ...] — không điền số minh hoạ.
+-->
+</head>
+<body id="top">
+  <div id="nwrc-icons" data-include="partials/icons.html"></div>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div id="nwrc-header" data-include="partials/header.html" data-nav="dich-vu"></div>
+
+<main id="main">
+
+  <div data-include="page-banner" data-image="images/page-banners/lap-dat-v2.jpg" data-title="Dịch vụ" data-desc="Thủ tục lắp mới đồng hồ nước, sửa chữa đường ống và các yêu cầu thay đổi khác." data-crumbs="Trang chủ|index.html;Dịch vụ|"></div>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2 svc-overview">
+        <article class="svc-card">
+          <div class="img-ph img-ph--photo"><img src="images/dich-vu-lap-dat-dong-ho.jpg" width="1680" height="640" loading="lazy" alt="Dịch vụ lắp đặt đồng hồ nước."></div>
+          <h2>Lắp đặt đồng hồ nước</h2>
+          <p>Đăng ký cấp nước mới cho hộ gia đình và cho công trình, dự án.</p>
+          <ul class="check-list">
+            <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="dich-vu-lap-moi-ho-gia-dinh.html">Thủ tục lắp mới cho hộ gia đình</a></li>
+            <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="dich-vu-cap-nuoc-du-an.html">Thủ tục xin cấp nước cho công trình, dự án</a></li>
+          </ul>
+          <a class="btn btn-primary" href="dich-vu-lap-dat.html">Xem chi tiết dịch vụ</a>
+        </article>
+        <article class="svc-card">
+          <div class="img-ph img-ph--photo"><img src="images/dich-vu-sua-chua-bao-tri.jpg" width="1680" height="640" loading="lazy" alt="Kỹ thuật viên sửa chữa và bảo trì đồng hồ nước."></div>
+          <h2>Sửa chữa &amp; bảo trì</h2>
+          <p>Xử lý sự cố đường ống, đồng hồ nước và các yêu cầu nâng dời.</p>
+          <ul class="check-list">
+            <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="dich-vu-kiem-tra-nuoc-bat-thuong.html">Kiểm tra khi lượng nước dùng bất thường</a></li>
+            <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="dich-vu-ong-nhua-hdpe.html">Tiêu chuẩn ống nhựa HDPE</a></li>
+            <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="dich-vu-sua-duong-ong-nang-doi.html">Sửa đường ống, nâng dời đồng hồ</a></li>
+          </ul>
+          <a class="btn btn-primary" href="dich-vu-sua-chua.html">Xem chi tiết dịch vụ</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="nwrc-footer" data-include="partials/footer.html"></div>
+<div id="nwrc-bottom-nav" data-include="partials/bottom-nav.html" data-nav="dich-vu"></div>
+
+<script src="assets/js/include-partials.js"></script>
+</body>
+</html>

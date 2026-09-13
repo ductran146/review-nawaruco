@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Giá nước — NAWARUCO</title>
+<meta name="description" content="Biểu giá nước sinh hoạt hiện hành theo bậc sử dụng và mục đích sử dụng.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css?v=20260911-6">
+<link rel="stylesheet" href="../design-system/components.css?v=20260911-8">
+<link rel="stylesheet" href="site.css?v=bottomnav-1">
+<!--
+  NAWARUCO — bản dựng giao diện, 2026-09-07. Đặc tả: design-system/page-specs.md
+  Header, footer và sprite icon giống nhau trên mọi trang (lên WordPress thành
+  header.php / footer.php / template-parts/icons.php). Ảnh để khung chờ có ghi
+  kích thước; số liệu chưa có nguồn để [cần ...] — không điền số minh hoạ.
+-->
+</head>
+<body id="top">
+  <div id="nwrc-icons" data-include="partials/icons.html"></div>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div id="nwrc-header" data-include="partials/header.html" data-nav="thanh-toan" data-nav-leaf="gia-nuoc.html"></div>
+
+<main id="main">
+
+<div data-include="page-banner" data-image="images/page-banners/thanh-toan-v2.jpg" data-title="Giá nước" data-desc="Biểu giá nước sinh hoạt hiện hành theo bậc sử dụng và mục đích sử dụng." data-crumbs="Trang chủ|index.html;Thanh toán|thanh-toan.html;Giá nước|"></div>
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+      <div class="panel">
+        <div class="readable">
+          <h2>Giá nước</h2>
+          <p>Căn cứ [cần số quyết định] ngày [cần ngày ban hành] của [cần tên cơ quan ban hành — ví dụ UBND tỉnh Nam Định] về việc ban hành giá nước sạch sinh hoạt trên địa bàn.</p>
+          <p>Kể từ ngày [cần ngày áp dụng], giá nước sạch được điều chỉnh như sau:</p>
+
+          <!-- Số liệu đơn giá dưới đây là DỮ LIỆU MINH HOẠ (demo) để xem giao diện có nội
+               dung thật thay vì [số liệu] — chưa có quyết định chính thức, cần NAWARUCO
+               xác nhận và thay bằng số liệu chính xác trước khi lên WordPress. -->
+          <div class="table-wrap after-note" role="region" tabindex="0" aria-label="Bảng giá nước theo đối tượng sử dụng, cuộn ngang để xem thêm cột">
+            <table class="tariff">
+              <caption class="sr-only">Bảng giá nước theo đối tượng sử dụng</caption>
+              <thead><tr><th scope="col">STT</th><th scope="col">Đối tượng sử dụng nước</th><th scope="col">Đơn giá (đồng/m³)</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td><strong>Nước sinh hoạt hộ gia đình nông thôn</strong></td><td></td></tr>
+                <tr><td></td><td>- Từ 0–10 m³/đồng hồ/tháng</td><td class="amount">8.000</td></tr>
+                <tr><td></td><td>- Từ trên 10–20 m³/đồng hồ/tháng</td><td class="amount">9.500</td></tr>
+                <tr><td></td><td>- Từ trên 20 m³/đồng hồ/tháng</td><td class="amount">11.000</td></tr>
+                <tr><td>2</td><td><strong>Cơ quan hành chính, đơn vị sự nghiệp, trường học, trạm y tế</strong> (công lập và tư nhân, phục vụ mục đích công cộng)</td><td class="amount">9.500</td></tr>
+                <tr><td>3</td><td><strong>Tổ chức, cá nhân sản xuất vật chất</strong></td><td></td></tr>
+                <tr><td></td><td>- Bán trực tiếp cho khách hàng</td><td class="amount">11.000</td></tr>
+                <tr><td></td><td>- Bán qua đồng hồ tổng</td><td class="amount">9.500</td></tr>
+                <tr><td>4</td><td><strong>Tổ chức, cá nhân kinh doanh, dịch vụ</strong></td><td class="amount">15.000</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <ul class="check-list after-note">
+            <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Giá nước sinh hoạt nêu trên <strong>chưa bao gồm</strong> thuế giá trị gia tăng và các loại phí, khoản thu khác theo quy định của pháp luật.</span></li>
+          </ul>
+
+          <div class="panel panel--tint after-block">
+            <h2>Văn bản quyết định</h2>
+            <p class="form-note">Quý khách có thể tải văn bản quyết định đầy đủ về giá nước sạch. [cần file quyết định của cơ quan ban hành]</p>
+            <div class="form-actions after-note">
+              <a class="btn btn-secondary" href="#">Tải quyết định (PDF)</a>
+            </div>
+          </div>
+        </div>
+        </div>
+        <aside>
+          <div data-include="widget-promo" data-href="ho-tro-khach-hang.html" data-img="images/dich-vu-ho-tro-khach-hang.jpg" data-img-w="1680" data-img-h="640" data-alt="Nhân viên tổng đài đeo tai nghe, cầm máy tính bảng hỗ trợ khách hàng." data-cta="Xem tất cả hỗ trợ khách hàng"></div>
+          <div class="panel after-block">
+            <h2>Liên quan</h2>
+            <ul class="check-list">
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="thanh-toan.html">Hình thức thanh toán</a></li>
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="trach-nhiem-thanh-toan.html">Trách nhiệm người thanh toán</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+        </div>
+  </section>
+
+</main>
+
+<div id="nwrc-footer" data-include="partials/footer.html"></div>
+<div id="nwrc-bottom-nav" data-include="partials/bottom-nav.html" data-nav="thanh-toan"></div>
+
+<script src="assets/js/include-partials.js"></script>
+</body>
+</html>

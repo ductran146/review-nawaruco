@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Liên hệ — NAWARUCO</title>
+<meta name="description" content="Địa chỉ trụ sở, hotline trực sự cố 24/7, các kênh chat, form gửi yêu cầu và sơ đồ đường đi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css?v=20260911-6">
+<link rel="stylesheet" href="../design-system/components.css?v=20260911-8">
+<link rel="stylesheet" href="site.css?v=bottomnav-1">
+<!--
+  NAWARUCO — bản dựng giao diện, 2026-09-07. Đặc tả: design-system/page-specs.md
+  Header, footer và sprite icon giống nhau trên mọi trang (lên WordPress thành
+  header.php / footer.php / template-parts/icons.php). Ảnh để khung chờ có ghi
+  kích thước; số liệu chưa có nguồn để [cần ...] — không điền số minh hoạ.
+-->
+</head>
+<body id="top">
+  <div id="nwrc-icons" data-include="partials/icons.html"></div>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div id="nwrc-header" data-include="partials/header.html" data-nav="lien-he"></div>
+
+<main id="main">
+
+  <div data-include="page-banner" data-image="images/page-banners/cham-soc-v2.jpg" data-title="Liên hệ" data-desc="Hotline trực sự cố 24/7, địa chỉ trụ sở, các kênh chat và sơ đồ đường đi." data-crumbs="Trang chủ|index.html;Liên hệ|"></div>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Row 1: ảnh trụ sở và thông tin công ty nằm ngang nhau -->
+      <div class="panel contact-card">
+        <div class="contact-card__grid">
+          <div>
+            <div class="img-ph media-4-3"><b>1200 × 900 px</b><span>Ảnh trụ sở hoặc ảnh tập thể cán bộ · 4:3 · JPG ≤ 250 KB</span></div>
+          </div>
+
+          <div class="contact-card__info">
+            <div class="heading-rule"><h2>Công ty Nước sạch Nông thôn Nam Định</h2></div>
+
+            <ul class="info-list">
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-pin"></use></svg><div><span class="lbl">Trụ sở</span>[cần địa chỉ trụ sở], tỉnh Nam Định</div></li>
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-phone"></use></svg><div><span class="lbl">Tổng đài trực sự cố 24/7</span><a href="tel:19006xxx"><strong>1900 6xxx</strong></a></div></li>
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-mail"></use></svg><div><span class="lbl">Email</span><a href="mailto:cskh@nawaruco.vn">cskh@nawaruco.vn</a></div></li>
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-clock"></use></svg><div><span class="lbl">Giờ làm việc</span>7h30 – 17h00, Thứ 2 – Thứ 6 · [cần xác nhận]</div></li>
+            </ul>
+
+            <ul class="channel-list after-block">
+              <li><a class="channel" href="#" aria-label="Chat Zalo với NAWARUCO, trực 7h30 đến 17h00">
+                <span class="channel__logo channel__logo--zalo" aria-hidden="true">Zalo</span>
+                <span class="channel__body">
+                  <span class="channel__name">Chat Zalo</span>
+                  <span class="channel__hours">7h30 – 17h00</span>
+                </span>
+              </a></li>
+              <li><a class="channel" href="#" aria-label="Nhắn tin Messenger với NAWARUCO, trực 7h30 đến 17h00">
+                <span class="channel__logo channel__logo--messenger" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-chat"></use></svg></span>
+                <span class="channel__body">
+                  <span class="channel__name">Messenger</span>
+                  <span class="channel__hours">7h30 – 17h00</span>
+                </span>
+              </a></li>
+              <li><a class="channel" href="tel:19006xxx">
+                <span class="channel__logo channel__logo--phone" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-phone"></use></svg></span>
+                <span class="channel__body">
+                  <span class="channel__name">Gọi tổng đài</span>
+                  <span class="channel__hours">24/7</span>
+                </span>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: form gửi yêu cầu -->
+      <div class="panel contact-form after-block">
+        <div class="heading-rule"><h2>Gửi yêu cầu liên hệ</h2></div>
+        <p class="form-note">Các ô có dấu <abbr title="bắt buộc">*</abbr> là bắt buộc. Việc gấp về mất nước nên gọi tổng đài để được xử lý ngay.</p>
+
+        <form class="contact-form__grid after-note" action="#" method="post" novalidate>
+          <div class="contact-form__col">
+            <div class="field">
+              <label for="lh-ten">Họ và tên <abbr title="bắt buộc">*</abbr></label>
+              <input class="input" type="text" id="lh-ten" name="ten" required autocomplete="name" placeholder="Nguyễn Văn A">
+            </div>
+            <div class="field">
+              <label for="lh-email">Email <abbr title="bắt buộc">*</abbr></label>
+              <input class="input" type="email" id="lh-email" name="email" required autocomplete="email"
+                     placeholder="ten@email.com" aria-describedby="lh-email-hint">
+              <span class="hint" id="lh-email-hint">Chúng tôi trả lời qua email này.</span>
+            </div>
+          </div>
+
+          <div class="field field-textarea">
+            <label for="lh-noi-dung">Nội dung <abbr title="bắt buộc">*</abbr></label>
+            <textarea class="textarea" id="lh-noi-dung" name="noi-dung" required
+                      placeholder="Xin cho biết thủ tục sang tên hợp đồng nước gồm những giấy tờ gì."></textarea>
+          </div>
+
+          <div class="contact-form__foot">
+            <button class="btn btn-accent btn-lg" type="submit">Gửi đi</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Row 3: sơ đồ đường đi -->
+      <div class="panel after-block">
+        <div class="heading-rule"><h2 id="duong-di-h">Sơ đồ đường đi</h2></div>
+        <div class="map-embed">
+          <div class="img-ph"><b>1600 × 520 px</b><span>Nhúng Google Maps hoặc ảnh bản đồ tĩnh · cần địa chỉ chính thức để lấy mã nhúng</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<div id="nwrc-footer" data-include="partials/footer.html"></div>
+<div id="nwrc-bottom-nav" data-include="partials/bottom-nav.html" data-nav="lien-he"></div>
+
+<script src="assets/js/include-partials.js"></script>
+</body>
+</html>

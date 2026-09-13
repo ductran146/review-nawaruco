@@ -1,0 +1,200 @@
+/* =====================================================================
+   NAWARUCO — Bố cục TRANG CHỦ
+   Thứ tự khối theo mẫu khách chọn: banner → 3 khối hỗ trợ → tin tức →
+   dịch vụ → footer. Chỉ chứa cách các khối xếp cạnh nhau; màu/khoảng
+   cách/chữ vẫn lấy từ tokens.css, thành phần vẫn lấy từ components.css.
+   Lên WordPress: assets/css/pages/home.css
+   Thứ tự nhúng: tokens.css → components.css → home.css
+   Thu gọn theo đúng ba mốc của hệ: 1024 (tablet) · 760 · 640 (mobile).
+   ===================================================================== */
+
+/* Nhịp dải, .sec-title, canh lề header/footer: đã chuyển sang site.css
+   vì mọi trang đều dùng. File này chỉ còn các khối riêng của trang chủ. */
+
+/* =====================================================================
+   1. BANNER — BĂNG ẢNH 3 SLIDE
+   Chữ nằm sẵn trong ảnh (bên trái, khoảng 45% bề ngang). HTML không phủ chữ
+   lên nữa, nhưng phải chép nguyên văn chữ trong ảnh vào alt của <img> để
+   trình đọc màn hình và công cụ tìm kiếm còn đọc được.
+   Chuyển slide bằng mờ dần, không trượt ngang: ảnh có chữ mà trượt ngang thì
+   chữ hai slide chồng lên nhau trong lúc chuyển.
+   ===================================================================== */
+/* Ảnh gốc chỉ dựng ở độ phân giải 1920px. Không chặn max-width thì trên màn hình
+   lớn hơn Full HD, băng ảnh kéo giãn hết chiều ngang viewport trong khi
+   max-height vẫn giữ nguyên — tỉ lệ khung nhìn lệch dần khỏi tỉ lệ ảnh gốc, ảnh
+   càng rộng càng bị cắt lệch. Chặn ở đúng 1920px rồi canh giữa: từ mốc đó trở
+   lên, băng ảnh giữ nguyên tỉ lệ đã thiết kế, không giãn thêm.
+   Chốt 2026-09-09: ảnh băng đã cắt lại còn 2400×800 (3:1, trước là 2400×1029 ≈
+   2.33:1) để băng ảnh thấp hơn — ở khổ laptop, nếu quá cao thì header + băng
+   ảnh chiếm hết màn hình, không còn thấy khối nội dung ngay bên dưới.
+   aspect-ratio và max-height phải khớp đúng ảnh thật, lệch tỉ lệ sẽ khiến
+   object-fit:cover cắt lấn vào chữ nằm sẵn trong ảnh. */
+.hero-slider{position:relative; background:var(--brand-strong); overflow:hidden;
+  aspect-ratio:2400 / 800; max-height:640px; max-width:1920px; margin-inline:auto;}
+.hero-slider .slide{position:absolute; inset:0; margin:0; opacity:0; transition:opacity .5s var(--ease);}
+.hero-slider .slide[aria-hidden="false"]{opacity:1;}
+.hero-slider .slide picture{display:block; width:100%; height:100%;}
+.hero-slider .slide img{display:block; width:100%; height:100%; object-fit:cover; object-position:center;}
+/* Phóng chậm (Ken Burns) trong lúc slide đang hiện — chỉ chạy khi trình duyệt
+   không báo prefers-reduced-motion, và chỉ trên ảnh của slide đang bật để không
+   tốn công phóng những ảnh đang ẩn. object-fit:cover đã che phần viền lộ ra khi
+   ảnh phóng to hơn khung. */
+@media (prefers-reduced-motion: no-preference){
+  .hero-slider .slide[aria-hidden="false"] img{animation:hero-kenburns 8s var(--ease) forwards;}
+}
+@keyframes hero-kenburns{ from{transform:scale(1);} to{transform:scale(1.06);} }
+/* Hiệu ứng xuất hiện lúc tải trang/F5: cả băng ảnh trồi lên + mờ dần vào, mũi
+   tên/hàng chấm theo sau một nhịp. Dùng animation (không phải transition) nên
+   tự chạy ngay khi CSS được áp dụng — không cần JS, không có JS vẫn chạy đủ.
+   Chỉ tự chạy một lần lúc vào trang, không lặp lại khi chuyển slide sau đó. */
+@media (prefers-reduced-motion: no-preference){
+  .hero-slider{animation:hero-enter .9s var(--ease) both;}
+  .hero-controls{animation:hero-enter .7s var(--ease) .35s both;}
+}
+@keyframes hero-enter{ from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:none;} }
+/* ---------- Điều khiển băng ảnh: mũi tên trước/sau + hàng chấm ----------
+   Khung điều khiển phủ kín ảnh nhưng pointer-events:none, chỉ các nút bắt chuột
+   — nếu không, cả vùng này che ảnh và không ai bấm được vào ảnh.
+   Desktop: hai mũi tên ở hai mép, hàng chấm ở giữa dưới.
+   Mobile: cả ba nằm chung một hàng dưới đáy, vì chữ trong ảnh nằm ở nửa trái,
+   mũi tên đặt giữa hai bên sẽ đè lên chữ. */
+.hero-controls{position:absolute; inset:0; z-index:2; pointer-events:none;}
+.hero-controls>*{pointer-events:auto;}
+
+.hero-arrow{position:absolute; top:50%; transform:translateY(-50%);
+  width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+  border:none; border-radius:50%; cursor:pointer;
+  background:rgba(255,255,255,.85); color:var(--brand-strong); box-shadow:var(--shadow-md);
+  transition:background .12s var(--ease), transform .12s var(--ease);}
+.hero-arrow:hover{background:#fff;}
+.hero-arrow:active{transform:translateY(-50%) scale(.94);}
+/* Vòng focus của token là màu xanh đậm — trên ảnh tối sẽ không thấy, nên dùng
+   vòng trắng có viền xanh cho hai nút nằm trên ảnh. */
+.hero-arrow:focus-visible{outline:2px solid #fff; outline-offset:3px; box-shadow:0 0 0 5px rgba(11,60,93,.55);}
+.hero-arrow--prev{left:var(--sp-5);}
+.hero-arrow--next{right:var(--sp-5);}
+
+.hero-dots{position:absolute; left:50%; bottom:var(--sp-5); transform:translateX(-50%);
+  display:flex; gap:10px;}
+/* Vùng bấm thật của mỗi chấm là 24×24px (sàn WCAG 2.5.8), chấm nhìn thấy vẫn
+   nhỏ và nằm giữa nhờ ::after — trước đây button chính là chấm nên cao 6px,
+   không bấm được bằng ngón tay. */
+.hero-dots button{width:24px; height:24px; padding:0; border:none; background:none;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;}
+.hero-dots button::after{content:''; width:26px; height:6px; border-radius:var(--radius-pill);
+  background:rgba(255,255,255,.45); transition:background .12s var(--ease), width .12s var(--ease);}
+.hero-dots button:hover::after{background:rgba(255,255,255,.75);}
+.hero-dots button[aria-current="true"]::after{background:#fff; width:34px;}
+.hero-dots button:focus-visible{outline:2px solid #fff; outline-offset:2px; border-radius:50%;
+  box-shadow:0 0 0 4px rgba(11,60,93,.55);}
+/* Không có JS: hiện slide đầu, ẩn hàng chấm để không có nút bấm không phản hồi */
+.hero-slider:not(.is-ready) .slide:first-child{opacity:1;}
+.hero-slider:not(.is-ready) .hero-controls{display:none;}
+
+@media (max-width:760px){
+  /* Mobile dùng bộ ảnh dọc 3:4 riêng, vì vậy toàn bộ ảnh, chữ và chủ thể đều
+     hiện đúng bố cục đã thiết kế mà không phải cắt ảnh desktop 3:1. */
+  .hero-slider{aspect-ratio:3 / 4; max-height:none;}
+  .hero-slider .slide img{object-fit:cover; object-position:center; animation:none!important; transform:none!important;}
+  /* Mũi tên và hàng chấm về chung một hàng dưới đáy, không đè lên chữ trong ảnh */
+  .hero-controls{inset:auto 0 var(--sp-4) 0; display:flex; align-items:center; justify-content:center; gap:var(--sp-5);}
+  .hero-arrow,.hero-dots{position:static; transform:none;}
+  .hero-arrow{width:38px; height:38px;}
+  .hero-arrow:active{transform:scale(.94);}
+}
+
+/* =====================================================================
+   2. BA KHỐI HỖ TRỢ — hỗ trợ trực tuyến · tra cứu · thanh toán
+   ===================================================================== */
+/* auto-fit: 3 cột trên desktop, 2 cột trên tablet dọc, 1 cột trên mobile —
+   không cần thêm mốc breakpoint nào cho khối này. */
+.support-3{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:var(--gap-box);}
+/* padding-top giữ chỗ cho dòng hotline ở khối đầu, nhờ đó icon và tiêu đề của
+   cả ba khối nằm cùng một đường ngang — không có nó khối 1 tụt xuống 40px. */
+.support{position:relative; padding-top:44px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:var(--sp-3);}
+.support .hotline{position:absolute; top:0; left:50%; transform:translateX(-50%); display:flex; align-items:baseline; gap:var(--sp-3); white-space:nowrap; font-family:var(--font-numeric); font-variant-numeric:tabular-nums; font-size:var(--fs-lg); font-weight:600; color:var(--brand-strong);}
+.support .hotline .lbl{font-family:var(--font-body); font-size:var(--fs-sm); font-weight:600; color:var(--text-secondary);}
+.support .hotline a{color:inherit; text-decoration:none;}
+.support .hotline a:hover{color:var(--brand);}
+.support .ico{width:112px; height:112px; display:flex; align-items:center; justify-content:center; transition:transform .25s var(--ease);}
+.support .ico img{width:100%; height:100%; object-fit:contain;}
+.support:hover .ico{transform:scale(1.12) rotate(-4deg);}
+.support h3{font-size:var(--fs-md); text-transform:uppercase; color:var(--brand-strong); letter-spacing:.02em;}
+.support p{color:var(--text-secondary); max-width:38ch;}
+.support .go{margin-top:auto; padding-top:var(--sp-4); font-size:var(--fs-sm); font-weight:700; color:var(--brand); text-decoration:none;}
+.support .go:hover{text-decoration:underline;}
+
+/* =====================================================================
+   3. TIN TỨC — SỰ KIỆN (dùng lại .card-news của hệ)
+   ===================================================================== */
+.news-3{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap-box);}
+.news-3 .card-news{border:none; background:transparent; box-shadow:none;}
+.news-3 .card-news:hover{transform:none; box-shadow:none;}
+.news-3 .img-ph,.news-3 .thumb{aspect-ratio:16 / 9; height:auto;}
+/* Thẻ tin trang chủ không có khung bao quanh (border:none, nền trong suốt), nên
+   16px padding của component sẽ làm chữ lùi vào 16px so với mép ảnh — lệch lề.
+   Ở biến thể này chữ thẳng lề với ảnh, chỉ giữ 12px cách ảnh; padding 16px vẫn
+   áp dụng ở trang danh sách tin và khối Tin liên quan, nơi thẻ có khung thật. */
+.news-3 .card-news .body{padding:var(--sp-3) 0 0;}
+/* Không in hoa toàn bộ: tiêu đề tin dài 2–3 dòng, chữ hoa làm chậm tốc độ đọc
+   và mất dấu tiếng Việt phía trên. Bỏ luôn dấu đầu dòng giọt nước. */
+.news-3 .card-news h4{font-size:var(--fs-md); line-height:1.45; color:var(--brand-strong);}
+.news-3 .more{font-size:var(--fs-sm); font-style:italic; color:var(--text-link); text-decoration:none; margin-top:var(--sp-2);}
+.news-3 .more:hover{text-decoration:underline;}
+
+/* =====================================================================
+   4. DỊCH VỤ — hai khối so le như mẫu
+   ===================================================================== */
+.svc-2{display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-box);}
+.svc-2>:nth-child(2){margin-top:var(--sp-8);}   /* độ so le của mẫu */
+.svc__media{aspect-ratio:21 / 8;}
+.svc h3{font-size:var(--fs-lg); text-transform:uppercase; color:var(--brand-strong); margin:var(--sp-5) 0 var(--sp-4);}
+/* .check-list đã chuyển sang components.css — dùng ở nhiều trang, không riêng trang chủ */
+
+/* =====================================================================
+   THU GỌN THEO THIẾT BỊ
+   Nguyên tắc: gộp cột trước, không bóp nội dung bên trong.
+   ===================================================================== */
+
+/* --- Tablet ngang / laptop nhỏ --- */
+/* --- Tablet: banner xếp dọc, ảnh thôi cắt chéo, tin tức còn 2 cột --- */
+@media (max-width:1024px){
+  .section{padding:var(--sp-8) 0;}
+  .news-3{grid-template-columns:repeat(2,1fr);}
+  .svc-2>:nth-child(2){margin-top:0;}
+}
+
+/* --- Mobile lớn: mọi khối nhiều cột về một cột --- */
+@media (max-width:760px){
+  .support p{max-width:46ch;}
+  .svc-2{grid-template-columns:1fr;}
+  .sec-title{margin-bottom:var(--sp-6);}
+  .sec-title h2{font-size:var(--fs-xl);}
+}
+
+/* --- Mobile nhỏ --- */
+@media (max-width:640px){
+  .section{padding:var(--sp-7) 0;}
+  .support-3{grid-template-columns:1fr;}   /* 2 cột ở 640 để lẻ một khối, gộp về 1 */
+  .news-3{grid-template-columns:1fr;}
+}
+
+/* =====================================================================
+   WAVE-TRANSITION — nền sóng nối khối Tin tức và Dịch vụ.
+   Bọc quanh 2 section, SVG nền vẽ hình sóng kéo dài full-bleed, co giãn theo
+   preserveAspectRatio="none" nên không phụ thuộc chiều cao thật của nội dung.
+   Đỉnh sóng đặt quanh 28% chiều cao khối bọc — ước lượng bằng khoảng giữa
+   section Tin tức (section Tin tức và Dịch vụ cao xấp xỉ nhau nên 28% của cả
+   khối bọc rơi vào khoảng nửa dưới của riêng Tin tức). Có thể cần chỉnh lại
+   theo ảnh chụp thật.
+   ===================================================================== */
+.section--wave-cut{position:relative; isolation:isolate;}
+.section--wave-cut>.container{position:relative; z-index:1;}
+/* Đẩy điểm bắt đầu vùng trắng lên ~38% chiều cao khối Tin tức — rơi vào khoảng
+   giữa ảnh tin tức (title nhỏ + nửa trên ảnh vẫn nền xám). */
+.wave-cutoff{position:absolute; left:0; right:0; top:calc(38% - 65px); bottom:0; z-index:0; display:flex; flex-direction:column; pointer-events:none;}
+/* tỉ lệ chiều cao/rộng ~18% dựa theo Vector 3 tham khảo (2039 × 367.92px) */
+.wave-cutoff svg{display:block; width:100%; aspect-ratio:2039/367.92; max-height:220px; flex:none;}
+.wave-cutoff path{fill:var(--bg-surface);}
+.wave-cutoff__fill{flex:1 1 auto; background:var(--bg-surface); margin-top:-1px;}
+@media (max-width:640px){ .wave-cutoff{top:calc(30% - 65px);} }

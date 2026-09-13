@@ -1,0 +1,163 @@
+/* =====================================================================
+   NAWARUCO — DESIGN TOKENS
+   Công ty Cấp nước sạch Nông thôn NAWARUCO
+   Nguồn: logo thương hiệu (giọt nước xanh dương, lá xanh lá, chữ navy)
+           + tham khảo bố cục bwaco.com.vn
+   Cách dùng: nhúng file này TRƯỚC components.css trong <head>.
+   ===================================================================== */
+
+:root{
+  /* ---------- Primary — xanh nước ----------
+     Cập nhật 2026-09-08: lấy đúng #00649F từ file logo chính thức
+     (design-system/brand/logo-wave.svg). Các bậc còn lại suy ra bằng cách giữ
+     nguyên tông màu và độ tươi, chỉ đổi độ sáng — pha với trắng sẽ ra màu xám. */
+  --c-primary-900:#003A5C;
+  --c-primary-700:#005080;
+  --c-primary-600:#00649F; /* màu thương hiệu chính */
+  --c-primary-500:#4494C4; /* số bước lớn .card-service .num — 3.34:1 trên nền trắng (chữ lớn cần 3:1) */
+  --c-primary-400:#51A5D6;
+  --c-primary-100:#CBE6F6;
+  --c-primary-50:#EFF6FB;
+
+  /* ---------- Accent — xanh lá (từ logo chính thức: #00AB38) ---------- */
+  --c-accent-800:#00571D; /* hover của nút accent — xem ghi chú tương phản bên dưới */
+  --c-accent-700:#007A28;
+  --c-accent-600:#00AB38;
+  --c-accent-300:#7BD599;
+  --c-accent-100:#DEF7E6;
+  /* Bản kênh RGB, dùng khi cần pha độ trong suốt: rgb(var(--c-accent-600-rgb) / .45).
+     Phải khớp với mã hex ngay trên — đổi hex thì đổi cả hai dòng. */
+  --c-accent-600-rgb:0 171 56;
+  --c-accent-300-rgb:123 213 153;
+  --c-primary-400-rgb:81 165 214;
+
+  /* ---------- Neutral — trung tính thiên xanh (không dùng xám thuần) ---------- */
+  --c-neutral-950:#0E1B26;
+  --c-neutral-800:#1E2E3B;
+  --c-neutral-600:#51697A;
+  /* viền ô nhập liệu — chốt theo yêu cầu khách: đậm hơn nền trắng của khung
+     nội dung chính 15% (không theo ngưỡng WCAG nữa). #CFDBE2 giữ đúng tông
+     xanh của thang --c-neutral-* (không dùng xám thuần), ở độ sáng tương ứng
+     85% — tương phản trên trắng chỉ 1.41:1, dưới mức 3:1 mà WCAG 1.4.11 yêu
+     cầu cho viền thành phần giao diện. Đã báo lại 2026-09-09 trước khi áp
+     dụng; xem GAPS.md mục A7 để biết đây là quyết định có chủ đích, không
+     phải bỏ sót. */
+  --c-neutral-500:#CFDBE2;
+  --c-neutral-400:#8FA3B0;
+  --c-neutral-300:#CBD8E0;
+  --c-neutral-200:#DFE8ED;
+  --c-neutral-100:#F0F5F8;
+  --c-neutral-0:#FFFFFF;
+
+  /* ---------- Ngữ nghĩa (trạng thái vận hành cấp nước) ---------- */
+  --c-success:#007A28;      /* cấp nước bình thường — dùng bậc 700 để chữ trên nền nhạt đạt 4.5:1 */
+  --c-success-bg:#DEF7E6;
+  --c-warning:#975D0C;      /* cảnh báo áp lực yếu — đủ 4.5:1 trên nền --c-warning-bg */
+  --c-warning-bg:#FBF0DD;
+  --c-danger:#B23A2E;       /* sự cố / tạm ngừng cấp nước */
+  --c-danger-bg:#FBE7E4;
+  --c-info:#00649F;         /* thông báo chung */
+  --c-info-bg:#EFF6FB;
+
+  /* ---------- Vai trò bề mặt (map sang theme sáng/tối bên dưới) ---------- */
+  --bg-page:var(--c-neutral-100);
+  --bg-surface:var(--c-neutral-0);
+  --bg-surface-raised:var(--c-neutral-0);
+  --bg-sunken:var(--c-neutral-100);
+  --bg-tint:var(--c-primary-50);
+  --border-default:var(--c-neutral-200);  /* viền thẻ/bảng — đồ hoạ trang trí, không thuộc diện 1.4.11 */
+  --border-strong:var(--c-neutral-300);
+  /* Viền của thành phần nhập liệu là thành phần giao diện, WCAG 1.4.11 buộc ≥ 3:1.
+     --border-strong (#CBD8E0) chỉ đạt 1.45:1 nên KHÔNG dùng cho input/select/textarea. */
+  --border-input:var(--c-neutral-500);
+  --text-primary:var(--c-neutral-950);
+  --text-secondary:var(--c-neutral-600);
+  --text-on-brand:#FFFFFF;
+  --text-link:var(--c-primary-700);
+  --brand:var(--c-primary-600);
+  --brand-strong:var(--c-primary-900);
+  --shadow-color:220 40% 20%;
+
+  /* ---------- Typography ---------- */
+  /* Display: Montserrat — chữ lớn, tiêu đề, wordmark. Hình học, chắc chắn,
+     có bộ dấu tiếng Việt đầy đủ. Chỉ nạp 600/700/800. */
+  --font-display:'Montserrat', 'Segoe UI', system-ui, sans-serif;
+  /* Body: Inter — toàn bộ nội dung, form, bảng biểu */
+  --font-body:'Inter', 'Segoe UI', system-ui, sans-serif;
+  /* Số liệu: cũng là Inter. Canh cột bằng font-variant-numeric:tabular-nums
+     khai báo kèm ở chỗ dùng, không đổi sang font monospace. */
+  --font-numeric:var(--font-body);
+  /* Chỉ còn dành cho <code> trong bài viết — không nạp webfont cho việc này */
+  --font-mono:'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+
+  /* Type scale */
+  /* --fs-base = 1rem (16px), không phải 15px như bản cũ: quy tắc UX chung
+     "tối thiểu 16px cho chữ nội dung trên di động" — 15px không đạt.
+     --fs-sm (13px) không đổi: nó chỉ dùng cho nhãn/nút/breadcrumb/bảng —
+     chữ ngắn, không phải văn bản đọc dài — nên không thuộc diện quy tắc này. */
+  --fs-xs:.75rem;   --fs-sm:.8125rem; --fs-base:1rem; --fs-md:1.0625rem;
+  --fs-lg:1.25rem;  --fs-xl:1.625rem; --fs-2xl:2.0625rem; --fs-3xl:2.75rem;
+
+  /* ---------- Khoảng cách giữa các box thông tin và các module ----------
+     Chốt 2026-09-07: 20px. Không có bậc 20px trong thang --sp-* (16 → 24),
+     nên đây là token theo VAI TRÒ, dùng cho mọi gap giữa thẻ/box/module.
+     Sửa một chỗ này là đổi toàn site — đừng viết 20px rải rác. */
+  --gap-box:1.25rem;
+
+  /* ---------- Bề rộng nội dung chính ----------
+     Chốt: 1280px. .container và phần đệm ngang của topbar/thanh chính
+     (site.css) đều phải đọc token này — sửa một chỗ là đổi toàn site,
+     không viết lại số 1280 ở nơi khác. */
+  --container-max:80rem;
+
+  /* ---------- Spacing — nhịp 8px ---------- */
+  --sp-1:.25rem; --sp-2:.5rem; --sp-3:.75rem; --sp-4:1rem; --sp-5:1.5rem;
+  --sp-6:2rem; --sp-7:2.75rem; --sp-8:3.5rem; --sp-9:4.5rem;
+
+  /* Chiều cao thanh .bottom-nav (mobile ≤760px, xem components.css) --
+     hằng số cố định (không đo bằng JS như --header-h) vì component này
+     không đổi chiều cao theo nội dung trang. Dùng chung ở cả .to-top
+     (nâng nút lên khỏi thanh) và body (chừa khoảng trống cuối trang) nên
+     đặt thành token thay vì lặp số 64px ở nhiều chỗ. Yêu cầu khách
+     2026-09-11 (bottom nav 5 mục: Trang chủ/Dịch vụ/Thanh toán/CSKH/Liên hệ). */
+  --bottomnav-h:64px;
+
+  /* ---------- Radius / Shadow / Easing ---------- */
+  --radius-sm:6px; --radius-md:10px; --radius-lg:16px; --radius-pill:999px;
+  --shadow-sm:0 1px 2px hsl(var(--shadow-color)/.08);
+  --shadow-md:0 6px 20px -6px hsl(var(--shadow-color)/.18);
+  --shadow-lg:0 16px 40px -12px hsl(var(--shadow-color)/.28);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ---------- Chỉ giao diện sáng (quyết định 2026-09-07) ----------
+   Sản phẩm chỉ dùng light mode. Hai khối theme tối trước đây đã gỡ bỏ.
+   `color-scheme:light` giữ cho input/select/scrollbar không bị trình duyệt tự đảo
+   màu khi máy người dùng đang bật chế độ tối của hệ điều hành.                    */
+:root{ color-scheme: light; }
+
+/* ---------- Base reset dùng chung mọi trang ---------- */
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; background:var(--bg-page); color:var(--text-primary);
+  font-family:var(--font-body); font-size:var(--fs-base); line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+/* text-wrap:pretty — chỉ tránh chữ mồ côi ở dòng cuối, vẫn dùng hết bề rộng dòng.
+   Trước đây dùng `balance`: nó chia đều độ dài các dòng nên tiêu đề ngắt xuống
+   dòng rất sớm (đo được: tiêu đề bài nổi bật chỉ dùng 56% bề rộng rồi xuống dòng).
+   `balance` chỉ hợp với tiêu đề ngắn căn giữa — xem danh sách ngoại lệ trong
+   components.css. Trình duyệt chưa hỗ trợ `pretty` sẽ ngắt dòng thường, cũng
+   dùng hết bề rộng, nên không có gì hỏng. */
+h1,h2,h3,h4{font-family:var(--font-display); color:var(--text-primary); margin:0; text-wrap:pretty; font-weight:700;}
+p{margin:0;}
+a{color:var(--text-link);}
+code,.mono{font-family:var(--font-mono);}
+::selection{background:var(--c-primary-100); color:var(--c-primary-900);}
+:focus-visible{outline:2px solid var(--brand); outline-offset:2px; border-radius:4px;}
+img{max-width:100%; display:block;}
+.container{max-width:var(--container-max); margin:0 auto; padding:0 var(--sp-6);}
+@media (max-width:640px){ .container{padding:0 var(--sp-4);} }
+
+@media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important;} }

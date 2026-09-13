@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="350" viewBox="0 0 1200 350"><rect width="1200" height="350" rx="20" fill="#EEF6FB"/><g font-family="Inter, Arial, sans-serif"><g transform="translate(152,90)" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 45v-5a28 28 0 0 1 56 0v5" fill="none" stroke="#1B6FA8"/>
+<rect x="14" y="40" width="16" height="27" rx="7" fill="#CFE9F7" stroke="#1B6FA8"/>
+<rect x="66" y="40" width="16" height="27" rx="7" fill="#CFE9F7" stroke="#1B6FA8"/>
+<path d="M74 68v3a10 10 0 0 1-10 10H53" fill="none" stroke="#1B6FA8"/>
+<rect x="43" y="76" width="15" height="8" rx="4" fill="#1B6FA8" stroke="none"/>
+<path d="M39 35h19a6 6 0 0 1 6 6v12a6 6 0 0 1-6 6H47l-9 7v-9a6 6 0 0 1-5-6V41a6 6 0 0 1 6-6Z" fill="#E3F5E7" stroke="#2E8B47"/>
+<path d="M42 45h13m-13 7h8" stroke="#2E8B47"/></g><text x="200" y="229" text-anchor="middle" fill="#0B3C5D" font-size="19" font-weight="700">Hỗ trợ trực tuyến</text><text x="200" y="263" text-anchor="middle" fill="#51697A" font-size="15">Tai nghe + hội thoại</text><g transform="translate(552,90)" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 12h39a6 6 0 0 1 6 6v58l-8-5-8 5-8-5-8 5-8-5-11 5V18a6 6 0 0 1 6-6Z" fill="#CFE9F7" stroke="#1B6FA8"/>
+<path d="M29 27h25M29 38h18M29 49h12" stroke="#1B6FA8"/>
+<circle cx="64" cy="61" r="17" fill="#E3F5E7" stroke="#2E8B47"/>
+<path d="m77 74 9 10" stroke="#2E8B47" stroke-width="6"/>
+</g><text x="600" y="229" text-anchor="middle" fill="#0B3C5D" font-size="19" font-weight="700">Tra cứu hoá đơn điện tử</text><text x="600" y="263" text-anchor="middle" fill="#51697A" font-size="15">Hoá đơn + kính lúp</text><g transform="translate(952,90)" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="22" width="70" height="49" rx="9" fill="#CFE9F7" stroke="#1B6FA8"/>
+<path d="M14 36h66" stroke="#1B6FA8" stroke-width="9"/>
+<path d="M24 55h14" stroke="#1B6FA8"/>
+<circle cx="69" cy="69" r="18" fill="#E3F5E7" stroke="#2E8B47"/>
+<path d="m60 69 6 6 12-13" fill="none" stroke="#2E8B47"/></g><text x="1000" y="229" text-anchor="middle" fill="#0B3C5D" font-size="19" font-weight="700">Thanh toán trực tuyến</text><text x="1000" y="263" text-anchor="middle" fill="#51697A" font-size="15">Thẻ thanh toán + xác nhận</text></g></svg>

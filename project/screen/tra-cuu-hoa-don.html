@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Tra cứu hoá đơn điện tử — NAWARUCO</title>
+<meta name="description" content="Chuyển sang cổng tra cứu hoá đơn điện tử của NAWARUCO.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css?v=20260911-6">
+<link rel="stylesheet" href="../design-system/components.css?v=20260911-8">
+<link rel="stylesheet" href="site.css?v=bottomnav-1">
+<!--
+  NAWARUCO — bản dựng giao diện, 2026-09-07. Đặc tả: design-system/page-specs.md
+  Header, footer và sprite icon giống nhau trên mọi trang (lên WordPress thành
+  header.php / footer.php / template-parts/icons.php). Ảnh để khung chờ có ghi
+  kích thước; số liệu chưa có nguồn để [cần ...] — không điền số minh hoạ.
+-->
+</head>
+<body id="top">
+  <div id="nwrc-icons" data-include="partials/icons.html"></div>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div id="nwrc-header" data-include="partials/header.html" data-nav="thanh-toan"></div>
+
+<main id="main">
+
+  <div data-include="page-banner" data-image="images/page-banners/thanh-toan-v2.jpg" data-title="Tra cứu hoá đơn điện tử" data-desc="Chuyển sang cổng tra cứu hoá đơn điện tử của NAWARUCO." data-crumbs="Trang chủ|index.html;Thanh toán|thanh-toan.html;Tra cứu hoá đơn|"></div>
+
+  <section class="section">
+    <div class="container">
+      <div class="redirect-box">
+        <div class="spinner" role="status" aria-label="Đang chuyển trang"></div>
+        <h2>Đang chuyển sang cổng tra cứu hoá đơn điện tử</h2>
+        <p>Quý khách đang rời website chính thức của NAWARUCO để sang hệ thống bên dưới. Trang sẽ tự chuyển sau 3 giây.</p>
+        <p class="dest"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-bill"></use></svg><span>{{URL_HOA_DON}}</span></p>
+        <div class="form-actions form-actions--center">
+          <a class="btn btn-primary" id="go" href="{{URL_HOA_DON}}">Nhấn vào đây nếu không tự chuyển</a>
+          <a class="btn btn-secondary" href="index.html">Quay lại</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  /* Chỉ chuyển khi đã có URL thật — placeholder thì đứng yên để người dùng không
+     bị đẩy sang một địa chỉ không tồn tại. */
+  (function () {
+    var url = document.getElementById('go').getAttribute('href');
+    if (url && url.indexOf('{{') !== 0) { setTimeout(function () { window.location.href = url; }, 3000); }
+  })();
+  </script>
+
+</main>
+
+<div id="nwrc-footer" data-include="partials/footer.html"></div>
+<div id="nwrc-bottom-nav" data-include="partials/bottom-nav.html" data-nav="thanh-toan"></div>
+
+<script src="assets/js/include-partials.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Phản ánh sự cố cấp nước — NAWARUCO</title>
+<meta name="description" content="Gửi phản ánh mất nước, nước đục, vỡ ống, áp lực yếu hoặc đồng hồ nước hỏng.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css?v=20260911-6">
+<link rel="stylesheet" href="../design-system/components.css?v=20260911-8">
+<link rel="stylesheet" href="site.css?v=bottomnav-1">
+<!--
+  NAWARUCO — bản dựng giao diện, 2026-09-07. Đặc tả: design-system/page-specs.md
+  Header, footer và sprite icon giống nhau trên mọi trang (lên WordPress thành
+  header.php / footer.php / template-parts/icons.php). Ảnh để khung chờ có ghi
+  kích thước; số liệu chưa có nguồn để [cần ...] — không điền số minh hoạ.
+-->
+</head>
+<body id="top">
+  <div id="nwrc-icons" data-include="partials/icons.html"></div>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div id="nwrc-header" data-include="partials/header.html" data-nav="ho-tro-khach-hang"></div>
+
+<main id="main">
+
+  <div data-include="page-banner" data-image="images/page-banners/bao-tri-v2.jpg" data-title="Phản ánh sự cố cấp nước" data-desc="Tiếp nhận 24/7. Sự cố lớn ảnh hưởng cả khu vực nên gọi tổng đài để xử lý nhanh hơn." data-crumbs="Trang chủ|index.html;Hỗ trợ khách hàng|ho-tro-khach-hang.html;Phản ánh sự cố|"></div>
+
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div class="panel">
+          <div class="alert alert-danger">
+        <svg class="icon icon-md" aria-hidden="true"><use href="#ico-alert"></use></svg>
+        <div><strong>Mất nước cả khu vực hoặc vỡ ống lớn</strong><p>Gọi ngay tổng đài <a href="tel:19006xxx">1900 6xxx</a> thay vì gửi form — trực ban xử lý theo cuộc gọi nhanh hơn.</p></div>
+      </div>
+
+          <h2 class="after-block">Nội dung phản ánh</h2>
+          <p class="form-note">Các ô có dấu <abbr title="bắt buộc">*</abbr> là bắt buộc.</p>
+
+          <form class="form-grid after-note" action="#" method="post" novalidate>
+            <div class="field">
+              <label for="pa-ten">Họ tên <abbr title="bắt buộc">*</abbr></label>
+              <input class="input" type="text" id="pa-ten" name="ten" required autocomplete="name" placeholder="Nguyễn Văn A">
+            </div>
+            <div class="field">
+              <label for="pa-dt">Số điện thoại <abbr title="bắt buộc">*</abbr></label>
+              <input class="input" type="tel" id="pa-dt" name="dien-thoai" required autocomplete="tel"
+                     placeholder="09xx xxx xxx" aria-describedby="pa-dt-hint">
+              <span class="hint" id="pa-dt-hint">Nhân viên kỹ thuật sẽ gọi số này khi đến kiểm tra.</span>
+            </div>
+            <div class="field field-full">
+              <label for="pa-dia-chi">Địa chỉ xảy ra sự cố <abbr title="bắt buộc">*</abbr></label>
+              <input class="input" type="text" id="pa-dia-chi" name="dia-chi" required
+                     placeholder="Số nhà, thôn, xã" aria-describedby="pa-dc-hint">
+              <span class="hint" id="pa-dc-hint">Càng cụ thể càng tìm nhanh. Nếu là sự cố ngoài đường, ghi mốc dễ nhận biết gần nhất.</span>
+            </div>
+            <div class="field">
+              <label for="pa-loai">Loại sự cố <abbr title="bắt buộc">*</abbr></label>
+              <select class="select" id="pa-loai" name="loai" required>
+                <option value="">— Chọn loại sự cố —</option>
+                <option>Mất nước</option>
+                <option>Nước đục, có mùi lạ</option>
+                <option>Vỡ ống, rò rỉ</option>
+                <option>Áp lực nước yếu</option>
+                <option>Đồng hồ nước hỏng, không quay</option>
+                <option>Khác</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="pa-thoi-diem">Sự cố bắt đầu từ khi nào</label>
+              <input class="input" type="text" id="pa-thoi-diem" name="thoi-diem" placeholder="VD: sáng nay, từ 6h">
+              <span class="hint">Ghi theo cách quý khách nhớ, không cần chính xác.</span>
+            </div>
+            <div class="field field-full">
+              <label for="pa-mo-ta">Mô tả chi tiết</label>
+              <textarea class="textarea" id="pa-mo-ta" name="mo-ta" rows="4"
+                        placeholder="Nước chảy yếu từ hôm qua, đến sáng nay thì mất hẳn. Các nhà xung quanh vẫn có nước."></textarea>
+            </div>
+            <div class="field field-full">
+              <label for="pa-anh">Ảnh đính kèm</label>
+              <label class="file-drop" for="pa-anh">
+                <svg class="icon icon-md" aria-hidden="true"><use href="#ico-clipboard"></use></svg>
+                <span>Bấm để chọn ảnh, hoặc kéo ảnh vào đây</span>
+                <span class="hint">JPG / PNG, tối đa 5 MB mỗi ảnh. Ảnh chỗ rò rỉ hoặc màu nước giúp xác định nguyên nhân trước khi đến.</span>
+                <input type="file" id="pa-anh" name="anh" accept="image/*" multiple>
+              </label>
+            </div>
+            <div class="field-full">
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Gửi phản ánh</button>
+                <a class="btn btn-accent" href="tel:19006xxx">Gọi 1900 6xxx</a>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <aside>
+          <div class="panel panel--tint">
+            <h3>Trước khi gửi phản ánh mất nước</h3>
+            <ul class="check-list">
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Xem <a href="tin-tuc.html#thong-bao">thông báo lịch cấp nước</a> — có thể khu vực đang tạm ngừng theo kế hoạch.</span></li>
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Kiểm tra van trước đồng hồ đã mở hết chưa.</span></li>
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><span>Hỏi một nhà lân cận: chỉ nhà quý khách mất nước thì thường là đường ống trong nhà.</span></li>
+            </ul>
+          </div>
+          <div class="panel after-block">
+            <h3>Việc liên quan</h3>
+            <ul class="info-list">
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-bill"></use></svg><div><span class="lbl">Nước dùng tăng bất thường</span><a href="bao-chi-so.html">Báo chỉ số đồng hồ</a></div></li>
+              <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-shield"></use></svg><div><span class="lbl">Lo về chất lượng nước</span><a href="chat-luong-nuoc.html">Kết quả kiểm nghiệm</a></div></li>
+            </ul>
+          </div>
+                  <div data-include="widget-promo" data-href="dich-vu-sua-chua.html" data-img="images/dich-vu-sua-chua-bao-tri.jpg" data-img-w="1680" data-img-h="640" data-alt="Kỹ thuật viên dùng cờ lê sửa chữa đồng hồ nước ngoài trời." data-cta="Sửa chữa & bảo trì" data-after-block="true"></div>
+</aside>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="nwrc-footer" data-include="partials/footer.html"></div>
+<div id="nwrc-bottom-nav" data-include="partials/bottom-nav.html" data-nav="ho-tro-khach-hang"></div>
+
+<script src="assets/js/include-partials.js"></script>
+</body>
+</html>

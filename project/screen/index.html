@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Công ty Nước sạch Nông thôn Nam Định — NAWARUCO</title>
+<meta name="description" content="Tra cứu tiền nước, thanh toán trực tuyến, lịch tạm ngừng cấp nước và đăng ký lắp đặt đồng hồ nước tại Nam Định.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css?v=20260911-6">
+<link rel="stylesheet" href="../design-system/components.css?v=20260911-8">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="home.css?v=mobile-slider-3x4">
+<!--
+  NAWARUCO — bản dựng giao diện, 2026-09-07. Đặc tả: design-system/page-specs.md
+  Header, footer và sprite icon giống nhau trên mọi trang (lên WordPress thành
+  header.php / footer.php / template-parts/icons.php). Ảnh để khung chờ có ghi
+  kích thước; số liệu chưa có nguồn để [cần ...] — không điền số minh hoạ.
+-->
+<script>
+/* Bật hiệu ứng .reveal chỉ khi JS thật sự chạy được — gắn sớm nhất có thể,
+   ngay trong phần khai báo đầu trang, để tránh chớp nội dung: phần tử .reveal
+   chỉ ẩn khi html đã có sẵn .js-reveal, nên không có JS thì .reveal không bao
+   giờ bị ẩn. Lên WordPress: giữ nguyên dòng này trong header.php, trước chỗ
+   đóng phần khai báo đầu trang.
+   CẢNH BÁO: không được viết liền hai ký tự đóng thẻ head trong comment này —
+   một số dev server (vd. Five Server) chèn script live-reload bằng cách dò
+   chuỗi chữ đó trong toàn bộ mã nguồn, không phân biệt code thật hay chữ
+   trong comment, nên sẽ chèn nhầm vào giữa đoạn này và làm lộ code ra ngoài
+   trang. */
+document.documentElement.classList.add('js-reveal');
+</script>
+</head>
+<body id="top">
+  <div id="nwrc-icons" data-include="partials/icons.html"></div>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div id="nwrc-header" data-include="partials/header.html" data-nav="home"></div>
+
+<main id="main">
+
+
+  <h1 class="sr-only">Công ty Nước sạch Nông thôn Nam Định — nước sạch cho mọi nhà nông thôn</h1>
+
+  <!-- ============ 1. BANNER: BĂNG ẢNH 3 SLIDE ============ -->
+  <section class="hero-slider" id="hero" aria-roledescription="băng ảnh" aria-label="Ảnh giới thiệu công ty">
+    <figure class="slide" role="group" aria-roledescription="slide" aria-label="1 / 3" aria-hidden="false">
+      <picture>
+        <source media="(max-width:760px)" srcset="images/mobile/banner-1-gia-dinh-mobile.jpg">
+        <img src="images/banner-1-gia-dinh.jpg" width="3000" height="1000" alt="Nước sạch hôm nay, vững bền cuộc sống mai sau — NAWARUCO mang nguồn nước an toàn, trong lành đến từng gia đình nông thôn. Ảnh: gia đình ba thế hệ uống nước bên hiên nhà." fetchpriority="high">
+      </picture>
+    </figure>
+    <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 / 3" aria-hidden="true">
+      <picture>
+        <source media="(max-width:760px)" srcset="images/mobile/banner-2-tuong-lai-mobile.jpg">
+        <img src="images/banner-2-tuong-lai.jpg" width="2400" height="800" alt="Nguồn nước trong lành, ươm mầm tương lai — Nước sạch bảo vệ sức khoẻ trẻ em và kiến tạo môi trường sống an toàn, tươi sáng. Ảnh: hai em nhỏ rửa tay bên vòi nước." loading="lazy">
+      </picture>
+    </figure>
+    <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 / 3" aria-hidden="true">
+      <picture>
+        <source media="(max-width:760px)" srcset="images/mobile/banner-3-van-hanh-mobile.jpg">
+        <img src="images/banner-3-van-hanh.jpg" width="3000" height="1000" alt="Vận hành tận tâm, cấp nước an toàn — Hệ thống được giám sát thường xuyên, bảo đảm nguồn nước ổn định và đạt chất lượng. Ảnh: kỹ thuật viên kiểm tra thiết bị tại trạm cấp nước." loading="lazy">
+      </picture>
+    </figure>
+    <div class="hero-controls">
+      <button type="button" class="hero-arrow hero-arrow--prev" data-dir="-1" aria-label="Xem ảnh trước">
+        <svg class="icon icon-md" aria-hidden="true"><use href="#ico-left"></use></svg>
+      </button>
+      <div class="hero-dots" role="group" aria-label="Chọn ảnh">
+        <button type="button" data-slide="0" aria-current="true" aria-label="Xem ảnh 1 trong 3"></button>
+        <button type="button" data-slide="1" aria-current="false" aria-label="Xem ảnh 2 trong 3"></button>
+        <button type="button" data-slide="2" aria-current="false" aria-label="Xem ảnh 3 trong 3"></button>
+      </div>
+      <button type="button" class="hero-arrow hero-arrow--next" data-dir="1" aria-label="Xem ảnh sau">
+        <svg class="icon icon-md" aria-hidden="true"><use href="#ico-right"></use></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ 2. BA KHỐI HỖ TRỢ ============ -->
+  <section class="section" aria-labelledby="support-title">
+    <h2 class="sr-only" id="support-title">Hỗ trợ khách hàng</h2>
+    <div class="container">
+      <div class="support-3 reveal-group">
+
+        <div class="support reveal">
+          <p class="hotline"><span class="lbl">Hotline</span><a href="tel:19006xxx">1900 6xxx</a></p>
+          <span class="ico" aria-hidden="true"><img src="images/support-icons-3d/support.png" width="112" height="112" alt="" loading="lazy"></span>
+          <h3>Hỗ trợ trực tuyến</h3>
+          <p>Tư vấn thủ tục lắp mới đồng hồ nước, đăng ký sửa chữa và nâng dời, tra cứu tiến độ hồ sơ đang xử lý.</p>
+          <a class="go" href="ho-tro-khach-hang.html">Xem hướng dẫn <svg class="icon icon-sm" aria-hidden="true"><use href="#ico-right"></use></svg></a>
+        </div>
+
+        <div class="support reveal">
+          <span class="ico" aria-hidden="true"><img src="images/support-icons-3d/invoice-search.png" width="112" height="112" alt="" loading="lazy"></span>
+          <h3>Tra cứu hoá đơn điện tử</h3>
+          <p>Quý khách tra cứu tiền nước và lịch sử sử dụng nước hằng tháng bằng mã khách hàng in trên hoá đơn.</p>
+          <a class="go link-external" href="tra-cuu-hoa-don.html">Tra cứu tiền nước <span class="out">(mở cổng CSKH)</span></a>
+        </div>
+
+        <div class="support reveal">
+          <span class="ico" aria-hidden="true"><img src="images/support-icons-3d/payment.png" width="112" height="112" alt="" loading="lazy"></span>
+          <h3>Thanh toán trực tuyến</h3>
+          <p>Thanh toán tiền nước qua cổng thanh toán điện tử, không phải đến quầy giao dịch của công ty.</p>
+          <a class="go link-external" href="thanh-toan-truc-tuyen.html">Thanh toán ngay <span class="out">(mở cổng CSKH)</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. TIN TỨC — SỰ KIỆN ============ -->
+  <section class="section section--wave-cut" aria-labelledby="news-title">
+    <!-- Đường sóng đẩy lên khoảng giữa ảnh tin tức: trên sóng nền xám (mặc định),
+         dưới sóng nền trắng, nối liền sang khối Dịch vụ bên dưới -->
+    <div class="wave-cutoff" aria-hidden="true">
+      <svg viewBox="0 0 1440 260" preserveAspectRatio="none" focusable="false">
+        <path d="M0,130 C240,230 480,20 720,110 C960,230 1200,20 1440,130 L1440,260 L0,260 Z"/>
+      </svg>
+      <div class="wave-cutoff__fill"></div>
+    </div>
+    <div class="container">
+      <div class="sec-title reveal">
+        <h2 id="news-title">Tin tức — Sự kiện</h2>
+        <span class="drops drops--wave" aria-hidden="true">
+          <svg width="100" height="8" viewBox="0 0 100 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 5.10702C0 5.10702 13.655 1.99575 28.7721 2.46388C37.292 2.73036 46.0209 5.23666 53.6838 6.22334C63.2985 7.46929 71.0335 7.2028 72.4955 7.13798C77.1696 6.93633 78.5956 6.42499 78.5956 6.42499C78.5956 6.42499 64.7677 6.72748 54.0943 3.68103C43.421 0.634573 29.0817 -1.30278 16.1685 1.03788C3.25531 3.37853 0 5.10702 0 5.10702Z" fill="#00649F"/>
+            <path d="M48.3976 0.64172C48.3976 0.64172 56.8744 1.37632 62.6504 3.03278C81.9878 8.57834 100 1.25389 100 1.25389C100 1.25389 83.6082 4.8981 72.6972 2.85993C58.3508 0.180781 48.3976 0.64172 48.3976 0.64172Z" fill="#00AB38"/>
+          </svg>
+        </span>
+      </div>
+
+      <!-- Ảnh tin tức bên dưới lấy tạm từ outputs/hero-images/ (đã cắt vừa 16:9) để
+           demo bố cục — không phải ảnh thật của từng sự kiện. Thay bằng ảnh phóng
+           viên chụp thật khi có bài viết chính thức, xem outputs/hero-images/. -->
+      <div class="news-3 reveal-group">
+        <article class="card card-news reveal">
+          <div class="img-ph img-ph--photo">
+            <img src="images/news-lap-dat-duong-ong.jpg" width="800" height="450" loading="lazy" alt="Công nhân lắp đặt tuyến ống cấp nước mới ngoài công trường.">
+          </div>
+          <div class="body">
+            <span class="date">03/09/2026</span>
+            <h3>
+              <a href="tin-tuc-chi-tiet.html">Hoàn thành tuyến ống cấp nước cho 420 hộ dân xã Giao Thiện</a>
+            </h3>
+            <p>Tuyến ống dài 6,2 km được đưa vào vận hành từ đầu tháng 9, nâng tỷ lệ hộ dân dùng nước sạch của xã lên mức […]</p>
+            <a class="more" href="tin-tuc-chi-tiet.html">Xem chi tiết <svg class="icon icon-sm" aria-hidden="true"><use href="#ico-right"></use></svg></a>
+          </div>
+        </article>
+
+        <article class="card card-news reveal">
+          <div class="img-ph img-ph--photo">
+            <img src="images/news-kiem-nghiem-chat-luong.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên kiểm nghiệm chất lượng nước tại phòng thí nghiệm.">
+          </div>
+          <div class="body">
+            <span class="date">28/08/2026</span>
+            <h3>
+              <a href="tin-tuc-chi-tiet.html">Công bố kết quả xét nghiệm chất lượng nước quý III năm 2026</a>
+            </h3>
+            <p>Các chỉ tiêu lý hoá và vi sinh tại [số] trạm cấp nước đều nằm trong giới hạn cho phép theo quy chuẩn hiện hành […]</p>
+            <a class="more" href="tin-tuc-chi-tiet.html">Xem chi tiết <svg class="icon icon-sm" aria-hidden="true"><use href="#ico-right"></use></svg></a>
+          </div>
+        </article>
+
+        <article class="card card-news reveal">
+          <div class="img-ph img-ph--photo">
+            <img src="images/news-sua-chua-duong-ong.jpg" width="800" height="450" loading="lazy" alt="Kỹ thuật viên sửa chữa đường ống cấp nước ngoài trời.">
+          </div>
+          <div class="body">
+            <span class="date">07/09/2026</span>
+            <h3>
+              <a href="tin-tuc-chi-tiet.html">Thông báo tạm ngừng cấp nước xã Mỹ Hà ngày 12/9/2026</a>
+            </h3>
+            <p>Để phục vụ đấu nối tuyến ống mới, công ty tạm ngừng cấp nước tại thôn Đông và thôn Đoài từ 08:00 đến 16:00 […]</p>
+            <a class="more" href="tin-tuc-chi-tiet.html">Xem chi tiết <svg class="icon icon-sm" aria-hidden="true"><use href="#ico-right"></use></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. DỊCH VỤ ============ -->
+  <section class="section section--surface" aria-labelledby="svc-title">
+    <div class="container">
+      <div class="sec-title reveal">
+        <h2 id="svc-title">Dịch vụ</h2>
+        <span class="drops drops--wave" aria-hidden="true">
+          <svg width="100" height="8" viewBox="0 0 100 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 5.10702C0 5.10702 13.655 1.99575 28.7721 2.46388C37.292 2.73036 46.0209 5.23666 53.6838 6.22334C63.2985 7.46929 71.0335 7.2028 72.4955 7.13798C77.1696 6.93633 78.5956 6.42499 78.5956 6.42499C78.5956 6.42499 64.7677 6.72748 54.0943 3.68103C43.421 0.634573 29.0817 -1.30278 16.1685 1.03788C3.25531 3.37853 0 5.10702 0 5.10702Z" fill="#00649F"/>
+            <path d="M48.3976 0.64172C48.3976 0.64172 56.8744 1.37632 62.6504 3.03278C81.9878 8.57834 100 1.25389 100 1.25389C100 1.25389 83.6082 4.8981 72.6972 2.85993C58.3508 0.180781 48.3976 0.64172 48.3976 0.64172Z" fill="#00AB38"/>
+          </svg>
+        </span>
+      </div>
+
+      <div class="svc-2 reveal-group">
+        <article class="svc reveal">
+          <div class="svc__media img-ph img-ph--photo">
+            <img src="images/dich-vu-lap-dat-dong-ho.jpg" width="1680" height="640" loading="lazy" alt="Dịch vụ lắp đặt đồng hồ nước.">
+          </div>
+          <h3>Lắp đặt</h3>
+          <ul class="check-list">
+            <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="dich-vu-lap-moi-ho-gia-dinh.html">Thủ tục lắp mới đồng hồ nước cho hộ gia đình.</a></li>
+            <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="dich-vu-cap-nuoc-du-an.html">Thủ tục xin cấp nước cho công trình, dự án.</a></li>
+            <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="dich-vu-lap-dat.html">Chi phí lắp đặt và thời gian thi công.</a></li>
+          </ul>
+        </article>
+
+        <article class="svc reveal">
+          <div class="svc__media img-ph img-ph--photo">
+            <img src="images/dich-vu-sua-chua-bao-tri.jpg" width="1680" height="640" loading="lazy" alt="Kỹ thuật viên sửa chữa và bảo trì đồng hồ nước.">
+          </div>
+          <h3>Sửa chữa</h3>
+          <ul class="check-list">
+            <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="dich-vu-kiem-tra-nuoc-bat-thuong.html">Cách kiểm tra hệ thống nước khi lượng nước dùng trong tháng bất thường.</a></li>
+            <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="phan-anh-su-co.html">Báo sự cố mất nước, nước đục, vỡ ống — tiếp nhận 24/7.</a></li>
+            <li><svg class="icon icon-md" aria-hidden="true"><use href="#ico-check"></use></svg><a href="dich-vu-sua-duong-ong-nang-doi.html">Thủ tục sửa chữa đường ống, nâng dời đồng hồ nước.</a></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  /* Băng ảnh trang chủ. Lên WordPress: assets/js/hero-slider.js
+     - Không có JS: CSS đã hiện slide đầu và ẩn hàng chấm, trang vẫn dùng được.
+     - Tôn trọng prefers-reduced-motion: không tự chạy, người dùng bấm chấm để xem.
+     - Dừng khi con trỏ hoặc bàn phím đang ở trong băng ảnh, và khi tab bị ẩn —
+       chạy tiếp trong tab nền chỉ tốn pin và dữ liệu của người dùng. */
+  (function () {
+    var root = document.getElementById('hero');
+    if (!root) return;
+    var slides = Array.prototype.slice.call(root.querySelectorAll('.slide'));
+    var dots = Array.prototype.slice.call(root.querySelectorAll('.hero-dots button'));
+    if (slides.length < 2) return;
+    var i = 0, timer = null;
+    var DELAY = 6000;
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.setAttribute('aria-hidden', k === i ? 'false' : 'true'); });
+      dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+    }
+    function play() { stop(); if (!still.matches) timer = setInterval(function () { show(i + 1); }, DELAY); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () { show(+d.getAttribute('data-slide')); play(); });
+    });
+    root.querySelectorAll('.hero-arrow').forEach(function (b) {
+      b.addEventListener('click', function () { show(i + (+b.getAttribute('data-dir'))); play(); });
+    });
+    /* Phím ← → khi tiêu điểm đang ở trong băng ảnh — người dùng bàn phím không
+       phải tab qua từng chấm mới xem được ảnh khác. */
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { show(i - 1); play(); }
+      else if (e.key === 'ArrowRight') { show(i + 1); play(); }
+    });
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', play);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', play);
+    document.addEventListener('visibilitychange', function () { document.hidden ? stop() : play(); });
+    still.addEventListener('change', play);
+
+    root.classList.add('is-ready');
+    show(0);
+    play();
+  })();
+  </script>
+
+  <script>
+  /* Hiệu ứng .reveal khi cuộn tới các khối trang chủ. Lên WordPress:
+     assets/js/reveal.js, enqueue kèm defer trên mọi trang có dùng class .reveal.
+     - Không có IntersectionObserver (trình duyệt rất cũ): bỏ qua, .reveal vẫn
+       hiện bình thường vì trạng thái ẩn chỉ áp dụng qua .js-reveal + JS này.
+     - prefers-reduced-motion: không quan sát gì cả — CSS đã tự hiện sẵn. */
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+  </script>
+
+</main>
+
+<div id="nwrc-footer" data-include="partials/footer.html"></div>
+<div id="nwrc-bottom-nav" data-include="partials/bottom-nav.html" data-nav="home"></div>
+
+<script src="assets/js/include-partials.js"></script>
+</body>
+</html>

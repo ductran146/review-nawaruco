@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Hỗ trợ khách hàng — NAWARUCO</title>
+<meta name="description" content="Báo chỉ số đồng hồ nước, thay đổi hợp đồng, chất lượng nước và hướng dẫn dùng App CSKH.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css?v=20260911-6">
+<link rel="stylesheet" href="../design-system/components.css?v=20260911-8">
+<link rel="stylesheet" href="site.css?v=bottomnav-1">
+<!--
+  NAWARUCO — bản dựng giao diện, 2026-09-07. Đặc tả: design-system/page-specs.md
+  Header, footer và sprite icon giống nhau trên mọi trang (lên WordPress thành
+  header.php / footer.php / template-parts/icons.php). Ảnh để khung chờ có ghi
+  kích thước; số liệu chưa có nguồn để [cần ...] — không điền số minh hoạ.
+-->
+</head>
+<body id="top">
+  <div id="nwrc-icons" data-include="partials/icons.html"></div>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div id="nwrc-header" data-include="partials/header.html" data-nav="ho-tro-khach-hang"></div>
+
+<main id="main">
+
+<div data-include="page-banner" data-image="images/page-banners/cham-soc-v2.jpg" data-title="Hỗ trợ khách hàng" data-desc="Những việc quý khách có thể gửi trực tiếp qua website, không phải đến trụ sở." data-crumbs="Trang chủ|index.html;Hỗ trợ khách hàng|"></div>
+  <section class="section">
+    <div class="container">
+      <div class="panel">
+      <div class="grid-3">
+        <a class="card card-quick" href="bao-chi-so.html">
+          <span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-bill"></use></svg></span>
+          <h2>Báo chỉ số đồng hồ nước</h2>
+          <p>Tự báo chỉ số khi nhân viên không tiếp cận được đồng hồ nhà quý khách.</p>
+          <span class="go">Gửi chỉ số →</span>
+        </a>
+        <a class="card card-quick" href="thay-doi-hop-dong.html">
+          <span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-doc"></use></svg></span>
+          <h2>Thay đổi hợp đồng</h2>
+          <p>Sang tên, đổi chủ hợp đồng, đổi địa chỉ nhận hoá đơn.</p>
+          <span class="go">Xem thủ tục →</span>
+        </a>
+        <a class="card card-quick" href="chat-luong-nuoc.html">
+          <span class="icon-tile" aria-hidden="true"><svg class="icon icon-md" aria-hidden="true"><use href="#ico-shield"></use></svg></span>
+          <h2>Chất lượng nước</h2>
+          <p>Chỉ tiêu theo quy chuẩn, tần suất kiểm nghiệm và kết quả gần nhất.</p>
+          <span class="go">Xem kết quả →</span>
+        </a>
+      </div>
+      <p class="form-note after-block">Cần báo sự cố mất nước, vỡ ống, nước đục? Xem dịch vụ <a href="dich-vu-sua-chua.html">Sửa chữa &amp; bảo trì</a> hoặc gọi tổng đài <a href="tel:19006xxx"><strong>1900 6xxx</strong></a>.</p>
+          </div>
+
+    </div>
+  </section>
+
+</main>
+
+<div id="nwrc-footer" data-include="partials/footer.html"></div>
+<div id="nwrc-bottom-nav" data-include="partials/bottom-nav.html" data-nav="ho-tro-khach-hang"></div>
+
+<script src="assets/js/include-partials.js"></script>
+</body>
+</html>

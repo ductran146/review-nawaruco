@@ -1,0 +1,158 @@
+[
+  {
+    "page": "gioi-thieu.html",
+    "title": "Giới thiệu công ty",
+    "image": "ha-tang-v2.jpg",
+    "reason": "Hạ tầng và phạm vi cấp nước"
+  },
+  {
+    "page": "dich-vu-cap-nuoc-du-an.html",
+    "title": "Các thủ tục xin cấp nước cho dự án",
+    "image": "ha-tang-v2.jpg",
+    "reason": "Hạ tầng và phạm vi cấp nước"
+  },
+  {
+    "page": "dich-vu.html",
+    "title": "Dịch vụ",
+    "image": "lap-dat-v2.jpg",
+    "reason": "Lắp đặt và phục vụ hộ gia đình"
+  },
+  {
+    "page": "dich-vu-lap-dat.html",
+    "title": "Lắp đặt đồng hồ nước",
+    "image": "lap-dat-v2.jpg",
+    "reason": "Lắp đặt và phục vụ hộ gia đình"
+  },
+  {
+    "page": "dich-vu-lap-moi-ho-gia-dinh.html",
+    "title": "Thủ tục lắp mới đồng hồ nước cho hộ gia đình",
+    "image": "lap-dat-v2.jpg",
+    "reason": "Lắp đặt và phục vụ hộ gia đình"
+  },
+  {
+    "page": "dich-vu-sua-chua.html",
+    "title": "Sửa chữa & bảo trì",
+    "image": "bao-tri-v2.jpg",
+    "reason": "Đường ống, bảo trì và xử lý sự cố"
+  },
+  {
+    "page": "dich-vu-ong-nhua-hdpe.html",
+    "title": "Sử dụng ống nhựa HDPE đảm bảo chất lượng",
+    "image": "bao-tri-v2.jpg",
+    "reason": "Đường ống, bảo trì và xử lý sự cố"
+  },
+  {
+    "page": "dich-vu-sua-duong-ong-nang-doi.html",
+    "title": "Thủ tục sửa chữa đường ống, nâng dời đồng hồ",
+    "image": "bao-tri-v2.jpg",
+    "reason": "Đường ống, bảo trì và xử lý sự cố"
+  },
+  {
+    "page": "phan-anh-su-co.html",
+    "title": "Phản ánh sự cố cấp nước",
+    "image": "bao-tri-v2.jpg",
+    "reason": "Đường ống, bảo trì và xử lý sự cố"
+  },
+  {
+    "page": "bao-chi-so.html",
+    "title": "Báo chỉ số đồng hồ nước",
+    "image": "dong-ho-v2.jpg",
+    "reason": "Theo dõi và kiểm tra lượng nước"
+  },
+  {
+    "page": "dich-vu-kiem-tra-nuoc-bat-thuong.html",
+    "title": "Cách kiểm tra hệ thống nước khi lượng nước dùng bất thường",
+    "image": "dong-ho-v2.jpg",
+    "reason": "Theo dõi và kiểm tra lượng nước"
+  },
+  {
+    "page": "chat-luong-nuoc.html",
+    "title": "Chất lượng nước",
+    "image": "kiem-nghiem-v2.jpg",
+    "reason": "Kiểm nghiệm chất lượng nước"
+  },
+  {
+    "page": "thanh-toan.html",
+    "title": "Thanh toán & biểu giá nước",
+    "image": "thanh-toan-v2.jpg",
+    "reason": "Giao dịch và dịch vụ trên điện thoại"
+  },
+  {
+    "page": "gia-nuoc.html",
+    "title": "Giá nước",
+    "image": "thanh-toan-v2.jpg",
+    "reason": "Giao dịch và dịch vụ trên điện thoại"
+  },
+  {
+    "page": "trach-nhiem-thanh-toan.html",
+    "title": "Trách nhiệm người thanh toán",
+    "image": "thanh-toan-v2.jpg",
+    "reason": "Giao dịch và dịch vụ trên điện thoại"
+  },
+  {
+    "page": "tra-cuu-hoa-don.html",
+    "title": "Tra cứu hoá đơn điện tử",
+    "image": "thanh-toan-v2.jpg",
+    "reason": "Giao dịch và dịch vụ trên điện thoại"
+  },
+  {
+    "page": "thanh-toan-truc-tuyen.html",
+    "title": "Thanh toán trực tuyến",
+    "image": "thanh-toan-v2.jpg",
+    "reason": "Giao dịch và dịch vụ trên điện thoại"
+  },
+  {
+    "page": "huong-dan-app.html",
+    "title": "Hướng dẫn sử dụng App CSKH",
+    "image": "thanh-toan-v2.jpg",
+    "reason": "Giao dịch và dịch vụ trên điện thoại"
+  },
+  {
+    "page": "ho-tro-khach-hang.html",
+    "title": "Hỗ trợ khách hàng",
+    "image": "cham-soc-v2.jpg",
+    "reason": "Tiếp nhận và hỗ trợ khách hàng"
+  },
+  {
+    "page": "lien-he.html",
+    "title": "Liên hệ",
+    "image": "cham-soc-v2.jpg",
+    "reason": "Tiếp nhận và hỗ trợ khách hàng"
+  },
+  {
+    "page": "thay-doi-hop-dong.html",
+    "title": "Thay đổi hợp đồng",
+    "image": "cham-soc-v2.jpg",
+    "reason": "Tiếp nhận và hỗ trợ khách hàng"
+  },
+  {
+    "page": "co-dong.html",
+    "title": "Cổ đông",
+    "image": "co-dong-v2.jpg",
+    "reason": "Quản trị, tài liệu và minh bạch thông tin"
+  },
+  {
+    "page": "co-dong-cong-bo-thong-tin.html",
+    "title": "Công bố thông tin & dữ liệu",
+    "image": "co-dong-v2.jpg",
+    "reason": "Quản trị, tài liệu và minh bạch thông tin"
+  },
+  {
+    "page": "co-dong-bao-cao-tai-chinh.html",
+    "title": "Báo cáo tài chính",
+    "image": "co-dong-v2.jpg",
+    "reason": "Quản trị, tài liệu và minh bạch thông tin"
+  },
+  {
+    "page": "co-dong-dai-hoi-dong-co-dong.html",
+    "title": "Đại hội đồng cổ đông",
+    "image": "co-dong-v2.jpg",
+    "reason": "Quản trị, tài liệu và minh bạch thông tin"
+  },
+  {
+    "page": "tin-tuc.html",
+    "title": "Tin tức & thông báo",
+    "image": "tin-tuc-v2.jpg",
+    "reason": "Hoạt động và thông tin vận hành"
+  }
+]
