@@ -202,7 +202,11 @@ function viewport() {
  }
  document.querySelectorAll('[data-width]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.width === String(widthMode))));
 }
-function sidebar(open) { $('sidebar').hidden = !open; $('toggle').setAttribute('aria-expanded', String(open)); if (!open) cancel(); }
+function sidebar(open) { $('sidebar').hidden = !open; $('toggle').setAttribute('aria-expanded', String(open)); if (!open) cancel(); setPinsVisible(open); }
+// Ẩn/hiện các ghim vị trí bình luận trên website theo trạng thái panel
+// Bình luận — đóng panel (Shift+C, nút X, hoặc chế độ Toàn màn hình) thì ẩn
+// ghim; mở lại panel thì hiện lại đúng vị trí cũ.
+function setPinsVisible(visible) { try { frame.contentDocument.querySelectorAll('[data-review-pin]').forEach(p => { p.style.display = visible ? '' : 'none'; }); } catch {} }
 $('toggle').onclick = () => sidebar($('sidebar').hidden);
 $('close').onclick = () => sidebar(false);
 // Fullwidth ẩn cả 2 panel (không cần thiết khi đang xem site tràn hết
@@ -591,9 +595,11 @@ function render() {
  document.querySelectorAll('[data-status]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.status===status)); b.innerHTML=(b.dataset.status==='open'?icon('unresolved'):icon('check'))+`${b.dataset.status==='open'?'Đang mở':'Đã giải quyết'} (${all.filter(c=>c.status===b.dataset.status).length})`;});
  $('comments').replaceChildren();
  all.filter(c=>c.status===status).forEach(c=>{
- const card=node('article',undefined,'card'), top=node('div',undefined,'card-top'), pin=node('button',String(records.indexOf(c)+1),'number'); pin.onclick=()=>focusRecord(c);card.dataset.commentId=c.id;card.classList.toggle('selected',selectedId===c.id);card.addEventListener('click',e=>{if(!e.target.closest('button,input,textarea,form'))focusRecord(c);}); if (!c.selector) { pin.textContent='—'; pin.title='Bình luận chung cho trang'; }
- top.append(pin,node('strong',c.author));
+ const card=node('article',undefined,'card'), top=node('div',undefined,'card-top'), pin=node('button','#'+(records.indexOf(c)+1),'number'); pin.onclick=()=>focusRecord(c);card.dataset.commentId=c.id;card.classList.toggle('selected',selectedId===c.id);card.addEventListener('click',e=>{if(!e.target.closest('button,input,textarea,form'))focusRecord(c);}); if (!c.selector) { pin.textContent='—'; pin.title='Bình luận chung cho trang'; }
+ const avatar=node('span',avatarLetter(c.author),'avatar');avatar.style.background=avatarColor(c.author);
+ top.append(avatar,node('strong',c.author));
  const meta=node('div',undefined,'meta');
+ meta.append(pin);
  const deviceLabel=c.device?c.device.charAt(0).toUpperCase()+c.device.slice(1):'';
  if(deviceLabel)meta.append(node('span',deviceLabel,'device-chip'));
  meta.append(document.createTextNode(new Date(c.createdAt).toLocaleDateString('vi-VN')));
@@ -642,9 +648,11 @@ function renderPins() {
  let doc; try { doc=frame.contentDocument; if(!doc?.body)return; } catch{return;}
  doc.querySelectorAll('[data-review-pin]').forEach(p=>p.remove());
  if (isMobileChromeless()) return;
+ const pinsVisible = !$('sidebar').hidden;
  records.filter(c=>c.page===page&&c.status===status&&c.selector).forEach(c=>{
- const pin=doc.createElement('button');pin.dataset.reviewPin=c.id;pin.textContent=records.indexOf(c)+1;pin.title=c.content;pin.setAttribute('aria-label',`Bình luận ${pin.textContent}: ${c.content}`);pin.style.cssText='position:fixed;z-index:2147483647;width:28px;height:28px;border:2px solid white;border-radius:50%;background:#3155df;color:white;font:600 13px system-ui;box-shadow:0 2px 8px #0003;cursor:pointer;padding:0;';
- if(c.id===selectedId){pin.style.background='#e45123';pin.style.boxShadow='0 0 0 7px #e4512333,0 2px 8px #0003';}
+ const pin=doc.createElement('button');pin.dataset.reviewPin=c.id;pin.textContent=avatarLetter(c.author);pin.title=c.content;pin.setAttribute('aria-label',`Bình luận của ${c.author}: ${c.content}`);pin.style.cssText=`position:fixed;z-index:2147483647;width:28px;height:28px;border:2px solid white;border-radius:50%;background:${avatarColor(c.author)};color:white;font:600 13px system-ui;box-shadow:0 2px 8px #0003;cursor:pointer;padding:0;`;
+ if(c.id===selectedId){pin.style.boxShadow='0 0 0 7px #e4512333,0 2px 8px #0003';}
+ if(!pinsVisible)pin.style.display='none';
  pin.onclick=e=>{e.preventDefault();e.stopPropagation();sidebar(true);focusRecord(c);};doc.body.append(pin);
  }); positionPins();
 }

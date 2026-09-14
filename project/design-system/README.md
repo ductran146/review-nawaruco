@@ -1,6 +1,6 @@
 # NAWARUCO — Design System
 
-Bộ token và component giao diện cho website Công ty Cấp nước sạch Nông thôn **NAWARUCO**. Màu lấy **đúng từ file logo chính thức** (`brand/logo-wave.svg`: xanh nước `#00649F`, xanh lá `#00AB38`) — cập nhật 2026-09-08, trước đó là màu ước lượng bằng mắt từ ảnh logo và tham khảo bố cục/mô-đun của website ngành nước [bwaco.com.vn](https://www.bwaco.com.vn/).
+Bộ token và component giao diện cho website Công ty Cổ phần Cấp nước Nông thôn Nam Định (**NAWARUCO**). Màu lấy **đúng từ file logo chính thức** (`brand/logo-wave.svg`: xanh nước `#00649F`, xanh lá `#00AB38`) — cập nhật 2026-09-08, trước đó là màu ước lượng bằng mắt từ ảnh logo và tham khảo bố cục/mô-đun của website ngành nước [bwaco.com.vn](https://www.bwaco.com.vn/).
 
 ## Cấu trúc thư mục
 

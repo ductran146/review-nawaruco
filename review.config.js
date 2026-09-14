@@ -42,6 +42,10 @@ window.REVIEW_CONFIG = {
       "title": "Cổ đông — NAWARUCO"
     },
     {
+      "path": "screen/de-nghi-di-chuyen-dong-ho.html",
+      "title": "Đề nghị di chuyển vị trí đồng hồ — NAWARUCO"
+    },
+    {
       "path": "screen/dich-vu-cap-nuoc-du-an.html",
       "title": "Thủ tục xin cấp nước cho dự án — NAWARUCO"
     },
@@ -99,7 +103,7 @@ window.REVIEW_CONFIG = {
     },
     {
       "path": "screen/index.html",
-      "title": "Công ty Nước sạch Nông thôn Nam Định — NAWARUCO"
+      "title": "Công ty Cổ phần Cấp nước Nông thôn Nam Định — NAWARUCO"
     },
     {
       "path": "screen/lien-he.html",

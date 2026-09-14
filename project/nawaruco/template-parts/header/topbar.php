@@ -12,8 +12,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="topbar">
-    <span class="brandline"><?php esc_html_e( 'Công ty Cấp nước sạch Nông thôn Nam Định', 'nawaruco' ); ?></span>
+    <span class="brandline"><?php esc_html_e( 'Công ty Cổ phần Cấp nước Nông thôn Nam Định', 'nawaruco' ); ?></span>
     <div class="topbar-tools">
+      <a class="topbar-hotline" href="tel:<?php echo esc_attr( get_theme_mod( 'nawaruco_topbar_hotline_tel', '0912345678' ) ); ?>">
+        <svg class="icon icon-sm" aria-hidden="true"><use href="#ico-phone"></use></svg>
+        <span class="topbar-hotline__label"><?php esc_html_e( 'Hotline:', 'nawaruco' ); ?></span>
+        <span class="topbar-hotline__number"><?php echo esc_html( get_theme_mod( 'nawaruco_topbar_hotline_display', '0912 345 678' ) ); ?></span>
+      </a>
       <div class="topbar-social">
         <!-- Solar không có icon thương hiệu: giữ hình chính thức của nền tảng -->
         <a href="<?php echo esc_url( get_theme_mod( 'nawaruco_facebook_url', '#' ) ); ?>" aria-label="<?php esc_attr_e( 'Trang Facebook của NAWARUCO', 'nawaruco' ); ?>">

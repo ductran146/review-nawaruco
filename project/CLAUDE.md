@@ -1,6 +1,6 @@
 # NAWARUCO — hướng dẫn cho AI agent làm việc trong repo này
 
-Website cho **Công ty Cấp nước sạch Nông thôn Nam Định**. Người dùng thật là hộ dân
+Website cho **Công ty Cổ phần Cấp nước Nông thôn Nam Định**. Người dùng thật là hộ dân
 nông thôn: máy cũ, mạng yếu, phần lớn vào bằng điện thoại, nhiều người lớn tuổi, và
 họ vào đây khi đang có việc gấp — mất nước, tra cứu hoá đơn, báo sự cố.
 

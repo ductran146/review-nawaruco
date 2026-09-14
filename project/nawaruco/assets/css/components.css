@@ -308,6 +308,20 @@ table.tariff tr:hover td{background:var(--bg-sunken);}
 /* ============ TOPBAR: tên công ty · mạng xã hội · tìm kiếm · ngôn ngữ ============ */
 .topbar .brandline{font-size:var(--fs-xs); text-transform:uppercase; letter-spacing:.06em; font-weight:600;}
 .topbar-tools{display:flex; align-items:center; gap:var(--sp-4); flex-wrap:wrap;}
+/* Hotline trên topbar (2026-09-14) — đặt trước khối social/search, dùng lại
+   đúng ico-phone như .footer-hotline. Icon 20x20 (to hơn .icon-sm 16px mặc
+   định — ghi đè riêng tại đây, không đổi .icon-sm chung vì nơi khác vẫn cần
+   giữ 16px, vd nút tìm kiếm cạnh nó). Nhãn "Hotline:" in đậm; số điện thoại
+   to + đậm hẳn lên để dễ đọc/dễ bấm gọi ngay trên một dải mảnh, dùng
+   font-numeric + tabular-nums để không lệch độ rộng ký tự giữa các số. */
+.topbar-hotline{display:flex; align-items:center; gap:6px; color:#fff; opacity:.85; text-decoration:none; white-space:nowrap;}
+.topbar-hotline:hover{opacity:1;}
+.topbar-hotline svg{flex:none; width:20px; height:20px;}
+.topbar-hotline__label{font-weight:700;}
+/* 15px không khớp bậc nào trong thang --fs-* hiện có (--fs-sm 13px / --fs-base
+   16px) nên để giá trị riêng theo đúng yêu cầu khách, không đổi token chung.
+   Yêu cầu khách 2026-09-14. */
+.topbar-hotline__number{font-family:var(--font-numeric); font-variant-numeric:tabular-nums; font-weight:700; font-size:15px;}
 .topbar-social{display:flex; gap:var(--sp-2);}
 .topbar-social a{display:flex; width:26px; height:26px; align-items:center; justify-content:center; border-radius:var(--radius-sm);}
 .topbar-social a:hover{background:rgba(255,255,255,.14); opacity:1;}

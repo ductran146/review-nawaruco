@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
       <div class="footer-brand">
         <span class="footer-logo"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo-vertical.svg' ); ?>" width="92" height="90" alt="" loading="lazy"></span>
-        <b><?php esc_html_e( 'Công ty Cấp nước sạch', 'nawaruco' ); ?><br><?php esc_html_e( 'Nông thôn Nam Định', 'nawaruco' ); ?></b>
+        <b><?php esc_html_e( 'Công ty Cổ phần Cấp nước', 'nawaruco' ); ?><br><?php esc_html_e( 'Nông thôn Nam Định', 'nawaruco' ); ?></b>
       </div>
 
       <div>
@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
 
     <div class="footer-bottom">
-      <span><?php echo esc_html( sprintf( /* translators: %s: năm hiện tại */ __( '© %s Công ty Cấp nước sạch Nông thôn Nam Định. Bảo lưu mọi quyền.', 'nawaruco' ), gmdate( 'Y' ) ) ); ?></span>
+      <span><?php echo esc_html( sprintf( /* translators: %s: năm hiện tại */ __( '© %s Công ty Cổ phần Cấp nước Nông thôn Nam Định. Bảo lưu mọi quyền.', 'nawaruco' ), gmdate( 'Y' ) ) ); ?></span>
       <span><a href="<?php echo esc_url( home_url( '/chinh-sach-bao-mat' ) ); ?>"><?php esc_html_e( 'Chính sách bảo mật', 'nawaruco' ); ?></a> · <a href="#"><?php esc_html_e( 'Sơ đồ website', 'nawaruco' ); ?></a></span>
     </div>
   </div>

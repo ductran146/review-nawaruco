@@ -130,6 +130,11 @@ Chú thích loại trang: 🟦 Thiết kế đầy đủ · 🟩 Trang chuyển 
 - Form: Họ tên, Số điện thoại, Địa chỉ sự cố (bắt buộc, chi tiết), Loại sự cố (`.select`: Vỡ ống / Mất nước / Nước đục / Áp lực yếu / Khác), Mô tả chi tiết (`.textarea`), Ảnh đính kèm (tuỳ chọn)
 - Sau khi gửi hiển thị `.badge-info` "Đã tiếp nhận – mã phản ánh #..." nếu có hệ thống mã theo dõi, hoặc `.alert-info` xác nhận đơn giản nếu chưa có backend.
 
+### 5.7 Đề nghị di chuyển vị trí đồng hồ — 🟦 `/de-nghi-di-chuyen-dong-ho`
+- Yêu cầu khách 2026-09-14, thêm sau các mục 5.1-5.6. Đã lên menu con "Hỗ trợ khách hàng" và thẻ `.card-quick` ở trang tổng hợp 5.1.
+- Hiện tại: `.empty-state` — "Nội dung đang được hoàn thiện", cập nhật khi website chính thức hoạt động (golive). Chưa có form thật.
+- Khi có nội dung: form tương tự 5.2/5.3 — Mã khách hàng, địa chỉ hiện tại, vị trí đề nghị chuyển đến, lý do, số điện thoại liên hệ.
+
 ---
 
 ## 6. Tin tức

@@ -251,6 +251,14 @@ table.tariff tr:hover td{background:var(--bg-sunken);}
 
 /* ============ CHỮ CHỈ DÀNH CHO TRÌNH ĐỌC MÀN HÌNH ============ */
 .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;}
+/* Tiện ích dùng chung: giữ 1 cụm ngắn không bao giờ xuống dòng giữa chừng —
+   vd 1 khoảng năm "2006 – 2013". Khác với \u00a0 (khoảng trắng không ngắt):
+   dấu gạch ngang (– hoặc -) tự thân đã là điểm ngắt dòng hợp lệ theo chuẩn
+   Unicode line-breaking (UAX #14) bất kể ký tự đứng sau nó là space hay
+   nbsp, nên chỉ nbsp quanh dấu gạch ngang KHÔNG đủ để chặn ngắt dòng ngay
+   sau nó — phải bọc nguyên cụm bằng white-space:nowrap (2026-09-13, phát
+   hiện khi thêm mốc "2006 – 2013" ở phần Hình thành và phát triển). */
+.nowrap{white-space:nowrap;}
 
 /* ============ SKIP LINK ============ */
 .skip-link{position:absolute; left:-9999px; top:0; z-index:100; background:var(--brand); color:#fff; padding:10px 16px; border-radius:0 0 var(--radius-sm) 0; font-size:var(--fs-sm); font-weight:600; text-decoration:none;}
@@ -308,6 +316,20 @@ table.tariff tr:hover td{background:var(--bg-sunken);}
 /* ============ TOPBAR: tên công ty · mạng xã hội · tìm kiếm · ngôn ngữ ============ */
 .topbar .brandline{font-size:var(--fs-xs); text-transform:uppercase; letter-spacing:.06em; font-weight:600;}
 .topbar-tools{display:flex; align-items:center; gap:var(--sp-4); flex-wrap:wrap;}
+/* Hotline trên topbar (2026-09-14) — đặt trước khối social/search, dùng lại
+   đúng ico-phone như .footer-hotline. Icon 20x20 (to hơn .icon-sm 16px mặc
+   định — ghi đè riêng tại đây, không đổi .icon-sm chung vì nơi khác vẫn cần
+   giữ 16px, vd nút tìm kiếm cạnh nó). Nhãn "Hotline:" in đậm; số điện thoại
+   to + đậm hẳn lên để dễ đọc/dễ bấm gọi ngay trên một dải mảnh, dùng
+   font-numeric + tabular-nums để không lệch độ rộng ký tự giữa các số. */
+.topbar-hotline{display:flex; align-items:center; gap:6px; color:#fff; opacity:.85; text-decoration:none; white-space:nowrap;}
+.topbar-hotline:hover{opacity:1;}
+.topbar-hotline svg{flex:none; width:20px; height:20px;}
+.topbar-hotline__label{font-weight:700;}
+/* 15px không khớp bậc nào trong thang --fs-* hiện có (--fs-sm 13px / --fs-base
+   16px) nên để giá trị riêng theo đúng yêu cầu khách, không đổi token chung.
+   Yêu cầu khách 2026-09-14. */
+.topbar-hotline__number{font-family:var(--font-numeric); font-variant-numeric:tabular-nums; font-weight:700; font-size:15px;}
 .topbar-social{display:flex; gap:var(--sp-2);}
 .topbar-social a{display:flex; width:26px; height:26px; align-items:center; justify-content:center; border-radius:var(--radius-sm);}
 .topbar-social a:hover{background:rgba(255,255,255,.14); opacity:1;}
@@ -808,6 +830,18 @@ table.tariff tr:hover td{background:var(--bg-sunken);}
 .check-list svg{flex:none; margin-top:2px; color:var(--c-accent-600);}
 .check-list a{color:var(--text-primary); text-decoration:none;}
 .check-list a:hover{color:var(--brand); text-decoration:underline;}
+
+/* Modifier .check-list--cols2: dùng cho danh sách dài (vd "Ngành nghề kinh
+   doanh" trang giới thiệu) — chia 2 cột trên desktop, mỗi cột 5 mục, và mục
+   thứ N cột trái phải thẳng hàng với mục thứ N cột phải (yêu cầu 2026-09-13).
+   grid-auto-flow:column + grid-template-rows:repeat(5,auto) tự đưa mục 1-5
+   vào cột 1, 6-10 vào cột 2; mỗi hàng grid tự giãn theo ô cao nhất giữa 2
+   cột nên 2 mục cùng hàng luôn ngang nhau, không cần chỉnh tay. Breakpoint
+   1024px dùng chung với .two-col để đồng bộ — dưới mốc đó quay lại xếp
+   chồng 1 cột như .check-list gốc. */
+@media (min-width:1025px){
+  .check-list--cols2{display:grid; grid-template-columns:1fr 1fr; grid-template-rows:repeat(5,auto); grid-auto-flow:column; column-gap:var(--sp-8); row-gap:var(--sp-3);}
+}
 
 /* ============ THÔNG BÁO CẤP NƯỚC — dòng lịch cắt nước ============ */
 .notice-item{display:flex; gap:var(--sp-4); padding:var(--sp-4) 0; border-bottom:1px solid var(--border-default); align-items:flex-start;}
