@@ -7,7 +7,7 @@
  const records = await loadComments();
  const pages = reviewPages();
  $('pagesSummary').textContent = identity.role === 'owner'
-  ? pages.length + ' trang HTML · ' + records.filter(c=>c.status==='open').length + ' bình luận đang mở'
+  ? pages.length + ' trang HTML · ' + records.filter(c=>c.status==='open').length + ' bình luận đang sửa'
   : pages.length + ' trang HTML để review';
 
  const list = $('pagesList');
@@ -19,7 +19,7 @@
   row.className = 'page-row'; row.href = 'index.html?page=' + encodeURIComponent(p.path);
   const name = node('span'); name.append(iconEl('fileText'), node('span',undefined,'page-name-text')); name.querySelector('.page-name-text').append(node('strong', p.title), node('small', p.path));
   row.append(name);
-  if (identity.role === 'owner') row.append(node('span', open + ' đang mở · ' + resolved + ' đã giải quyết', 'page-count'));
+  if (identity.role === 'owner') row.append(node('span', open + ' đang sửa · ' + resolved + ' đã sửa', 'page-count'));
   list.append(row);
  }
  if (!pages.length) list.append(node('p', 'Chưa có trang nào được import.', 'empty'));

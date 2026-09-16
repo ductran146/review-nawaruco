@@ -9,7 +9,7 @@
  const open = scoped.filter(c => c.status === 'open').length;
 
  $('totals').replaceChildren();
- for (const [label, value] of [['Đang mở', open], ['Đã giải quyết', scoped.length - open], ['Trang có phản hồi', pages.filter(p => pageRecords(records, p).length).length]]) {
+ for (const [label, value] of [['Đang sửa', open], ['Đã sửa', scoped.length - open], ['Trang có phản hồi', pages.filter(p => pageRecords(records, p).length).length]]) {
   const tile = document.createElement('div'); tile.append(node('strong', String(value)), node('span', label)); $('totals').append(tile);
  }
 
@@ -27,8 +27,8 @@
   for (const p of pages.slice(start, start + PAGE_STATS_PER_PAGE)) {
    const list = pageRecords(records, p), n = list.filter(c => c.status === 'open').length, r = list.length - n;
    const row = document.createElement('a'); row.className = 'page-row'; row.href = '../index.html?page=' + encodeURIComponent(p.path);
-   const name = node('span'); name.append(iconEl('fileText'), node('span',undefined,'page-name-text')); name.querySelector('.page-name-text').append(node('strong', p.title), node('small', p.path));
-   row.append(name, node('span', n + ' đang mở · ' + r + ' đã giải quyết', 'page-count'));
+   const name = node('span'); name.append(iconEl('pageDoc'), node('span',undefined,'page-name-text')); name.querySelector('.page-name-text').append(node('strong', p.title), node('small', p.path));
+   row.append(name, node('span', n + ' đang sửa · ' + r + ' đã sửa', 'page-count'));
    pageStats.append(row);
   }
   const pager = $('pageStatsPager'); pager.replaceChildren();
@@ -49,7 +49,7 @@
   const row = document.createElement('a'); row.className = 'feedback-row';
   row.href = '../index.html?page=' + encodeURIComponent(p ? p.path : '') + '&comment=' + encodeURIComponent(c.id);
   const head = node('div', undefined, 'feedback-head');
-  head.append(node('span', c.author, 'feedback-email'), node('span', c.status === 'open' ? 'Đang mở' : 'Đã giải quyết', 'status-chip ' + (c.status === 'open' ? 'status-open' : 'status-resolved')));
+  head.append(node('span', c.author, 'feedback-email'), node('span', c.status === 'open' ? 'Đang sửa' : 'Đã sửa', 'status-chip ' + (c.status === 'open' ? 'status-open' : 'status-resolved')));
   row.append(head, node('small', new Date(c.createdAt).toLocaleString('vi-VN'), 'feedback-time'), node('p', c.content, 'feedback-content'));
   latest.append(row);
  }

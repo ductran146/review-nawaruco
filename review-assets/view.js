@@ -41,7 +41,7 @@ function createAttachPicker(hintTarget, onChange) {
  const items = [];
  const strip = node('div', undefined, 'attach-strip'); strip.hidden = true;
  const fileInput = document.createElement('input'); fileInput.type = 'file'; fileInput.accept = 'image/*'; fileInput.multiple = true; fileInput.hidden = true;
- const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'attach-btn'; btn.append(iconEl('image'), document.createTextNode('Ảnh'));
+ const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'attach-btn'; btn.append(iconEl('image'));
  btn.setAttribute('aria-label', 'Đính kèm ảnh');
  function renderStrip() {
   strip.replaceChildren(); strip.hidden = !items.length;
@@ -80,6 +80,51 @@ function createAttachPicker(hintTarget, onChange) {
  return { btn, strip, fileInput, attachPasteTo, uploadAll, reset, hasItems };
 }
 
+const EMOJIS = ['👍','👎','😀','😂','😍','😢','😡','🤔','👏','🙏','🔥','🎉','❤️','✅','❌','⭐','👀','💡','🚀','😅','😎','🙌','💯','⚠️','😴','🤝','😮','🥳','👌','😊'];
+
+// Shared "insert emoji" control, same shape/reuse pattern as
+// createAttachPicker above — one instance per comment-entry surface.
+// getInputEl() returns the textarea currently being composed in (a
+// function, not the element itself, since the note-popup ones are
+// created fresh each time the popup opens).
+function createEmojiPicker(getInputEl) {
+ let panel = null;
+ function onOutside(e) { if (panel && !panel.contains(e.target) && e.target !== btn) close(); }
+ function onKey(e) { if (e.key === 'Escape') close(); }
+ function close() {
+  if (!panel) return;
+  panel.remove(); panel = null;
+  document.removeEventListener('pointerdown', onOutside, true);
+  document.removeEventListener('keydown', onKey, true);
+ }
+ function insert(emoji) {
+  const el = getInputEl();
+  const start = el.selectionStart ?? el.value.length, end = el.selectionEnd ?? start;
+  el.value = el.value.slice(0, start) + emoji + el.value.slice(end);
+  const pos = start + emoji.length;
+  el.setSelectionRange(pos, pos);
+  el.focus();
+  el.dispatchEvent(new Event('input', { bubbles: true }));
+ }
+ const btn = document.createElement('button');
+ btn.type = 'button'; btn.className = 'attach-btn emoji-btn'; btn.append(iconEl('smile'));
+ btn.setAttribute('aria-label', 'Chèn emoji');
+ btn.onclick = e => {
+  e.stopPropagation();
+  if (panel) { close(); return; }
+  panel = node('div', undefined, 'emoji-panel');
+  EMOJIS.forEach(em => { const b = document.createElement('button'); b.type = 'button'; b.textContent = em; b.onclick = () => { insert(em); close(); }; panel.append(b); });
+  document.body.append(panel);
+  const r = btn.getBoundingClientRect(), pw = 220;
+  panel.style.left = Math.max(12, Math.min(r.left, innerWidth - pw - 12)) + 'px';
+  const ph = panel.offsetHeight;
+  panel.style.top = (r.top - ph - 8 >= 12 ? r.top - ph - 8 : r.bottom + 8) + 'px';
+  document.addEventListener('pointerdown', onOutside, true);
+  document.addEventListener('keydown', onKey, true);
+ };
+ return { btn };
+}
+
 // Small full-screen viewer for a clicked attachment thumbnail.
 function renderAttachmentStrip(list) {
  const wrap = node('div', undefined, 'comment-attachments');
@@ -116,7 +161,7 @@ async function applyIdentity(identity, justSignedIn) {
  $('identity').hidden = false; $('signedEmail').textContent = myEmail + (identityPreview ? ' (xem thử)' : '');
  cancel();
  $('hint').textContent = !SUPABASE_READY ? 'Chế độ xem thử — chưa nối Supabase nên bình luận sẽ không được lưu thật.'
-  : canComment() ? 'Bạn có thể viết góp ý chung hoặc chọn một vị trí cụ thể.'
+  : canComment() ? ''
   : 'Email này chưa được cấp quyền bình luận cho dự án này. Liên hệ chủ dự án.';
  records = await loadComments(); render();
  subscribeRealtime(refreshComments);
@@ -202,7 +247,7 @@ function viewport() {
  }
  document.querySelectorAll('[data-width]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.width === String(widthMode))));
 }
-function sidebar(open) { $('sidebar').hidden = !open; $('toggle').setAttribute('aria-expanded', String(open)); if (!open) cancel(); setPinsVisible(open); }
+function sidebar(open) { $('sidebar').hidden = !open; $('toggle').setAttribute('aria-expanded', String(open)); $('toggle').dataset.tooltip = open ? 'Ẩn bình luận' : 'Hiện bình luận'; if (!open) cancel(); setPinsVisible(open); }
 // Ẩn/hiện các ghim vị trí bình luận trên website theo trạng thái panel
 // Bình luận — đóng panel (Shift+C, nút X, hoặc chế độ Toàn màn hình) thì ẩn
 // ghim; mở lại panel thì hiện lại đúng vị trí cũ.
@@ -257,7 +302,7 @@ function alignPagesToggle() {
 }
 window.addEventListener('resize', alignPagesToggle);
 
-function pagesPanelOpen(open) { $('pagesPanel').hidden = !open; }
+function pagesPanelOpen(open) { $('pagesPanel').hidden = !open; $('pagesToggle').dataset.tooltip = open ? 'Ẩn các trang' : 'Hiện các trang'; }
 $('pagesToggle').onclick = () => pagesPanelOpen($('pagesPanel').hidden);
 $('pagesPanelClose').onclick = () => pagesPanelOpen(false);
 // Shift+A toggles the left pages panel, Shift+C toggles the right
@@ -291,7 +336,7 @@ function renderPagesPanel() {
  // hàng (reviewer) chỉ cần danh sách trang, không cần số liệu tổng quan.
  $('pagesPanelSummary').hidden = !isOwner;
  $('pagesPanelSummary').textContent = isOwner
-  ? pages.length + ' trang HTML · ' + records.filter(c => c.status === 'open').length + ' bình luận đang mở'
+  ? pages.length + ' trang HTML · ' + records.filter(c => c.status === 'open').length + ' bình luận đang sửa'
   : '';
  const list = $('pagesPanelList'); list.replaceChildren();
  // Owner: ưu tiên trang có nhiều bình luận CHƯA giải quyết lên đầu, để
@@ -302,7 +347,7 @@ function renderPagesPanel() {
  for (const p of orderedPages) {
   const row = document.createElement('button'); row.type = 'button';
   row.className = 'page-row' + ('/' + p.path === page ? ' current' : '');
-  const name = node('span'); name.append(iconEl('fileText'), node('strong', p.path));
+  const name = node('span'); name.append(iconEl('pageDoc'), node('strong', p.path));
   row.append(name);
   const count = isOwner ? openCount(p) : pageRecords(records, p).length;
   row.append(node('span', String(count), 'page-badge'));
@@ -410,7 +455,8 @@ function resetReply(){replyTo=null;$('replyContext').hidden=true;$('pin').hidden
 function startReply(c){cancel();replyTo=c.id;selectedId=c.id;sidebar(true);$('replyContext').hidden=false;$('replyLabel').textContent='Trả lời '+c.author;$('pin').hidden=true;$('content').value='';resizeContent();$('content').placeholder='Viết trả lời…';render();$('content').focus();}
 $('cancelReply').onclick=()=>{resetReply();$('content').value='';resizeContent();$('content').focus();};
 const composerAttach = createAttachPicker($('hint'));
-$('composerAttachTools').append(composerAttach.btn, composerAttach.fileInput);
+const composerEmoji = createEmojiPicker(() => $('content'));
+$('composerAttachTools').append(composerAttach.btn, composerEmoji.btn, composerAttach.fileInput);
 $('composerAttachTools').insertAdjacentElement('beforebegin', composerAttach.strip);
 composerAttach.attachPasteTo($('content'));
 $('composer').onsubmit=async e=>{
@@ -463,7 +509,7 @@ function openFloating(anchor,record=null){
   const actions=node('div',undefined,'note-head-actions');
   if(viewRole==='owner'){
    const resolveBtn=document.createElement('button');resolveBtn.type='button';resolveBtn.className='icon-only';
-   const label=record.status==='open'?'Đã giải quyết':'Mở lại';
+   const label=record.status==='open'?'Đã sửa':'Sửa lại';
    resolveBtn.setAttribute('aria-label',label);resolveBtn.title=label;resolveBtn.append(iconEl(record.status==='open'?'check':'restart'));
    resolveBtn.onclick=async()=>{
     if(!SUPABASE_READY){$('hint').textContent='Chế độ xem thử — chưa nối Supabase nên không lưu được trạng thái thật.';return;}
@@ -529,13 +575,14 @@ function openFloating(anchor,record=null){
       const replyInput=document.createElement('textarea');replyInput.rows=1;replyInput.placeholder='Trả lời…';replyInput.setAttribute('aria-label','Trả lời bình luận');replyInput.maxLength=4000;
    const sendBtn=document.createElement('button');sendBtn.type='submit';sendBtn.className='send-btn icon-only';sendBtn.disabled=true;sendBtn.setAttribute('aria-label','Gửi trả lời');sendBtn.append(iconEl('arrowLeft'));
    const replyAttach=createAttachPicker(null,()=>{sendBtn.disabled=!replyInput.value.trim()&&!replyAttach.hasItems();});
+   const replyEmoji=createEmojiPicker(()=>replyInput);
    // Auto-grow the field's height as the reply wraps onto more lines,
    // instead of scrolling inside a fixed-size box.
    function resizeReplyInput(){replyInput.style.height='auto';replyInput.style.height=replyInput.scrollHeight+'px';}
    replyInput.addEventListener('input',()=>{sendBtn.disabled=!replyInput.value.trim()&&!replyAttach.hasItems();resizeReplyInput();});
    replyInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();replyForm.requestSubmit();}});
    const toolsRow=node('div',undefined,'composer-box-tools');
-   toolsRow.append(replyAttach.btn,replyAttach.fileInput,sendBtn);
+   toolsRow.append(replyAttach.btn,replyEmoji.btn,replyAttach.fileInput,sendBtn);
    box.append(replyAttach.strip,replyInput,toolsRow);
    replyForm.append(box);
    replyAttach.attachPasteTo(replyInput);
@@ -562,7 +609,8 @@ function openFloating(anchor,record=null){
   const box=node('div',undefined,'composer-box');
   const send=document.createElement('button');send.type='submit';send.className='send-btn icon-only';send.setAttribute('aria-label','Gửi bình luận');send.append(iconEl('arrowLeft'));
   const noteAttach=createAttachPicker(error);
-  const toolsRow=node('div',undefined,'composer-box-tools');toolsRow.append(noteAttach.btn,noteAttach.fileInput,send);
+  const noteEmoji=createEmojiPicker(()=>input);
+  const toolsRow=node('div',undefined,'composer-box-tools');toolsRow.append(noteAttach.btn,noteEmoji.btn,noteAttach.fileInput,send);
   box.append(noteAttach.strip,input,toolsRow);
   form.append(box,help,error);panel.append(form);
   noteAttach.attachPasteTo(input);
@@ -592,17 +640,19 @@ function finishJump(){
 }
 function render() {
  const all=records.filter(c=>c.page===page); $('count').textContent=all.filter(c=>c.status==='open').length;
- document.querySelectorAll('[data-status]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.status===status)); b.innerHTML=(b.dataset.status==='open'?icon('unresolved'):icon('check'))+`${b.dataset.status==='open'?'Đang mở':'Đã giải quyết'} (${all.filter(c=>c.status===b.dataset.status).length})`;});
+ document.querySelectorAll('[data-status]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.status===status)); b.innerHTML=(b.dataset.status==='open'?icon('unresolved'):icon('check'))+`${b.dataset.status==='open'?'Đang sửa':'Đã sửa'} (${all.filter(c=>c.status===b.dataset.status).length})`;});
  $('comments').replaceChildren();
  all.filter(c=>c.status===status).forEach(c=>{
  const card=node('article',undefined,'card'), top=node('div',undefined,'card-top'), pin=node('button','#'+(records.indexOf(c)+1),'number'); pin.onclick=()=>focusRecord(c);card.dataset.commentId=c.id;card.classList.toggle('selected',selectedId===c.id);card.addEventListener('click',e=>{if(!e.target.closest('button,input,textarea,form'))focusRecord(c);}); if (!c.selector) { pin.textContent='—'; pin.title='Bình luận chung cho trang'; }
  const avatar=node('span',avatarLetter(c.author),'avatar');avatar.style.background=avatarColor(c.author);
  top.append(avatar,node('strong',c.author));
- const meta=node('div',undefined,'meta');
+ const meta=node('div',undefined,'meta meta-row');
  meta.append(pin);
  const deviceLabel=c.device?c.device.charAt(0).toUpperCase()+c.device.slice(1):'';
  if(deviceLabel)meta.append(node('span',deviceLabel,'device-chip'));
  meta.append(document.createTextNode(new Date(c.createdAt).toLocaleDateString('vi-VN')));
+ const metaActions=node('span',undefined,'meta-actions');
+ meta.append(metaActions);
  card.append(top,meta);
  const bodyWrap=node('div',undefined,'card-body-wrap');
  function renderCardBody(){
@@ -614,9 +664,10 @@ function render() {
  // Vị trí kỹ thuật (selector/element text) không hiển thị nữa — bấm vào
  // thẻ bình luận đã tự nhảy đến đúng vị trí (focusRecord), hiển thị lại là
  // thừa. Vẫn giữ dòng phân biệt "bình luận chung" cho trường hợp không ghim.
- if(!c.selector) card.append(node('div','Bình luận chung cho trang','meta'));
- const resolve=document.createElement('button'); resolve.append(iconEl(c.status==='open'?'check':'restart'),document.createTextNode(c.status==='open'?'Đã giải quyết':'Mở lại')); resolve.onclick=async()=>{if(viewRole!=='owner'||!canComment())return;if(!SUPABASE_READY){$('hint').textContent='Chế độ xem thử — chưa nối Supabase nên không lưu được trạng thái thật.';return;}const old=c.status;const next=old==='open'?'resolved':'open';const patch=next==='resolved'?{status:'resolved',resolved_at:new Date().toISOString(),resolved_by:myEmail}:{status:'open',resolved_at:null,resolved_by:null};const {error}=await sb.from('comments').update(patch).eq('id',c.id);if(error){$('hint').textContent='Không cập nhật được: '+error.message;return;}c.status=next;render();}; resolve.hidden=viewRole!=='owner'; resolve.disabled = !canComment(); card.append(resolve);
- const editBtn=document.createElement('button'); editBtn.append(iconEl('edit'),document.createTextNode('Sửa')); editBtn.setAttribute('aria-label','Sửa bình luận'); editBtn.hidden=!canEditComment(c);
+ if(!c.selector) card.append(node('div','Bình luận chung cho trang','meta general-note'));
+ const resolveLabel=c.status==='open'?'Đã sửa':'Sửa lại';
+ const resolve=document.createElement('button'); resolve.append(iconEl(c.status==='open'?'check':'restart')); resolve.dataset.tooltip=resolveLabel; resolve.setAttribute('aria-label',resolveLabel); resolve.onclick=async()=>{if(viewRole!=='owner'||!canComment())return;if(!SUPABASE_READY){$('hint').textContent='Chế độ xem thử — chưa nối Supabase nên không lưu được trạng thái thật.';return;}const old=c.status;const next=old==='open'?'resolved':'open';const patch=next==='resolved'?{status:'resolved',resolved_at:new Date().toISOString(),resolved_by:myEmail}:{status:'open',resolved_at:null,resolved_by:null};const {error}=await sb.from('comments').update(patch).eq('id',c.id);if(error){$('hint').textContent='Không cập nhật được: '+error.message;return;}c.status=next;render();}; resolve.hidden=viewRole!=='owner'; resolve.disabled = !canComment();
+ const editBtn=document.createElement('button'); editBtn.append(iconEl('edit')); editBtn.dataset.tooltip='Sửa bình luận'; editBtn.setAttribute('aria-label','Sửa bình luận'); editBtn.hidden=!canEditComment(c);
  editBtn.onclick=e=>{
   e.stopPropagation();
   bodyWrap.replaceChildren();
@@ -635,11 +686,11 @@ function render() {
    if(ok)render();else renderCardBody();
   };
  };
- card.append(editBtn);
+ metaActions.append(resolve, editBtn);
  c.replies.forEach(r=>{const reply=node('div',undefined,'reply');reply.append(node('strong',r.author));if(r.content)reply.append(node('p',r.content));if(r.attachments&&r.attachments.length)reply.append(renderAttachmentStrip(r.attachments));card.append(reply);});
  const replyButton=document.createElement('button'); replyButton.className='reply-action'; replyButton.append(iconEl('reply'),document.createTextNode('Trả lời')); replyButton.hidden=!canComment(); replyButton.onclick=()=>startReply(c);card.append(replyButton);$('comments').append(card);
  });
- if(!$('comments').children.length)$('comments').append(node('p',status==='open'?'Chưa có bình luận đang mở.':'Chưa có bình luận đã giải quyết.','empty'));
+ if(!$('comments').children.length)$('comments').append(node('p',status==='open'?'Chưa có bình luận đang sửa.':'Chưa có bình luận đã sửa.','empty'));
  renderPins();
  renderPagesPanel();
  finishJump();
