@@ -62,4 +62,4 @@ button:has(>.icon),a.button-link:has(>.icon){display:inline-flex;align-items:cen
 
 .emoji-panel{position:fixed;z-index:45;background:#fff;border:1px solid #dce0e9;border-radius:10px;box-shadow:0 12px 40px #182a4e40;padding:8px;display:grid;grid-template-columns:repeat(6,1fr);gap:2px;width:220px;max-height:220px;overflow-y:auto}
 .emoji-panel button{border:0;background:none;padding:5px;border-radius:6px;font-size:19px;line-height:1;cursor:pointer}
-.emoji-panel button:hover{background:#f3f5fa}
+.emoji-panel button:hover{background:#f3f5fa}.pages-side-panel .panel-caption[hidden]+#pagesPanelList{margin-top:12px}
